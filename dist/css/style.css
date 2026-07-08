@@ -5936,8 +5936,8 @@
   flex-wrap: wrap;
   gap: 10px;
 }
-.recommend-result__thum {
-  width: 100%;
+.recommend-result__thum li {
+  width: calc(50% - 5px);
 }
 .recommend-result__thum .recommend-result__card {
   display: flex;
@@ -6094,6 +6094,12 @@
   }
   .recommend-result__thum {
     gap: 18px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .recommend-result__thum li {
+    width: 224px;
   }
   .recommend-result__thum .recommend-result__card {
     width: 224px;
