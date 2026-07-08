@@ -192,7 +192,7 @@
 }
 
 .action-card--link:hover {
-  background-color: var(--color-bg-subtler);
+  background-color: var(--color-gray-20);
 }
 
 .action-card__icon {

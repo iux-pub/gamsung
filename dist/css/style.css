@@ -4508,7 +4508,7 @@
   height: 180px;
   font-size: 0;
   display: block;
-  background: url('/src/image/logo.png') no-repeat center / 100%;
+  background: url('src/image/logo.png') no-repeat center / 100%;
   margin: 0;
 }
 .main-visual {
@@ -4816,7 +4816,7 @@
   }
 }
 .btn--secondary:hover {
-  background-color: var(--color-bg-subtler);
+  background-color: var(--color-gray-20);
 }
 .section--keywords {
   padding: 0;
@@ -4852,8 +4852,7 @@
   transition: all 0.2s;
 }
 .keyword-chips__item:hover {
-  background-color: var(--color-bg-subtler);
-  border-color: var(--color-border);
+  background-color: var(--color-gray-20);
 }
 .site-footer {
   background-color: var(--color-brand-bg);
@@ -5937,11 +5936,14 @@
   flex-wrap: wrap;
   gap: 10px;
 }
+.recommend-result__thum {
+  width: 100%;
+}
 .recommend-result__thum .recommend-result__card {
   display: flex;
   flex-direction: column;
   background-color: var(--color-surface);
-  width: 150px;
+  width: 100%;
   border-radius: 16px;
   padding: 0px;
   gap: 10px;
@@ -5952,7 +5954,7 @@
 }
 .recommend-result__thum .recommend-result__card-thumb {
   position: relative;
-  width: 150px;
+  width: 100%;
   height: 100px;
   flex-shrink: 0;
   border-radius: 16px 16px 0 0;
@@ -6436,7 +6438,7 @@
   box-sizing: border-box;
 }
 .action-card--link:hover {
-  background-color: var(--color-bg-subtler);
+  background-color: var(--color-gray-20);
 }
 .action-card__icon {
   color: var(--color-brand);

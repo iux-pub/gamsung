@@ -392,7 +392,7 @@
 }
 
 .btn--secondary:hover {
-  background-color: var(--color-bg-subtler);
+  background-color: var(--color-gray-20);
 }
 
 /* 5. 인기 감성 키워드 섹션 */
@@ -431,6 +431,5 @@
 }
 
 .keyword-chips__item:hover {
-  background-color: var(--color-bg-subtler);
-  border-color: var(--color-border);
+  background-color: var(--color-gray-20);
 }
