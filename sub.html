@@ -275,24 +275,6 @@
       </div>
     </main>
 
-    <!-- 라디오 칩 선택 기능은 CSS의 :checked 선택자를 활용하므로 추가 JS가 불필요합니다. -->
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        // 폼 제출 이벤트 데모용 알럿 및 화면 분기
-        const form = document.getElementById('diagnosisForm');
-        if (form) {
-          form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const age = form.querySelector('input[name="age"]:checked').value;
-            const gender = form.querySelector('input[name="gender"]:checked').value;
-            const travel = form.querySelector('input[name="travel_propensity"]:checked').value;
-
-            alert(`진단 완료!\n- 연령대: ${age}\n- 성별: ${gender}\n- 여행 성향: ${travel}\n\n추천 맛집 메인 화면으로 이동합니다.`);
-            window.location.href = 'main.html';
-          });
-        }
-      });
-    </script>
 
     <script src="src/js/modal.js"></script>
     <script src="src/js/tab.js"></script>
