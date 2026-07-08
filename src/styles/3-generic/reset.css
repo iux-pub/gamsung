@@ -1,0 +1,84 @@
+/**
+ * Reset — modern-normalize + KRDS 1rem=10px 트릭 + box-sizing
+ *
+ * KRDS/INFOMIND rem 토큰의 0.1rem 단위 값을 맞추기 위한 프로젝트 기준이다.
+ */
+
+@import "modern-normalize" layer(base);
+
+@layer base {
+  @font-face {
+    font-family: NeoHyundai;
+    src: url('../../font/NeoHyundai-L.woff2') format('woff2'),
+         url('../../font/NeoHyundai-L.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: NeoHyundai;
+    src: url('../../font/NeoHyundai-R.woff2') format('woff2'),
+         url('../../font/NeoHyundai-R.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: NeoHyundai;
+    src: url('../../font/NeoHyundai-B.woff2') format('woff2'),
+         url('../../font/NeoHyundai-B.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: NeoHyundai;
+    src: url('../../font/NeoHyundai-EB.woff2') format('woff2'),
+         url('../../font/NeoHyundai-EB.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: NeoHyundai;
+    src: url('../../font/NeoHyundai-EBK.woff2') format('woff2'),
+         url('../../font/NeoHyundai-EBK.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  *,
+  *::before,
+  *::after {
+    @apply [box-sizing:border-box];
+  }
+
+  /* 프로젝트 기준: 1rem = 10px */
+  html {
+    @apply text-[62.5%] [text-size-adjust:100%];
+  }
+
+  /* 기본 본문: KRDS body-medium(1.7rem) + line-height 150% */
+  body {
+    @apply text-[1.7rem] leading-[1.5] text-[var(--color-text)] bg-[var(--color-bg)] [font-weight:400] [font-family:var(--font-sans)] [-webkit-font-smoothing:antialiased] [-moz-osx-font-smoothing:grayscale];
+  }
+
+  /* KRDS 접근성 — :focus { outline: none } 금지. :focus-visible 미지원 브라우저는 :focus 링 유지 */
+  :focus {
+    @apply [outline:0.4rem_solid_var(--color-border-primary)] [outline-offset:2px];
+  }
+
+  :focus-visible {
+    @apply [outline:0.4rem_solid_var(--color-border-primary)] [outline-offset:2px];
+  }
+
+  /* 마우스 클릭 시 outline 제거. 미지원 브라우저는 이 선택자를 무시하고 :focus fallback을 유지한다. */
+  :focus:not(:focus-visible) {
+    @apply outline-none;
+  }
+}

@@ -1,0 +1,46 @@
+/**
+ * List — KRDS Structured list / Text list
+ *
+ * 두 가지 변형:
+ *   .list--text       텍스트 목록 (bullet/number)
+ *   .list--structured 구조화 목록 (label-value 정의 목록 — KRDS 형식)
+ */
+
+@layer components {
+  /* ─── Text list (ul/ol) ─── */
+  .list--text {
+    @apply m-0 text-[var(--color-text)] leading-[1.7] ps-[0] [list-style:disc_inside];
+
+
+  }
+  .list--text.list--ordered { @apply [list-style:decimal_inside]; }
+
+  .list--text > li {
+  @apply py-[0.4rem];
+  }
+
+  .list--text > li > ul,
+  .list--text > li > ol {
+    @apply mt-[0.4rem] ps-[2rem] [list-style:circle_inside];
+  }
+
+  /* ─── Structured list (dl) — KRDS 정의 목록 ─── */
+  .list--structured {
+    @apply m-0 [border-top:2px_solid_var(--color-border-dark)];
+  }
+
+  .list--structured > div,
+  .list--structured > .list__row {
+    @apply grid gap-[0.8rem] py-[1.6rem] px-0 border-b border-[var(--color-border-light)] [grid-template-columns:1fr] tablet:gap-[1.6rem] tablet:[grid-template-columns:16rem_1fr];
+  }
+
+  .list--structured dt,
+  .list--structured .list__label {
+    @apply font-bold text-[var(--color-text-bolder)];
+  }
+
+  .list--structured dd,
+  .list--structured .list__value {
+    @apply text-[var(--color-text)] m-0;
+  }
+}

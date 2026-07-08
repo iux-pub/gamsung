@@ -1,0 +1,47 @@
+/**
+ * INFOMIND UX 가이드 — 메인 스타일
+ *
+ * Tailwind v4 + INFOUX 파운데이션 토큰 + ITCSS 레이어 구조
+ * 출처: tokens/foundation.json (build/tokens.css)
+ *
+ * 절대 직접 수정 금지: ../../tokens/build/tokens.css
+ * 토큰 변경은 tokens/foundation.json에서 한다.
+ */
+
+@import "tailwindcss";
+
+/* ─── ITCSS 레이어 우선순위 ─── */
+@layer base, components, utilities;
+
+/* ─── 1-settings — 색상 + 기본 폰트 + 브레이크포인트 토큰 ─── */
+@import "../../tokens/build/tokens.css";
+@import "./1-settings/social-colors.css";
+
+/* ─── 3-generic — 리셋 (62.5% 트릭 포함) ─── */
+@import "./3-generic/reset.css";
+
+/* ─── 4-elements — HTML 태그 베이스 ─── */
+@import "./4-elements/base.css";
+
+/* ─── 5-objects — 레이아웃 패턴 ─── */
+@import "./5-objects/container.css";
+
+/* ─── 6-components — UI 컴포넌트 (KRDS 기반 BEM) ─── */
+@import "./6-components/index.css";
+
+/* ─── 7-utilities — 유틸리티 (Tailwind에 없는 것만) ─── */
+@import "./7-utilities/sr-only.css";
+
+/* ─── 프로젝트별 스타일 확장 슬롯 ─── */
+
+/* 프로젝트별 확장 — project.css를 페이지/영역별로 분할 (import 순서 = 원본 순서 = 카스케이드 보존) */
+@import "./7-utilities/project/header.css";
+@import "./7-utilities/project/drawer.css";
+@import "./7-utilities/project/main.css";
+@import "./7-utilities/project/footer.css";
+@import "./7-utilities/project/pc-layout.css";
+@import "./7-utilities/project/form.css";
+@import "./7-utilities/project/recommend.css";
+@import "./7-utilities/project/login.css";
+@import "./7-utilities/project/mypage.css";
+

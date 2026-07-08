@@ -1,0 +1,64 @@
+/**
+ * Tab — KRDS Tab
+ *
+ * 구조 (WAI-ARIA tabs pattern):
+ *   <div class="tab">
+ *     <div class="tab__list" role="tablist">
+ *       <button class="tab__item" role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1">탭 1</button>
+ *       <button class="tab__item" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2">탭 2</button>
+ *     </div>
+ *     <div class="tab__panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1">콘텐츠 1</div>
+ *     <div class="tab__panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>콘텐츠 2</div>
+ *   </div>
+ */
+
+@layer components {
+  .tab {
+    @apply w-full;
+  }
+
+  .tab__list {
+    @apply flex gap-[0.2rem] border-b-2 border-[var(--color-border)] overflow-x-auto [scrollbar-width:thin];
+  }
+
+  .tab__item {
+    @apply shrink-0 inline-flex items-center justify-center gap-[0.4rem] h-[4.8rem] px-[1.6rem] border-0 bg-transparent text-[var(--color-text-subtle)] text-[1.7rem] font-bold leading-none cursor-pointer whitespace-nowrap relative [transition:color_0.15s_ease-in-out];
+  }
+
+  .tab__item:hover {
+    @apply text-[var(--color-text)];
+  }
+
+  .tab__item[aria-selected="true"] {
+    @apply text-[var(--color-primary)];
+  }
+
+  /* 활성 탭 하단 인디케이터 */
+  .tab__item::after {
+    @apply content-[''] absolute left-0 right-0 h-[2px] bg-transparent bottom-[-2px] [transition:background-color_0.15s_ease-in-out];
+  }
+
+  .tab__item[aria-selected="true"]::after {
+    @apply bg-[var(--color-primary)];
+  }
+
+  .tab__item:disabled,
+  .tab__item[aria-disabled="true"] {
+    @apply text-[var(--color-text-disabled)] cursor-not-allowed;
+  }
+
+  .tab__panel {
+    @apply py-[2.4rem] px-0;
+  }
+
+  .tab__panel[hidden] { @apply [display:none]; }
+
+  /* 사이즈 변형 */
+  .tab__list--small .tab__item {
+    @apply h-[4rem] text-[1.5rem];
+  }
+
+  .tab__list--large .tab__item {
+    @apply h-[5.6rem] text-[1.9rem];
+  }
+}

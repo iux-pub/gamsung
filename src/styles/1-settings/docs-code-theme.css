@@ -1,0 +1,31 @@
+/**
+ * Docs code syntax theme — VS Code Dark+ palette.
+ *
+ * Raw color values are isolated here as docs-only color definitions.
+ * Code block styling must consume these through --color-code-* variables.
+ */
+
+:root {
+  --color-code-bg: #1e1e1e;
+  --color-code-fg: #d4d4d4;
+  --color-code-muted: #808080;
+  --color-code-border: #3c3c3c;
+  --color-code-button-bg: #2d2d30;
+  --color-code-button-bg-hover: #3e3e42;
+  --color-code-button-fg: #ccc;
+  --color-code-button-fg-hover: #fff;
+  --color-code-comment: #6a9955;
+  --color-code-keyword: #569cd6;
+  --color-code-string: #ce9178;
+  --color-code-inserted: #b5cea8;
+  --color-code-number: #b5cea8;
+  --color-code-function: #dcdcaa;
+  --color-code-type: #4ec9b0;
+  --color-code-attribute: #9cdcfe;
+  --color-code-link: #4fc1ff;
+  --color-code-markup: #d7ba7d;
+  --color-code-regex: #d16969;
+  --color-code-terminal-red: #f48771;
+  --color-code-terminal-yellow: #ffb114;
+  --color-code-terminal-green: #7ec88e;
+}

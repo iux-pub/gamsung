@@ -1,0 +1,46 @@
+/**
+ * File Upload — KRDS File upload
+ *
+ * 구조:
+ *   <label class="file-upload">
+ *     <input type="file">
+ *     <span class="file-upload__trigger">파일 선택</span>
+ *     <span class="file-upload__filename">선택된 파일 없음</span>
+ *   </label>
+ */
+
+@layer components {
+  .file-upload {
+    @apply inline-flex items-center gap-[0.8rem];
+  }
+
+  .file-upload input[type="file"] {
+    @apply absolute w-[1px] h-[1px] m-[-1px] p-0 overflow-hidden whitespace-nowrap border-0 [clip-path:inset(50%)];
+
+  }
+
+  /* 트리거 버튼 — 시각적으로 .btn--secondary와 동일 */
+  .file-upload__trigger {
+    @apply inline-flex items-center justify-center h-[4.8rem] px-[1.6rem] border border-[var(--color-button-secondary-border)] rounded-[0.6rem] bg-[var(--color-button-secondary-fill)] text-[var(--color-primary)] text-[1.7rem] font-bold leading-none cursor-pointer select-none [transition:background-color_0.15s_ease-in-out];
+  }
+
+  .file-upload:hover .file-upload__trigger {
+    @apply bg-[var(--color-button-secondary-fill-hover)];
+  }
+
+  .file-upload input:focus-visible ~ .file-upload__trigger {
+    @apply [outline:0.4rem_solid_var(--color-border-primary)] [outline-offset:2px];
+  }
+
+  .file-upload__filename {
+    @apply text-[var(--color-text-subtle)] text-[1.7rem];
+  }
+
+  .file-upload input:disabled ~ .file-upload__trigger {
+    @apply cursor-not-allowed bg-[var(--color-button-disabled-fill)] text-[var(--color-text-disabled)] border-[var(--color-button-disabled-border)];
+  }
+
+  .file-upload input:disabled ~ .file-upload__filename {
+    @apply text-[var(--color-text-disabled)];
+  }
+}

@@ -1,0 +1,106 @@
+/**
+ * Form — KRDS 기반 텍스트 입력/Textarea 명세
+ *
+ * 구성: 레이블 → 보조설명 → 입력박스 → 시스템메시지
+ *   요소 간 gap: 0.8rem
+ *   입력박스 내부 padding: 1.6rem
+ *
+ * 사이즈: small(40) / medium(48 — 기본) / large(56)
+ * 상태:   default / focus / disabled / readonly / error
+ */
+
+@layer components {
+  /* ─── Field group (레이블 + 입력 + 메시지 컨테이너) ─── */
+  .form-field {
+    @apply flex flex-col gap-[0.8rem];
+  }
+
+  .form-field__label {
+    @apply text-[1.7rem] font-bold text-[var(--color-text)] leading-[1.5];
+  }
+
+  .form-field__hint {
+    @apply text-[1.5rem] text-[var(--color-text-subtle)] leading-[1.5];
+  }
+
+  .form-field__message {
+    @apply text-[1.5rem] text-[var(--color-text-subtle)] leading-[1.5];
+  }
+
+  .form-field__message--error {
+    @apply text-[var(--color-danger-text)];
+  }
+
+  .form-field__message--success {
+    @apply text-[var(--color-success-text)];
+  }
+
+  /* 필수 표시자 */
+  .form-field__required {
+    @apply text-[var(--color-danger)] ms-[0.2rem];
+  }
+
+  /* ─── Input (text, email, password, number, tel, url, search, date, time) ─── */
+  .input {
+    @apply w-full h-[4.8rem] px-[1.6rem] border border-[var(--color-input-border)] rounded-[0.6rem] bg-[var(--color-input-surface)] text-[var(--color-text)] text-[1.7rem] leading-[1.5] [transition:border-color_0.15s_ease-in-out,_background-color_0.15s_ease-in-out];
+  }
+
+  .input::placeholder {
+    @apply text-[var(--color-text-disabled)];
+  }
+
+  .input:hover:not(:disabled):not(:read-only) {
+    @apply border-[var(--color-border-dark)];
+  }
+
+  .input:focus,
+  .input:focus-visible {
+    @apply border-[var(--color-input-border-active)] outline-none;
+  }
+
+  .input:disabled {
+    @apply bg-[var(--color-input-surface-disabled)] border-[var(--color-input-border-disabled)] text-[var(--color-text-disabled)] cursor-not-allowed;
+  }
+
+  .input:read-only {
+    @apply bg-[var(--color-bg-subtler)];
+  }
+
+  .input--error,
+  .input[aria-invalid="true"] {
+    @apply border-[var(--color-input-border-error)];
+  }
+
+  /* 사이즈 변형 */
+  .input--small {
+    @apply h-[4rem] text-[1.5rem];
+  }
+
+  .input--large {
+    @apply h-[5.6rem] text-[1.9rem];
+  }
+
+  /* ─── Textarea ─── */
+  .textarea {
+    @apply w-full min-h-[calc(4.8rem_*_2)] p-[1.6rem] border border-[var(--color-input-border)] rounded-[0.6rem] bg-[var(--color-input-surface)] text-[var(--color-text)] text-[1.7rem] leading-[1.5] resize-y [transition:border-color_0.15s_ease-in-out];
+  }
+  .textarea::placeholder { @apply [color:var(--color-text-disabled)]; }
+
+  .textarea:hover:not(:disabled):not(:read-only) {
+    @apply border-[var(--color-border-dark)];
+  }
+
+  .textarea:focus,
+  .textarea:focus-visible {
+    @apply border-[var(--color-input-border-active)] outline-none;
+  }
+
+  .textarea:disabled {
+    @apply bg-[var(--color-input-surface-disabled)] text-[var(--color-text-disabled)] cursor-not-allowed;
+  }
+
+  .textarea--error,
+  .textarea[aria-invalid="true"] {
+    @apply border-[var(--color-input-border-error)];
+  }
+}

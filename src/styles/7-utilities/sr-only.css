@@ -1,0 +1,22 @@
+/**
+ * Screen reader only — 시각적으로는 숨기되 스크린리더는 읽음
+ * KRDS Visually hidden 컴포넌트 표준
+ */
+
+@layer utilities {
+  .sr-only {
+    @apply absolute w-[1px] h-[1px] p-0 m-[-1px] overflow-hidden whitespace-nowrap border-0 [clip-path:inset(50%)];
+
+  }
+
+  /* skip-to-content 링크 — KRDS 권장 (포커스 시 노출) */
+  .skip-to-content {
+    @apply absolute w-[1px] h-[1px] p-0 m-[-1px] overflow-hidden whitespace-nowrap border-0 bg-[var(--color-primary)] text-[var(--color-text-inverse)] text-[1.7rem] z-[1070] [clip-path:inset(50%)];
+
+
+  }
+
+  .skip-to-content:focus {
+    @apply fixed top-0 left-0 w-auto h-auto p-[0.8rem_1.6rem] m-0 overflow-visible whitespace-normal [clip-path:none];
+  }
+}

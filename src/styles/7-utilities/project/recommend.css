@@ -1,0 +1,547 @@
+/* ─── 맛집 추천 결과 페이지 (sub4.html) 스타일 ─── */
+.recommend-result {
+  /* main-container--sub 내부에서 흘러가는 전체 구조 */
+}
+
+/* 지도 영역 (sub.html의 main-visual 스타일을 덮어써서 이미지 지도 전용 빈 영역으로 지정) */
+.recommend-result__map-placeholder {
+  background-color: var(--color-gray-20);
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+}
+
+.recommend-result__map-placeholder .main-visual__content {
+  background-color: var(--color-gray-20);
+  width: 100%;
+  height: 230px;
+  display: block;
+  transition:
+    height 0.3s ease,
+    opacity 0.3s ease;
+  overflow: hidden;
+  opacity: 1;
+}
+
+.recommend-result__map-placeholder .main-visual__content iframe {
+  width: 100%;
+  height: 100%;
+}
+
+/* R-17: BEM modifier + 토글 버튼 aria-expanded 동시 표현 */
+.recommend-result__map-placeholder .main-visual__content--collapsed {
+  height: 0;
+  opacity: 0;
+}
+
+.recommend-result__map-placeholder .map-btn__wrap {
+  background-color: var(--color-bg-subtler);
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @apply pc:hidden;
+  button {
+    font-size: 0;
+    width: 82px;
+    height: 5px;
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--color-gray-40) 80%, transparent);
+    cursor: pointer;
+    border: none;
+    transition:
+      transform 0.3s ease,
+      background-color 0.3s ease;
+  }
+  button.map-btn--selected {
+    background: color-mix(in srgb, var(--color-gray-40) 100%, transparent);
+    transform: scaleY(1.2);
+  }
+}
+
+.recommend-result__map-empty-box {
+  width: 100%;
+  height: 100%;
+}
+
+/* 콘텐츠 영역 */
+.recommend-result__content-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 174px); /* 모바일에서 main-visual 헤더 174px 제외한 나머지 채움 */
+}
+
+.container--recommend-filter {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+/* 감성 클러스터 필터 카드 */
+.recommend-result__filter-card {
+  background-color: var(--color-surface);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-gray-100) 4%, transparent);
+}
+
+.recommend-result__filter-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-brand-text);
+  margin-bottom: 10px;
+}
+
+.recommend-result__filter-chips {
+  display: flex;
+  gap: 8px;
+}
+
+.recommend-result__filter-chip {
+  background-color: var(--color-bg-subtler);
+  color: var(--color-text-subtle);
+  border-radius: 16px;
+  padding: 6px 19px;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.recommend-result__filter-chip:hover {
+  background-color: var(--color-bg-subtle);
+}
+
+/* 체크되었을 때 인접 라벨 활성 스타일 매핑 (sub.html과 동일) */
+.chip-radio:checked + .recommend-result__filter-chip,
+.chip-radio:checked + .recommend-result__filter-chip:hover {
+  background-color: var(--color-brand);
+  color: var(--color-text-inverse);
+  font-weight: 700;
+}
+
+/* 키보드 포커스 접근성 */
+.chip-radio:focus-visible + .recommend-result__filter-chip {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* 맛집 리스트 헤더 */
+.container--recommend-list {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.recommend-result__list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.recommend-result__list-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--color-brand-text);
+}
+
+/* 보기방식 토글 버튼 */
+.recommend-result__view-toggles {
+  display: flex;
+  background-color: var(--color-surface-subtler);
+  gap: 10px;
+}
+
+.recommend-result__toggle-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 22px;
+  border: none;
+  background-color: var(--color-brand-card);
+  color: var(--color-gray-20);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.recommend-result__toggle-btn:hover {
+  background-color: var(--color-brand-point);
+  color: var(--color-text-inverse);
+  box-shadow: 0 2px 4px color-mix(in srgb, var(--color-gray-100) 5%, transparent);
+}
+
+.recommend-result__toggle-btn--active {
+  background-color: var(--color-brand-point);
+  color: var(--color-text-inverse);
+  box-shadow: 0 2px 4px color-mix(in srgb, var(--color-gray-100) 5%, transparent);
+}
+
+/* 맛집 리스트 카드 목록 */
+.recommend-result__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.recommend-result__card {
+  display: flex;
+  background-color: var(--color-surface);
+  border-radius: 16px;
+  padding: 10px;
+  gap: 10px;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-gray-100) 2%, transparent);
+  /* 카드 전체를 맛집 상세 링크로 사용 — 링크 기본 밑줄/색상 리셋 */
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.recommend-result__card:hover {
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--color-gray-100) 8%, transparent);
+  transform: translateY(-2px);
+}
+
+.recommend-result__card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.recommend-result__card-thumb {
+  position: relative;
+  width: 110px;
+  height: 73px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.recommend-result__card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recommend-result__card-badge {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: var(--color-brand);
+  color: var(--color-text-inverse);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 7px;
+  border-radius: 14px 0 14px 0;
+}
+
+.recommend-result__card-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.recommend-result__card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.recommend-result__card-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-bolder);
+}
+
+.recommend-result__card-meta {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-brand-text-subtle);
+  margin-bottom: 3px;
+}
+
+.recommend-result__card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 3px; /* 후행 중복 선언 병합 (행 간격 0) */
+  margin-bottom: 10px;
+}
+
+.recommend-result__card-tag {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-brand);
+}
+
+.recommend-result__card-review {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-brand);
+}
+
+/* 맛집 썸네일 리스트 카드 목록 */
+.recommend-result__thum {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.recommend-result__thum .recommend-result__card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  width: 150px;
+  border-radius: 16px;
+  padding: 0px;
+  gap: 10px;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-gray-100) 2%, transparent);
+}
+
+.recommend-result__thum .recommend-result__card-thumb {
+  position: relative;
+  width: 150px;
+  height: 100px;
+  flex-shrink: 0;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+}
+
+.recommend-result__thum .recommend-result__card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recommend-result__thum .recommend-result__card-badge {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: var(--color-brand);
+  color: var(--color-text-inverse);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 7px;
+  border-radius: 14px 0 14px 0;
+}
+
+.recommend-result__thum .recommend-result__card-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 0 10px 10px 10px;
+}
+
+.recommend-result__thum .recommend-result__card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.recommend-result__thum .recommend-result__card-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-bolder);
+}
+
+.recommend-result__thum .recommend-result__card-meta {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-brand-text-subtle);
+  margin-bottom: 3px;
+}
+
+/* 하단 액션 버튼 */
+.recommend-result__actions {
+  padding: 20px 16px;
+  margin-top: auto;
+}
+
+.recommend-result__retry-btn {
+  width: 100%;
+  height: 58px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: var(--color-brand-point);
+  color: var(--color-text-inverse);
+}
+
+.recommend-result__retry-btn:hover {
+  background-color: var(--color-point-60);
+  border-color: var(--color-point-60);
+}
+
+/* PC & 태블릿 뷰 대응 (1280px 이상) — Figma 맛집 추천 결과 PC(712px 콘텐츠) 매칭 */
+@media (min-width: 1280px) {
+  .recommend-result__content-wrap {
+    min-height: 100vh;
+    padding-top: 90px;
+    width: 100%;
+    max-width: 712px;
+    margin: 0 auto;
+  }
+
+  .recommend-result__map-placeholder .main-visual__content {
+    height: 100vh;
+  }
+
+  /* 컨테이너 좌우 패딩 제거 — 필터/카드/버튼을 712px 콘텐츠 폭에 플러시 정렬 (Figma x=40 기준) */
+  .container--recommend-filter {
+    padding: 0 0 15px;
+  }
+
+  .container--recommend-list {
+    padding: 15px 0 30px;
+  }
+
+  .recommend-result__actions {
+    padding: 15px 0 40px;
+  }
+
+  /* 필터 카드: PC는 라벨 + 칩을 한 줄로 배치 (Figma 1행 레이아웃) */
+  .recommend-result__filter-card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+  }
+
+  .recommend-result__filter-title {
+    margin-bottom: 0;
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+
+  .recommend-result__filter-chips {
+    gap: 10px;
+  }
+
+  .recommend-result__filter-chip {
+    height: 40px;
+    padding: 0 25px;
+    font-size: 15px;
+  }
+
+  /* 리스트 헤더 타이틀 확대 (Figma 26px 높이 텍스트) */
+  .recommend-result__list-title {
+    font-size: 22px;
+  }
+
+  /* 카드 확대 (Figma 이미지 170×113, 패딩/갭 20px) */
+  .recommend-result__card {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .recommend-result__card-thumb {
+    width: 170px;
+    height: 113px;
+  }
+
+  .recommend-result__card-info {
+    position: relative;
+  }
+
+  .recommend-result__card-header {
+    margin-bottom: 8px;
+  }
+
+  .recommend-result__card-name {
+    font-size: 18px;
+  }
+
+  .recommend-result__card-meta,
+  .recommend-result__card-tags,
+  .recommend-result__card-tag {
+    font-size: 14px;
+  }
+
+  .recommend-result__card-meta {
+    margin-bottom: 0;
+  }
+
+  .recommend-result__card-tags {
+    margin-bottom: 0;
+    position: absolute;
+    bottom: 0;
+  }
+
+  /* 리뷰 텍스트: Figma PC는 헤더 우측 상단 정렬 */
+  .recommend-result__card-review {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 14px;
+  }
+
+  .recommend-result__thum {
+    gap: 18px;
+  }
+
+  .recommend-result__thum .recommend-result__card {
+    width: 224px;
+    height: auto;
+  }
+
+  .recommend-result__thum .recommend-result__card-thumb {
+    width: 224px;
+    height: 150px;
+  }
+
+  .recommend-result__thum .recommend-result__card-badge {
+  }
+
+  .recommend-result__thum .recommend-result__card-info {
+    padding: 5px 20px 20px 20px;
+  }
+
+  .recommend-result__thum .recommend-result__card-header {
+  }
+
+  .recommend-result__thum .recommend-result__card-name {
+  }
+
+  .recommend-result__thum .recommend-result__card-meta {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .recommend-result__thum .recommend-result__card-tags {
+    font-size: 13px;
+    position: relative;
+  }
+
+  .recommend-result__thum .recommend-result__card-tag {
+    font-size: 13px;
+  }
+
+  .recommend-result__thum .recommend-result__card-review {
+    margin-top: 15px;
+    font-size: 14px;
+    position: relative;
+  }
+
+  /* 재추천 버튼 높이 확대 (Figma 66px) */
+  .recommend-result__retry-btn {
+    height: 66px;
+  }
+}

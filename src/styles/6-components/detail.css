@@ -1,0 +1,667 @@
+/**
+ * 6-components — detail.css
+ * 맛집 상세 페이지 전용 컴포넌트 스타일 (Figma 시안 100% 매칭)
+ */
+
+/* ─── 1. 기본 구조 및 반응형 레이아웃 ─── */
+.main-container--sub {
+  @apply flex;
+  flex-direction: column;
+  background-color: var(--color-brand-bg);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* 모바일 비주얼 패널 (project.css 오버라이드 포함 - 유연한 높이) */
+.main-visual--sub.detail-visual-panel {
+  order: 2; /* 모바일: 이름(order 1) 아래, 배지행(order 3) 위 */
+  position: relative;
+  width: 100%;
+  height: auto !important; /* 모바일은 슬라이더와 썸네일을 포함하여 늘어남 */
+  padding: 20px !important; /* 썸네일 아래 여백 확보 */
+  margin-top: 0 !important; /* 헤더 높이는 상단바 이름이 확보 */
+  background-color: var(--color-brand-bg); /* 모바일 배경색 */
+  overflow: hidden;
+  display: block;
+}
+
+/* 좌측 정보 패널 (모바일에서는 전체 스택 하단) */
+.main-container__left-col {
+  order: 4; /* 모바일: 배지행 아래 */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.detail-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px 20px 46px; /* 하단: 우측 하단 플로팅 퀵바에 마지막 카드가 가리지 않도록 여백 */
+  box-sizing: border-box;
+}
+
+/* ─── 2. 세부 카드 디자인 ─── */
+.detail-card {
+  background-color: var(--color-surface); /* Figma: 솔리드 화이트 카드 (sand 배경 위, 보더 없음) */
+  border-radius: 16px;
+  overflow: hidden; /* 날씨 배너 풀블리드 시 하단 라운드 클립 */
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--color-gray-100) 6%, transparent);
+  box-sizing: border-box;
+}
+
+/* 섹션(타이틀 + 카드) — Figma: 타이틀은 카드 밖 상단에 노출 */
+.detail-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detail-section__title {
+  font-size: 18px;
+  font-weight: 700; /* Figma: NeoHyundai B(700) */
+  letter-spacing: -1px;
+  color: var(--color-brand-text);
+  margin: 0;
+}
+
+/* 2-1. 식당 정보 헤더 카드 */
+.detail-header-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-brand);
+}
+
+/* 상단바: 식당명 + 퀵 액션
+   모바일 — display:contents 로 래퍼를 해제하고 order 로 이미지 위(이름)·아래(배지) 분리
+   PC — 좌측 컬럼 상단 한 줄(이름 왼쪽 · 배지 오른쪽) */
+.detail-topbar {
+  display: contents;
+}
+
+.detail-topbar__name {
+  order: 1;
+  margin: 64px 0 0;
+  padding: 16px 16px 8px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--color-brand-text);
+}
+
+.detail-topbar__actions {
+  order: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 16px 0;
+}
+
+.detail-topbar__qs-badge {
+  background-color: var(--color-brand);
+  color: var(--color-text-inverse);
+  font-size: 13px;
+  font-weight: 700;
+  width: 64px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  line-height: 1;
+}
+
+.detail-topbar__btn {
+  background-color: var(--color-brand-point);
+  border: none;
+  color: var(--color-text-inverse);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.detail-topbar__btn:hover {
+  background-color: color-mix(in srgb, var(--color-brand-point) 88%, black);
+}
+
+.detail-topbar__btn--active {
+  background-color: var(--color-danger);
+}
+
+.detail-header-card__meta-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background-color: var(--color-surface); /* R-01: #fff → 토큰 */
+  border-radius: 0 0 16px 16px;
+}
+
+.detail-header-card__meta-list li {
+  display: flex;
+  flex-direction: column; /* 모바일: 라벨 위 · 값 아래 세로 스택 (Figma) */
+  gap: 4px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.detail-header-card__meta-label {
+  font-weight: 700;
+  color: var(--color-brand-text); /* Figma: --color-text-default #2e332e (muted 아님) */
+}
+
+.detail-header-card__meta-val {
+  color: var(--color-brand-text);
+}
+
+.text-primary-green {
+  color: var(--color-brand);
+  font-weight: 700;
+}
+
+/* 날씨 추천 띠 배너 */
+.detail-header-card__weather-banner {
+  background-color: var(--color-brand); /* 카드 하단 그린 배너 */
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--color-text-inverse);
+}
+
+.weather__icon-wrap{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.detail-header-card__weather-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: var(--color-surface); /* R-01: #fff → 토큰 */
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.detail-header-card__weather-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0;
+  color: var(--color-text-inverse);
+}
+
+.detail-header-card__weather-text strong {
+  font-weight: 900; 
+}
+
+/* 2-2. 사용자 평가 감성 피드백 카드 */
+.sentiment-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.sentiment-card__quote {
+  font-size: 20px;
+  font-weight: 700; /* Figma: NeoHyundai B(700) */
+  color: var(--color-brand-text);
+  margin: 0;
+  font-style: normal;
+}
+
+.sentiment-card__tags {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* 감성 태그 — Figma: 화이트 카드 + border-glass, 브랜드 그린 텍스트
+   모바일 = 2줄(라벨 위·퍼센트 아래) 95×70, PC = 1줄(라벨 좌·퍼센트 우) 141×44 */
+.sentiment-card__tag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 10px;
+  width: 95px;
+  height: 70px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-brand-border);
+  border-radius: 22px;
+  color: var(--color-brand);
+  box-sizing: border-box;
+}
+
+.sentiment-card__tag-label {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.sentiment-card__tag-value {
+  font-size: 16px;
+  font-weight: 900; /* Figma: NeoHyundai EBK(900) */
+  line-height: 1;
+}
+
+.sentiment-card__source {
+  font-size: 14px; /* Figma: R 400 / 14px */
+  color: var(--color-brand-text); /* Figma: --color-text-default #2e332e (gray 아님) */
+  margin: 0;
+}
+
+/* 2-3. 기본 정보 카드 (대표메뉴 grid 포함) */
+.info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+}
+
+.detail-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 0;
+}
+
+.detail-info-list__item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detail-info-list__label {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-brand-text); /* Figma: --color-text-default #2e332e (muted 아님) */
+}
+
+.detail-info-list__value {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-brand-text);
+  margin: 0;
+}
+
+.detail-info-list__link {
+  color: var(--color-brand-text);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* 메뉴 그리드 배치 */
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 24px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.menu-grid__name {
+  color: var(--color-brand-text);
+  font-weight: 400;
+}
+
+.menu-grid__price {
+  font-weight: 700;
+  color: var(--color-brand-text);
+}
+
+/* 2-4. 지도 카드 */
+.map-card {
+  display: flex;
+  width: 100%;
+  height: 260px;
+  border-radius: 16px;
+  background:  lightgray 50% / cover no-repeat;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.map-card iframe {
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── 3. Swiper 슬라이더 커스텀 ─── */
+.detail-slider {
+  width: 100%;
+  height: 206px !important; /* 모바일 대표 이미지 높이 지정 */
+}
+
+.detail-slider__img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 슬라이더 컨트롤러 숨김 */
+.detail-slider__pagination {
+  display: none !important; /* Swiper가 주입하는 pagination 인라인 표시를 차단 */
+}
+
+.detail-slider__nav {
+  display: none;
+}
+
+/* 플로팅 퀵바 — 모바일: 우측 하단 고정, 항상 노출 (Figma 모바일 LIST/CHAT) */
+.floating-nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: fixed;
+  right: 16px;
+  bottom: 20px;
+  z-index: 100;
+}
+
+.floating-nav-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 700;
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--color-gray-100) 25%, transparent);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.floating-nav-btn:hover {
+  transform: scale(1.05);
+}
+
+.floating-nav-btn--list {
+  background-color: var(--color-brand-active); /* Figma: --color-status-active #222222 */
+}
+
+.floating-nav-btn--list:hover {
+  background-color: color-mix(in srgb, var(--color-brand-active) 80%, white);
+}
+
+.floating-nav-btn--chat {
+  background-color: var(--color-brand-point);
+}
+
+.floating-nav-btn--chat:hover {
+  background-color: color-mix(in srgb, var(--color-brand-point) 88%, black);
+}
+
+/* 모바일 썸네일 기본 스타일 */
+.detail-thumbnails {
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+  margin-top: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.detail-thumbnails__item {
+  width: 87px;
+  height: 58px;
+  border-radius: 14px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid transparent;
+  cursor: pointer;
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--color-gray-100) 8%, transparent);
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.detail-thumbnails__item--active {
+  border-color: var(--color-brand);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--color-brand) 30%, transparent);
+}
+
+/* ─── 4. 반응형 PC 대응 (1280px 이상) ─── */
+@media (min-width: 1280px) {
+  .main-container--sub {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 648px;
+    grid-template-rows: auto 1fr;
+    gap: 0;
+    background-color: var(--color-surface);
+  }
+
+  /* 상단바: 좌측 컬럼 최상단 한 줄 (이름 왼쪽 · 배지 오른쪽) */
+  .detail-topbar {
+    display: flex;
+    grid-column: 1;
+    grid-row: 1;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    max-width: 712px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 120px 0 0;
+    box-sizing: border-box;
+  }
+
+  .detail-topbar__name {
+    order: 0;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 36px;
+  }
+
+  .detail-topbar__actions {
+    order: 0;
+    padding: 0;
+    gap: 8px;
+  }
+
+  /* 좌측 콘텐츠 칼럼 (페이지 스크롤, 비주얼은 sticky) */
+  .main-container__left-col {
+    height: 100% !important;
+    grid-column: 1;
+    grid-row: 2;
+    background-color: var(--color-surface);
+  }
+
+  .detail-info-panel {
+    max-width: 712px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 24px 0 80px;
+    gap: 40px;
+  }
+
+  .sentiment-card__quote {
+    font-size: 26px;
+  }
+
+  .detail-section {
+    gap: 25px;
+  }
+
+  .detail-section__title {
+    font-size: 20px;
+  }
+
+  .detail-info-list {
+    gap: 30px;
+  }
+
+  .detail-info-list__label{
+    font-size: 18px;
+  }
+
+  /* 우측 비주얼 고정 칼럼 (두 행 span, sticky) */
+  .main-visual--sub.detail-visual-panel {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    position: sticky;
+    top: 0;
+    height: 100vh !important; /* 후행 로드되는 project .main-visual--sub 모바일 높이를 PC에서 재정의 */
+    padding: 0 !important; /* 후행 로드되는 project .main-visual--sub 모바일 패딩을 PC에서 재정의 */
+    background-color: var(--color-gray-90);
+  }
+
+  .detail-slider {
+    height: 100% !important; /* PC 뷰포트에서는 화면을 꽉 채움 */
+  }
+
+  /* PC 비주얼 영역 내 썸네일 플로팅 오버레이 */
+  .detail-visual-panel .detail-thumbnails {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    margin-top: 0;
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    background: var(--color-overlay-scrim);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(7.5px);
+  }
+
+  .detail-visual-panel .detail-thumbnails__item {
+    width: 110px;
+    height: 73px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px color-mix(in srgb, var(--color-gray-100) 30%, transparent);
+  }
+
+  .detail-visual-panel .detail-thumbnails__item--active {
+    border-color: var(--color-brand);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--color-brand) 50%, transparent);
+  }
+
+  /* 기본 정보 카드 테이블형 정렬 */
+  .detail-info-list__item {
+    flex-direction: row;
+    align-items: start;
+    gap: 24px;
+  }
+
+  .detail-info-list__label {
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  .detail-info-list__value {
+    flex: 1;
+    font-size: 16px;
+    margin-top: 2px;
+  }
+
+  .map-card {
+    width: 712px;
+    height: 198px;
+  }
+
+  /* 대표메뉴 — PC는 2×2 배치(이름·가격 · 이름·가격), 모바일은 1열 유지 (Figma) */
+  .menu-grid {
+    grid-template-columns: 1fr auto 1fr auto;
+    column-gap: 24px;
+    row-gap: 10px;
+    font-size: 16px;
+  }
+
+  /* 감성 태그 — PC는 1줄 배치(라벨 좌 · 퍼센트 우), 141×44 (Figma) */
+  .sentiment-card__tag {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 141px;
+    height: 44px;
+    padding: 0 15px;
+    gap: 0;
+  }
+
+  .detail-header-card__weather-banner {
+    flex-direction: row;
+    padding: 10px;
+  }
+
+  /* 주소/영업시간 — PC는 라벨·값 가로 정렬 (Figma) */
+  .detail-header-card__meta-list li {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .detail-header-card__meta-label {
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  /* PC 뷰포트에서는 Swiper 화살표 활성화 */
+  .detail-slider__nav {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    background-color: color-mix(in srgb, var(--color-gray-100) 30%, transparent);
+    border: none;
+    border-radius: 50%;
+    color: var(--color-text-inverse);
+    font-size: 24px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .detail-slider__nav:hover {
+    background-color: color-mix(in srgb, var(--color-gray-100) 50%, transparent);
+  }
+
+  .detail-slider__nav--prev {
+    left: 24px;
+  }
+
+  .detail-slider__nav--next {
+    right: 24px;
+  }
+
+  /* PC — 콘텐츠·이미지 경계면 수직 중앙 플로팅 (모바일 우측 하단 위치 재정의) */
+  .floating-nav-buttons {
+    gap: 16px;
+    right: auto;
+    bottom: auto;
+    top: 50%;
+    left: calc(100% - 648px);
+    transform: translate(-50%, -50%);
+  }
+
+  .floating-nav-btn {
+    width: 64px;
+    height: 64px;
+  }
+}

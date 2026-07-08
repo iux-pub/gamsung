@@ -1,0 +1,43 @@
+/**
+ * Tooltip — KRDS Tooltip
+ *
+ * 짧은 보조 설명 팝업. CSS-only 호버 변형 + JS 트리거 변형 양쪽 지원.
+ *
+ * 구조 (JS 변형 — 권장):
+ *   <button class="tooltip-trigger" aria-describedby="tip-1">도움말</button>
+ *   <div id="tip-1" class="tooltip" role="tooltip" hidden>설명 텍스트</div>
+ *
+ * CSS-only 변형 (간단한 hover-only — 키보드/터치 사용 권장 X):
+ *   <span class="tooltip-wrap">
+ *     아이콘
+ *     <span class="tooltip">설명</span>
+ *   </span>
+ */
+
+@layer components {
+  .tooltip {
+    @apply absolute z-[1080] max-w-[28rem] p-[0.8rem_1.2rem] bg-[var(--color-gray-90)] text-[var(--color-text-inverse)] rounded-[0.4rem] text-[1.5rem] leading-[1.5] shadow-[0_0_0.2rem_0_#00000014,_0_0.8rem_1.6rem_0_#0000001f] pointer-events-none opacity-0 [transition:opacity_0.15s_ease-in-out];
+  }
+
+  .tooltip[hidden] { @apply [display:none]; }
+
+  /* 표시 상태 (JS가 hidden 제거 + .tooltip--show 추가) */
+  .tooltip:not([hidden]),
+  .tooltip--show {
+    @apply opacity-100;
+  }
+
+  /* CSS-only hover 변형 */
+  .tooltip-wrap {
+    @apply relative inline-flex;
+  }
+
+  .tooltip-wrap > .tooltip {
+  @apply bottom-[calc(100%_+_0.4rem)] left-[50%] [transform:translateX(-50%)];
+  }
+
+  .tooltip-wrap:hover > .tooltip,
+  .tooltip-wrap:focus-within > .tooltip {
+    @apply opacity-100;
+  }
+}

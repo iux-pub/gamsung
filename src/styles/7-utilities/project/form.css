@@ -1,0 +1,696 @@
+/* ─── 페르소나 진단 페이지 (sub.html) 스타일 ─── */
+.main-container--sub {
+  @apply flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-bg-subtler);
+}
+
+.main-visual--sub {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px 20px; /* 크기 반응형: 모바일 기기에 맞게 컴팩트하지만 시원한 패딩 */
+  background-color: var(--color-brand-5); /* 데스크탑 비주얼 패널 백그라운드와 동일한 연두색 배경 */
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  margin-top: 64px;
+}
+
+/* 모바일일 때는 로고가 노출되지 않습니다 (pc일때는 나오고 모바일때는 없고) */
+.main-visual--sub .visual-panel__logo {
+  display: none;
+}
+
+.main-visual--sub .diagnosis-intro__title {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--color-brand);
+  margin-bottom: 10px;
+  line-height: 24px;
+}
+
+.main-visual--sub .diagnosis-intro__desc {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text-subtle);
+  margin: 0;
+}
+
+.section--diagnosis {
+  padding: 30px 20px 80px; /* 헤더 64px 겹침을 방지하기 위해 상단 패딩을 80px로 확보 */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container--diagnosis {
+  margin: 0 auto;
+}
+
+.diagnosis-intro {
+  text-align: center;
+}
+
+.diagnosis-intro__title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-brand-60); /* 피그마 시안 청록색 매칭 */
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.diagnosis-intro__desc {
+  font-size: 16px;
+  color: var(--color-text-subtle);
+  margin: 0;
+}
+
+.diagnosis-steps {
+  margin-bottom: 44px;
+}
+
+/* ─── 피그마 사양 매칭 스텝 인디케이터 오버라이드 ─── */
+.diagnosis-steps .step-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* 스텝 간 간격 (후행 중복 선언 병합) */
+}
+
+.diagnosis-steps .step-indicator__item {
+  font-size: 14px;
+  color: var(--color-text-disabled); /* 비활성 회색 */
+  flex: 0 1 auto;
+  gap: 8px;
+}
+
+/* 피그마 사양: 스텝 사이 연결선(가로선)을 완전히 제거 */
+.diagnosis-steps .step-indicator__item:not(:last-child)::after {
+  display: none;
+}
+
+.diagnosis-steps .step-indicator__num {
+  width: 30px;
+  height: 30px;
+  background-color: var(--color-brand-step-muted); /* 미진행 회색 원 (피그마 --color-surface-step-muted #d9d9d9) */
+  border: none;
+  color: var(--color-text-inverse);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.diagnosis-steps .step-indicator__label {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-brand);
+}
+
+/* 현재 활성화된 단계 (1단계) */
+.diagnosis-steps .step-indicator__item--current {
+  color: var(--color-brand-60); /* 피그마 브랜드 청록색 (var(--color-brand-60) 통일) */
+}
+
+.diagnosis-steps .step-indicator__item--current .step-indicator__num {
+  background-color: var(--color-brand); /* 채워진 청록색 원 */
+  border: none;
+  color: var(--color-text-inverse);
+}
+
+.diagnosis-steps .step-indicator__item--current .step-indicator__label {
+  font-weight: 700;
+  color: var(--color-brand);
+  font-size: 18px;
+}
+
+/* 비활성 단계의 라벨은 모바일/PC 모두 기본적으로 숨김 (피그마 D2 공통 사양) */
+.diagnosis-steps .step-indicator__item:not(.step-indicator__item--current) .step-indicator__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.diagnosis-form__section {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.diagnosis-form__section-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--color-brand-text);
+  margin: 0 0 20px; /* 카드 상단에 어울리는 여백 */
+  padding: 0;
+  border-bottom: none;
+}
+
+.diagnosis-form__card {
+  background-color: var(--color-brand-card); /* 흰색 배경 카드 (피그마 D2 매치) */
+  border-radius: 16px;
+  padding: 20px; /* 모바일 카드 패딩 */
+  margin-bottom: 30px;
+  box-sizing: border-box;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group__label {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-brand-text);
+  margin-bottom: 10px;
+}
+
+/* 칩 그룹 및 칩 스타일 */
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* 모바일은 8px 간격 */
+}
+
+.chip-group--column {
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 숨김 처리할 라디오 단추 */
+.chip-radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.chip-label {
+  background-color: var(--color-bg-subtler); /* 피그마 크림/웜샌드 칩 배경 (#f6f4f0) */
+  color: var(--color-brand-text); /* 피그마 칩 텍스트 기본색 (#2e332e) */
+  border-radius: 14px; /* 피그마 모바일 칩 radius 14px */
+  padding: 9px 18px; /* 피그마 모바일 칩 패딩(py9/px18) */
+  min-height: 44px; /* WCAG 2.5.5 모바일 터치 영역 확보 */
+  font-size: 14px; /* 모바일 폰트 14px */
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  width: auto;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chip-group--column .chip-label {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+  text-align: left;
+  padding: 16px 20px;
+}
+
+.chip-label:hover {
+  background-color: var(--color-bg-subtle);
+}
+
+/* 체크되었을 때 인접 라벨 활성 스타일 매핑 */
+.chip-radio:checked + .chip-label,
+.chip-radio:checked + .chip-label:hover {
+  background-color: var(--color-brand); /* 피그마 활성 청록색 매핑 */
+  color: var(--color-text-inverse);
+  font-weight: 700;
+}
+
+/* 키보드 포커스 접근성 */
+.chip-radio:focus-visible + .chip-label {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.diagnosis-form__notice {
+  font-size: 12px;
+  color: var(--color-gray-60);
+  font-weight: 400;
+  text-align: start;
+  line-height: 160%;
+  margin: 0 0 30px;
+}
+
+.diagnosis-form__actions {
+  display: flex;
+  justify-content: center;
+}
+
+.diagnosis-form__submit {
+  width: 100%;
+  height: 58px; /* 피그마 모바일 다음 버튼 높이 58px */
+  border-radius: 16px;
+  background-color: var(--color-brand-point); /* 피그마 다음 버튼 다홍색 매핑 */
+  color: var(--color-text-inverse);
+}
+
+.diagnosis-form__submit:hover {
+  background-color: var(--color-brand-30); /* 톤다운된 다홍색 */
+  border-color: var(--color-brand-30);
+}
+
+/* GNB 헤더 중앙 타이틀 정렬 */
+.site-header__title-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-brand-text);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* PC 매칭 스타일 (1280px 이상) */
+@media (min-width: 1280px) {
+  .site-header__title-text {
+    font-size: 30px;
+  }
+
+  .main-container--sub {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 648px;
+    height: 100vh; /* 화면 전체 고정 */
+    overflow: hidden;
+  }
+
+  /* 좌측 열 wrapper */
+  .main-container__left-col {
+    grid-column: 1;
+    height: 100vh;
+    overflow-y: auto; /* 좌측에만 세로 스크롤 부여 */
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg-subtler);
+  }
+
+  .main-container--sub .section--diagnosis {
+    flex: 1 0 auto;
+    background-color: var(--color-bg-subtler);
+    padding: 74px 0px 20px; /* 좌우 패딩을 조절해 안정성 부여 */
+    display: flex;
+    flex-direction: column;
+    max-width: 712px;
+    width: 100%;
+    margin: 80px auto 0;
+
+    /* justify-content: center; */
+  }
+
+  /* 폼 콘텐츠 가로 중앙 정렬 및 최대 너비 고정 */
+  .main-container--sub .container--diagnosis {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .main-visual--sub {
+    margin-top: 0;
+    grid-column: 2;
+    grid-row: 1 / 4;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 126px 0 0;
+    background-color: var(--color-brand-5); /* 피그마 연두색 배경 */
+    border-bottom: none;
+  }
+
+  .main-visual__content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .main-visual--sub .visual-panel__logo {
+    display: block;
+    margin-bottom: 28px;
+  }
+
+  .main-visual--sub .visual-panel__logo-img {
+    width: 240px;
+    height: 240px;
+    object-fit: contain;
+  }
+
+  .main-visual--sub .diagnosis-intro__title {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--color-brand); /* 피그마 진한 청록색 */
+    margin-bottom: 20px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    text-align: center;
+  }
+
+  .main-visual--sub .diagnosis-intro__desc {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-brand-text);
+    margin: 0;
+    letter-spacing: -1px;
+    text-align: center;
+  }
+
+  /* ─── 피그마 페르소나 진단 D2 PC 폼 스타일 재구성 ─── */
+  .section--diagnosis .diagnosis-steps {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 49px;
+  }
+
+  .diagnosis-steps .step-indicator {
+    gap: 10px; /* PC에서는 간격을 더 넉넉하게 */
+  }
+
+  .diagnosis-steps .step-indicator__item {
+    font-size: 16px;
+  }
+
+  .diagnosis-steps .step-indicator__num {
+    width: 31px;
+    height: 31px;
+    font-size: 16px;
+  }
+
+  .diagnosis-steps .step-indicator__item--current .step-indicator__label {
+    font-size: 22px; /* PC 활성 텍스트 18px */
+    margin-right: 10px;
+  }
+
+  .section--diagnosis .diagnosis-form__section-title {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--color-brand-text);
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 20px;
+  }
+
+  /* PC 해상도일 때 개별 섹션 카드 스타일 */
+  .section--diagnosis .diagnosis-form__card {
+    background-color: var(--color-bg);
+    border-radius: 16px;
+    padding: 30px; /* 태블릿/PC 카드 패딩 */
+    margin-bottom: 54px;
+    box-shadow: none;
+  }
+
+  .section--diagnosis .form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 24px; /* 카드 내부의 세로 간격 */
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .section--diagnosis .form-group--column {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .section--diagnosis .form-group--column .form-group__label {
+    width: 100%;
+    margin-bottom: 18px;
+  }
+
+  .section--diagnosis .form-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .section--diagnosis .form-group__label {
+    width: 100px; /* 라벨 영역 가로 크기 고정 */
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-brand-text);
+    text-align: left;
+    flex-shrink: 0;
+  }
+
+  .section--diagnosis .chip-group {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+    flex-grow: 1;
+  }
+
+  .section--diagnosis .chip-label {
+    min-height: 40px; /* 피그마 PC 칩 높이 40px */
+    padding: 0 25px; /* 피그마 PC 칩 좌우 패딩 25px */
+    border-radius: 16px; /* 피그마 PC 칩 radius 16px */
+    font-size: 16px;
+  }
+
+  /* PC에서 1열로 늘어나던 세로형 여행성향 칩 그룹도 수평 정렬로 자동 변경 */
+  .section--diagnosis .chip-group--column {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .section--diagnosis .chip-group--column .chip-label {
+    display: inline-block;
+    width: auto;
+    border-radius: 50px;
+    padding: 12px 20px;
+    text-align: center;
+  }
+
+  /* 카드 칩의 시작점(카드패딩 24px + 라벨너비 140px = 164px)과 칼각 정렬 */
+  .section--diagnosis .diagnosis-form__notice {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .section--diagnosis .diagnosis-form__actions {
+    justify-content: flex-start;
+  }
+
+  .section--diagnosis .diagnosis-form__submit {
+    width: 100%;
+    height: 66px; /* 피그마 PC 다음 버튼 높이 66px */
+  }
+}
+
+/* 지도 SVG 반응형 및 모바일 가로넘침 방지 */
+.main-map-placeholder svg {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* 전면 전형 관광행동 퀵 선택 스타일 (Figma 기준) */
+.quick-select-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: var(--color-brand-5); /* 피그마 연녹색 배경 (var(--color-brand-5)) */
+  padding: 70px 16px 40px; /* 헤더 고정 대비 패딩 */
+}
+
+.quick-select-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.quick-select-logo {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quick-select-logo__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.quick-select-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--color-brand);
+  margin: 0 0 40px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.quick-select-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quick-select-card {
+  width: 100%;
+
+  /* max-width: 320px; */
+  background-color: var(--color-brand-card); /* 피그마 glass 카드 배경 (#ffffffcc) */
+  border: 1px solid var(--color-brand-border); /* 피그마 glass 테두리 (#ffffff80) */
+  border-radius: 16px;
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-gray-100) 4%, transparent);
+}
+
+.quick-select-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quick-select-row__label {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-brand-text);
+}
+
+.quick-select-row__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quick-select-actions {
+  margin-top: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.quick-select-submit {
+  width: 100%;
+  height: 58px;
+  font-size: 18px;
+  border-radius: 16px;
+  background-color: var(--color-brand-point); /* 다홍/주황색 */
+  color: var(--color-text-inverse);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* PC 해상도 반응형 제어 (1280px 이상) */
+@media (min-width: 1280px) {
+  .quick-select-container {
+    padding: 60px 40px;
+  }
+
+  .quick-select-logo {
+    width: 240px;
+    height: 240px;
+    margin-bottom: 28px;
+  }
+
+  .quick-select-title {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+
+  .quick-select-card {
+    max-width: 568px; /* 피그마 고정 너비 */
+    padding: 24px 20px 20px 30px; /* 피그마 카드 내부 패딩(t24/r20/b20/l30) */
+  }
+
+  .quick-select-row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px; /* 피그마 PC 라벨-칩 간격 30px */
+  }
+
+  .quick-select-row__label {
+    width: 68px; /* 피그마 PC 라벨 슬롯 너비 68px */
+    flex-shrink: 0;
+    padding-top: 6px; /* 칩 텍스트 라인 맞추기 */
+    font-size: 18px;
+  }
+
+  .quick-select-row__chips {
+    gap: 10px; /* 피그마 PC 칩 간격 10px */
+  }
+
+  .quick-select-row__chips .chip-label {
+    min-height: 40px; /* 피그마 PC 칩 높이 40px */
+    padding: 0 25px; /* 피그마 PC 칩 좌우 패딩 25px */
+    border-radius: 16px; /* 피그마 PC 칩 radius 16px */
+    font-size: 16px; /* 피그마 PC 칩 폰트 16px */
+  }
+
+  .quick-select-actions {
+    margin-top: 40px;
+  }
+
+  .quick-select-submit {
+    max-width: 568px;
+    height: 66px;
+    font-size: 22px;
+    border-radius: 16px;
+  }
+}
+
+/* 퀵 선택 페이지 전용 헤더 스타일 (배경색 투명화 및 테두리 제거) */
+.site-header--quick-select {
+  background-color: transparent;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.site-header__back {
+  background-color: var(--color-surface);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding-inline: 0;
+}
+
+.site-header__back:hover {
+  background-color: var(--color-gray-20);
+}

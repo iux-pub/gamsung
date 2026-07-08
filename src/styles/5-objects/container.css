@@ -1,0 +1,10 @@
+/**
+ * Container — INFOMIND 콘텐츠 영역
+ *   - max-width 1200px (INFOMIND 기본 폭, KRDS contents-size 참고)
+ *   - 브레이크포인트: mobile 360px / tablet 768px / pc 1280px
+ *   - 좌우 padding: mobile 16px / tablet 24px / pc 40px
+ */
+
+.container {
+  @apply w-full max-w-[120rem] mx-auto px-[1.6rem] tablet:px-[2.4rem] pc:px-[4rem];
+}

@@ -1,0 +1,62 @@
+/**
+ * Elements — HTML 태그 기본 스타일 (KRDS 타이포 매핑)
+ */
+
+@layer base {
+  /* ─── 제목 (h1~h6) — KRDS heading 스케일 ─── */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold leading-[1.5] m-0;
+  }
+
+  h1 { @apply [font-size:4rem]; }
+  h2 { @apply [font-size:3.2rem]; }
+  h3 { @apply [font-size:2.4rem]; }
+  h4 { @apply [font-size:1.9rem]; }
+  h5 { @apply [font-size:1.7rem]; }
+  h6 { @apply [font-size:1.5rem]; }
+
+  /* ─── 단락 ─── */
+  p {
+    @apply m-0;
+  }
+
+  /* ─── 링크 — KRDS link 토큰 ─── */
+  a {
+    @apply text-[var(--color-link)] underline underline-offset-[0.2em] [transition:color_0.15s_ease-in-out];
+  }
+
+  a:hover { @apply [color:var(--color-link-hover)]; }
+  a:active { @apply [color:var(--color-link-pressed)]; }
+  a:visited { @apply [color:var(--color-link-visited)]; }
+
+  /* ─── 이미지 ─── */
+  img,
+  picture,
+  svg,
+  video {
+    @apply block max-w-[100%] h-auto;
+  }
+
+  /* ─── 목록 ─── */
+  ul, ol {
+    @apply m-0 ps-[2.4rem];
+
+  }
+
+  /* ─── 폼 ─── */
+  button,
+  input,
+  select,
+  textarea {
+    @apply text-inherit font-[inherit];
+
+  }
+
+  /* ─── 코드 ─── */
+  code,
+  kbd,
+  samp,
+  pre {
+    @apply text-[0.92em] [font-family:var(--font-mono)];
+  }
+}

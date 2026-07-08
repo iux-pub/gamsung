@@ -1,0 +1,484 @@
+/**
+ * INFOMIND UX 가이드 — 문서 사이트 전용 스타일
+ *
+ * style.css의 기본 토큰·리셋 위에 사이드바·검색·코드블록 등 문서 사이트 레이아웃을 추가한다.
+ * 절대 KRDS 컴포넌트(6-components/)에 문서 사이트 전용 스타일을 섞지 않는다.
+ */
+
+@import "tailwindcss";
+
+@layer base, components, utilities;
+
+@import "../../tokens/build/tokens.css";
+@import "./1-settings/docs-code-theme.css";
+@import "./3-generic/reset.css";
+@import "./4-elements/base.css";
+
+body {
+  @apply bg-[var(--color-bg)] [color-scheme:light];
+}
+
+::selection {
+  @apply bg-[var(--color-primary-20)] text-[var(--color-text-bolder)];
+}
+
+/* ═══════════════════════════════════════════════════════
+ * 문서 레이아웃 — 사이드바 + 콘텐츠
+ * ═══════════════════════════════════════════════════════ */
+
+.docs-layout {
+  @apply flex min-h-screen bg-[var(--color-bg)];
+}
+
+.docs-layout__sidebar {
+  @apply hidden w-[30rem] bg-[var(--color-surface)] py-[2.4rem] px-0 min-w-[30rem] [border-right:1px_solid_var(--color-border-light)] pc:block pc:sticky pc:top-0 pc:overflow-y-auto pc:h-screen [scrollbar-gutter:stable];
+}
+
+.docs-layout__sidebar--open {
+  @apply block fixed top-0 left-0 bottom-0 z-[1050] overflow-y-auto [box-shadow:2.4rem_0_4rem_-3.2rem_var(--color-alpha-black-75)];
+
+}
+
+.docs-layout__content {
+  @apply flex-1 min-w-0 w-full max-w-[92rem] mx-auto p-[3.2rem_1.6rem_5.6rem] pc:p-[6.4rem_5.6rem_8rem];
+}
+
+/* ═══════════════════════════════════════════════════════
+ * 사이드바 네비게이션
+ * ═══════════════════════════════════════════════════════ */
+
+.docs-nav {
+  @apply py-0 px-[1.6rem];
+}
+
+.docs-nav__brand {
+  @apply flex flex-wrap gap-[0.8rem] p-[1.2rem_1.2rem_2rem] no-underline border-b border-[var(--color-border-light)] mb-[1.6rem] items-baseline [transition:opacity_0.15s_ease-in-out];
+}
+
+.docs-nav__brand:hover { @apply [opacity:0.8]; }
+
+.docs-nav__brand-title {
+  @apply text-[1.9rem] font-bold text-[var(--color-text-bolder)] leading-[1.35];
+}
+
+.docs-nav__brand-version {
+  @apply text-[1.2rem] font-bold text-[var(--color-primary-pressed)] bg-[var(--color-surface-primary-subtler)] py-[0.3rem] px-[0.7rem] rounded-[100rem] leading-none;
+}
+
+.docs-nav__section {
+  @apply mb-[1.2rem] border-0;
+}
+
+.docs-nav__section[open] > .docs-nav__title::after {
+  @apply [transform:rotate(90deg)];
+}
+
+.docs-nav__title {
+  @apply flex items-center justify-between min-h-[4.4rem] text-[1.4rem] font-bold text-[var(--color-text)] uppercase tracking-[0.04em] p-[0.8rem_1.2rem] mb-[0.2rem] cursor-pointer list-none rounded-[0.6rem] select-none [transition:background_0.15s_ease-in-out,_color_0.15s_ease-in-out];
+
+}
+
+.docs-nav__title::-webkit-details-marker { @apply [display:none]; }
+
+.docs-nav__title::after {
+  @apply inline-block w-[0.6rem] h-[0.6rem] border-b-2 border-[var(--color-text-subtle)] shrink-0 content-[''] [border-right:2px_solid_var(--color-text-subtle)] [transform:rotate(-45deg)] [transition:transform_0.15s_ease-in-out];
+
+}
+
+.docs-nav__title:hover { @apply [background:var(--color-bg-subtler)]; }
+
+.docs-nav__list {
+  @apply list-none m-0 p-0;
+}
+
+.docs-nav__item { @apply [margin:0]; }
+
+.docs-nav__link {
+  @apply flex items-center min-h-[4rem] p-[0.7rem_1.2rem] text-[var(--color-text-subtle)] text-[1.5rem] no-underline rounded-[0.6rem] [transition:background_0.15s_ease-in-out,_color_0.15s_ease-in-out,_border-color_0.15s_ease-in-out];
+}
+
+.docs-nav__link:hover {
+  @apply text-[var(--color-text)] bg-[var(--color-bg-subtler)];
+}
+
+.docs-nav__link--active {
+  @apply text-[var(--color-primary-pressed)] font-bold bg-[var(--color-surface-primary-subtler)] ps-[calc(1.2rem_-_3px)] [border-left:3px_solid_var(--color-primary-pressed)];
+}
+
+/* ═══════════════════════════════════════════════════════
+ * 모바일 헤더 + 햄버거
+ * ═══════════════════════════════════════════════════════ */
+
+.docs-mobile-header {
+  @apply sticky top-0 z-[1030] flex items-center justify-between min-h-[5.6rem] p-[0.8rem_1.6rem] border-b border-[var(--color-border-light)] bg-[var(--color-bg)] pc:hidden;
+}
+
+.docs-mobile-header__title {
+  @apply text-[1.7rem] font-bold text-[var(--color-text)] m-0;
+}
+
+.docs-mobile-header__toggle {
+  @apply flex items-center justify-center w-[4rem] h-[4rem] p-0 border border-[var(--color-border)] rounded-[0.4rem] bg-[var(--color-bg)] text-[var(--color-text)] cursor-pointer [transition:background_0.15s_ease-in-out];
+}
+
+.docs-mobile-header__toggle:hover { @apply [background:var(--color-bg-subtler)]; }
+
+/* ═══════════════════════════════════════════════════════
+ * 검색 위젯
+ * ═══════════════════════════════════════════════════════ */
+
+.docs-search {
+  @apply mb-[2.4rem] py-0 px-[0.8rem];
+
+}
+
+#search .pagefind-ui__form {
+  @apply m-0;
+}
+
+#search .pagefind-ui__search-input {
+  @apply min-h-[4.4rem] rounded-[0.6rem] border border-[var(--color-border-light)] bg-[var(--color-bg)] text-[1.5rem] text-[var(--color-text)] [font-family:var(--font-sans)] [box-shadow:none];
+}
+
+#search .pagefind-ui__search-input:focus {
+  @apply border-[var(--color-border-primary)];
+}
+
+#search .pagefind-ui__drawer {
+  @apply mt-[0.8rem] rounded-[0.6rem] border border-[var(--color-border-light)] bg-[var(--color-bg)] p-[0.8rem] [box-shadow:0_1.6rem_3.2rem_-2.4rem_var(--color-alpha-black-75)];
+}
+
+#search .pagefind-ui__result {
+  @apply border-t border-[var(--color-border-light)] py-[1.2rem];
+}
+
+#search .pagefind-ui__result:first-child {
+  @apply border-t-0;
+}
+
+#search .pagefind-ui__result-link {
+  @apply text-[1.5rem] font-bold text-[var(--color-link)] no-underline;
+}
+
+/* ═══════════════════════════════════════════════════════
+ * 코드 블록 + 복사 버튼
+ * ═══════════════════════════════════════════════════════ */
+
+pre[class*='language-'] {
+  @apply relative rounded-[0.8rem] my-[2.4rem] mx-0 p-[5.6rem_1.6rem_1.6rem] border border-[var(--color-code-border)] bg-[var(--color-code-bg)] text-[var(--color-code-fg)] overflow-x-auto text-[1.5rem] leading-[1.7] [tab-size:2] [box-shadow:0_2rem_4.8rem_-3.2rem_var(--color-alpha-black-75)];
+
+
+
+}
+
+pre[class*='language-bash']::before,
+pre[class*='language-shell']::before,
+pre[class*='language-sh']::before {
+  @apply absolute top-[1.9rem] left-[1.6rem] w-[4.8rem] h-[1rem] content-[''] pointer-events-none;
+
+  background:
+    radial-gradient(circle at 0.5rem 0.5rem, var(--color-code-terminal-red) 0 0.45rem, transparent 0.5rem),
+    radial-gradient(circle at 2.2rem 0.5rem, var(--color-code-terminal-yellow) 0 0.45rem, transparent 0.5rem),
+    radial-gradient(circle at 3.9rem 0.5rem, var(--color-code-terminal-green) 0 0.45rem, transparent 0.5rem);
+}
+
+pre[class*='language-'] code {
+  @apply block p-0 bg-transparent border-0 rounded-none text-[inherit] [font-family:var(--font-mono)] [white-space:pre];
+
+}
+
+pre[class*='language-'] .token,
+pre[class*='language-'] .token * {
+  @apply inline w-auto min-w-0 h-auto min-h-0 m-0 p-0 border-0 rounded-none bg-transparent text-[inherit] font-normal leading-[inherit] no-underline [box-shadow:none] [outline:0] [transition:none] [vertical-align:baseline];
+}
+
+pre[class*='language-'] .token.comment,
+pre[class*='language-'] .token.prolog,
+pre[class*='language-'] .token.doctype,
+pre[class*='language-'] .token.cdata {
+  @apply text-[var(--color-code-comment)];
+}
+
+pre[class*='language-'] .token.punctuation,
+pre[class*='language-'] .token.operator {
+  @apply text-[var(--color-code-muted)];
+}
+
+pre[class*='language-'] .token.keyword,
+pre[class*='language-'] .token.atrule,
+pre[class*='language-'] .token.rule,
+pre[class*='language-'] .token.selector,
+pre[class*='language-'] .token.important {
+  @apply text-[var(--color-code-keyword)];
+}
+
+pre[class*='language-'] .token.string,
+pre[class*='language-'] .token.char,
+pre[class*='language-'] .token.attr-value {
+  @apply text-[var(--color-code-string)];
+}
+
+pre[class*='language-'] .token.inserted {
+  @apply text-[var(--color-code-inserted)];
+}
+
+pre[class*='language-'] .token.number,
+pre[class*='language-'] .token.boolean,
+pre[class*='language-'] .token.constant,
+pre[class*='language-'] .token.symbol {
+  @apply text-[var(--color-code-number)];
+}
+
+pre[class*='language-'] .token.property,
+pre[class*='language-'] .token.attr-name,
+pre[class*='language-'] .token.variable {
+  @apply text-[var(--color-code-attribute)];
+}
+
+pre[class*='language-'] .token.tag {
+  @apply text-[var(--color-code-keyword)];
+}
+
+pre[class*='language-'] .token.class-name,
+pre[class*='language-'] .token.builtin {
+  @apply text-[var(--color-code-type)];
+}
+
+pre[class*='language-'] .token.function {
+  @apply text-[var(--color-code-function)];
+}
+
+pre[class*='language-'] .token.regex,
+pre[class*='language-'] .token.regex-source,
+pre[class*='language-'] .token.regex-delimiter,
+pre[class*='language-'] .token.deleted {
+  @apply text-[var(--color-code-regex)];
+}
+
+pre[class*='language-'] .token.entity,
+pre[class*='language-'] .token.named-entity,
+pre[class*='language-'] .token.url,
+pre[class*='language-'] .token.name {
+  @apply text-[var(--color-code-link)];
+}
+
+pre[class*='language-'] .token.title,
+pre[class*='language-'] .token.title.important,
+pre[class*='language-'] .token.table-header.important {
+  @apply text-[var(--color-code-function)] font-bold;
+}
+
+pre[class*='language-'] .token.bold {
+  @apply text-[var(--color-code-markup)] font-bold;
+}
+
+pre[class*='language-'] .token.italic {
+  @apply italic;
+}
+
+pre[class*='language-'] .token.code,
+pre[class*='language-'] .token.code-snippet,
+pre[class*='language-'] .token.code-block,
+pre[class*='language-'] .token.code-language {
+  @apply text-[var(--color-code-string)];
+}
+
+pre[class*='language-'] .token.list,
+pre[class*='language-'] .token.hr,
+pre[class*='language-'] .token.blockquote,
+pre[class*='language-'] .token.table,
+pre[class*='language-'] .token.table-line,
+pre[class*='language-'] .token.table-header-row,
+pre[class*='language-'] .token.table-data-rows {
+  @apply text-[var(--color-code-muted)];
+}
+
+pre[class*='language-'] .token.table-header,
+pre[class*='language-'] .token.table-data,
+pre[class*='language-'] .token.special-attr,
+pre[class*='language-'] .token.literal-property {
+  @apply text-[var(--color-code-attribute)];
+}
+
+pre[class*='language-'] .token.value,
+pre[class*='language-'] .token.css,
+pre[class*='language-'] .token.javascript {
+  @apply text-[var(--color-code-number)];
+}
+
+pre[class*='language-'] .token.tag .token.punctuation {
+  @apply text-[var(--color-code-muted)];
+}
+
+pre[class*='language-'] .token.attr-value .token.punctuation {
+  @apply text-[var(--color-code-string)];
+}
+
+pre[class*='language-']::-webkit-scrollbar { @apply [height:0.6rem]; }
+pre[class*='language-']::-webkit-scrollbar-track { @apply [background:var(--color-gray-80)] [border-radius:3px]; }
+pre[class*='language-']::-webkit-scrollbar-thumb { @apply [background:var(--color-gray-60)] [border-radius:3px]; }
+pre[class*='language-']::-webkit-scrollbar-thumb:hover { @apply [background:var(--color-gray-50)]; }
+
+.copy-btn {
+  @apply absolute inline-flex items-center justify-center min-w-[4.4rem] min-h-[4.4rem] p-[0.8rem_1.2rem] border border-[var(--color-code-border)] rounded-[0.6rem] bg-[var(--color-code-button-bg)] text-[var(--color-code-button-fg)] text-[1.3rem] cursor-pointer top-[0.8rem] right-[0.8rem] [transition:background_0.15s_ease-in-out,_color_0.15s_ease-in-out,_border-color_0.15s_ease-in-out];
+}
+
+.copy-btn:hover {
+  @apply bg-[var(--color-code-button-bg-hover)] text-[var(--color-code-button-fg-hover)] border-[var(--color-gray-50)];
+}
+
+/* ═══════════════════════════════════════════════════════
+ * 문서 본문 타이포
+ * ═══════════════════════════════════════════════════════ */
+
+.docs-layout__content h1 {
+  @apply text-[3.2rem] pc:text-[4rem] font-bold leading-[1.35] mt-[4.8rem] mb-[1.6rem] border-b border-[var(--color-border-light)] text-[var(--color-text-bolder)] pb-[1.6rem] [scroll-margin-top:7.2rem];
+
+}
+
+.docs-layout__content h1:first-child {
+  @apply mt-[0];
+}
+
+.docs-layout__content h2 {
+  @apply text-[2.8rem] pc:text-[3.2rem] font-bold leading-[1.4] mt-[5.6rem] mb-[1.6rem] text-[var(--color-text-bolder)] ps-[1.2rem] [border-left:4px_solid_var(--color-primary)] [scroll-margin-top:7.2rem];
+}
+
+.docs-layout__content h3 {
+  @apply text-[2.2rem] pc:text-[2.4rem] font-bold leading-[1.45] mt-[4rem] mb-[1.2rem] text-[var(--color-text-bolder)] [scroll-margin-top:7.2rem];
+}
+
+.docs-layout__content p {
+  @apply mb-[1.6rem] leading-[1.7];
+}
+
+.docs-layout__content > h1 + p {
+  @apply text-[1.9rem] leading-[1.7] text-[var(--color-text-subtle)] mb-[2.4rem];
+}
+
+.docs-layout__content ul,
+.docs-layout__content ol {
+  @apply mb-[1.6rem] ps-[2.4rem];
+
+}
+
+.docs-layout__content li {
+  @apply mb-[0.4rem] leading-[1.5];
+}
+
+.docs-layout__content li::marker {
+  @apply text-[var(--color-primary)];
+}
+
+.docs-layout__content :not(pre) > code {
+  @apply text-[0.92em] bg-[var(--color-gray-5)] rounded-[0.4rem] border border-[var(--color-border-light)] py-[0.18em] px-[0.42em] [word-break:break-word];
+
+}
+
+.docs-layout__content table {
+  @apply block tablet:table w-full max-w-full border-separate border-spacing-0 mb-[2.4rem] text-[1.5rem] border border-[var(--color-border-light)] rounded-[0.8rem] overflow-x-auto tablet:overflow-visible bg-[var(--color-bg)];
+
+}
+
+.docs-layout__content th,
+.docs-layout__content td {
+  @apply p-[0.8rem_1.6rem] text-left border-b border-[var(--color-border-light)];
+
+}
+
+.docs-layout__content th {
+  @apply bg-[var(--color-bg-subtler)] font-bold text-[var(--color-text-bolder)] text-[1.3rem] uppercase tracking-[0.03em] [white-space:nowrap];
+}
+
+.docs-layout__content tbody tr:last-child td { @apply [border-bottom:0]; }
+
+.docs-layout__content tbody tr:hover { @apply [background:var(--color-bg-subtler)]; }
+
+.docs-layout__content blockquote {
+  @apply my-[2.4rem] mx-0 p-[1.6rem_2.4rem] bg-[var(--color-surface-primary-subtler)] text-[var(--color-text-subtle)] [border-left:4px_solid_var(--color-primary-30)] [border-radius:0_0.8rem_0.8rem_0];
+}
+
+.docs-layout__content hr {
+  @apply border-0 border-t border-[var(--color-border-light)] my-[4.8rem] mx-0;
+}
+
+/* ═══════════════════════════════════════════════════════
+ * 컴포넌트 미리보기
+ * ═══════════════════════════════════════════════════════ */
+
+.preview {
+  @apply my-[2.4rem] mx-0 border border-[var(--color-border-light)] rounded-[0.8rem] overflow-hidden bg-[var(--color-bg)];
+}
+
+.preview__label {
+  @apply flex items-center min-h-[4rem] p-[0.8rem_1.2rem] bg-[var(--color-bg-subtler)] border-b border-[var(--color-border-light)] text-[1.3rem] font-[500] text-[var(--color-text-subtle)] tracking-[0.03em];
+}
+
+.preview__frame { @apply [background:var(--color-bg)]; }
+
+.preview__iframe {
+  @apply block w-full border-0 bg-[var(--color-bg)];
+}
+
+/* ═══════════════════════════════════════════════════════
+ * 모바일 오버레이
+ * ═══════════════════════════════════════════════════════ */
+
+.docs-overlay {
+  @apply hidden fixed inset-0 bg-[var(--color-alpha-black-50)] z-[1040];
+}
+
+.docs-overlay--active { @apply [display:block]; }
+
+/* ═══════════════════════════════════════════════════════
+ * 색상 토큰 시각화
+ * ═══════════════════════════════════════════════════════ */
+
+.color-grid {
+  @apply grid gap-[1.6rem] mb-[3.2rem] [grid-template-columns:repeat(auto-fill,_minmax(220px,_1fr))];
+}
+
+.color-swatch {
+  @apply flex flex-col justify-end min-h-[12rem] p-[0.8rem_1.6rem] rounded-[0.6rem] text-[1.5rem] leading-[1.5];
+}
+
+.color-swatch__name {
+  @apply font-bold text-[1.3rem] [font-family:var(--font-mono)];
+}
+
+.color-swatch__value {
+  @apply opacity-[0.85] [font-family:var(--font-mono)];
+}
+
+.color-swatch__desc {
+  @apply mt-[0.4rem] text-[1.3rem] opacity-[0.75];
+
+}
+
+/* ═══════════════════════════════════════════════════════
+ * 이전/다음 페이지 네비게이션
+ * ═══════════════════════════════════════════════════════ */
+
+.docs-nav-prev-next {
+  @apply grid gap-[1.2rem] mt-[6.4rem] pt-[2.4rem] border-t border-[var(--color-border-light)] tablet:grid-cols-2;
+}
+
+.docs-nav-prev-next__link {
+  @apply flex flex-col justify-center min-h-[8.8rem] p-[1.6rem] rounded-[0.8rem] border border-[var(--color-border-light)] bg-[var(--color-bg)] no-underline [transition:background_0.15s_ease-in-out,_border-color_0.15s_ease-in-out,_transform_0.15s_ease-in-out];
+}
+
+.docs-nav-prev-next__link:hover {
+  @apply bg-[var(--color-bg-subtler)] border-[var(--color-border-primary)] [transform:translateY(-1px)];
+}
+
+.docs-nav-prev-next__link--next {
+  @apply tablet:text-right;
+}
+
+.docs-nav-prev-next__label {
+  @apply text-[1.3rem] font-bold text-[var(--color-text-subtle)] mb-[0.4rem];
+}
+
+.docs-nav-prev-next__title {
+  @apply text-[1.7rem] font-bold text-[var(--color-text-bolder)] leading-[1.4];
+}

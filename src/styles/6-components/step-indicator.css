@@ -1,0 +1,69 @@
+/**
+ * Step Indicator — KRDS 단계 표시기
+ *
+ * 다단계 폼/프로세스의 현재 단계 표시.
+ *
+ * 구조:
+ *   <ol class="step-indicator" aria-label="진행 단계">
+ *     <li class="step-indicator__item step-indicator__item--done">
+ *       <span class="step-indicator__num" aria-hidden="true">1</span>
+ *       <span class="step-indicator__label">정보 입력</span>
+ *     </li>
+ *     <li class="step-indicator__item step-indicator__item--current" aria-current="step">
+ *       <span class="step-indicator__num" aria-hidden="true">2</span>
+ *       <span class="step-indicator__label">확인</span>
+ *     </li>
+ *     <li class="step-indicator__item">
+ *       <span class="step-indicator__num" aria-hidden="true">3</span>
+ *       <span class="step-indicator__label">완료</span>
+ *     </li>
+ *   </ol>
+ */
+
+@layer components {
+  .step-indicator {
+    @apply flex items-center list-none m-0 p-0 gap-0 [counter-reset:step];
+  }
+
+  .step-indicator__item {
+    @apply flex items-center flex-1 gap-[0.8rem] text-[var(--color-text-subtle)] text-[1.5rem] relative;
+
+  }
+
+  /* 아이템 사이 연결선 */
+  .step-indicator__item:not(:last-child)::after {
+    @apply content-[''] flex-1 h-[2px] bg-[var(--color-border)] mx-[0.8rem];
+
+  }
+
+  /* 단계 번호 원 */
+  .step-indicator__num {
+    @apply shrink-0 w-[3.2rem] h-[3.2rem] inline-flex items-center justify-center rounded-full bg-[var(--color-bg)] text-[var(--color-text-subtle)] font-bold leading-none [border:2px_solid_var(--color-border)];
+  }
+
+  .step-indicator__label {
+    @apply font-bold;
+  }
+
+  /* 완료된 단계 */
+  .step-indicator__item--done {
+    @apply text-[var(--color-text)];
+  }
+
+  .step-indicator__item--done .step-indicator__num {
+    @apply bg-[var(--color-primary)] border-[var(--color-primary)] text-[var(--color-text-inverse)];
+  }
+
+  .step-indicator__item--done:not(:last-child)::after {
+    @apply bg-[var(--color-primary)];
+  }
+
+  /* 현재 단계 */
+  .step-indicator__item--current {
+    @apply text-[var(--color-primary)];
+  }
+
+  .step-indicator__item--current .step-indicator__num {
+    @apply border-[var(--color-primary)] text-[var(--color-primary)] bg-[var(--color-surface-primary-subtler)];
+  }
+}

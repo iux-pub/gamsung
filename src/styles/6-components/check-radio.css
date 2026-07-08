@@ -1,0 +1,81 @@
+/**
+ * Checkbox & Radio — KRDS Form check
+ *
+ * 구조: <label class="check"><input type="checkbox|radio"><span class="check__box"></span><span class="check__label">텍스트</span></label>
+ *
+ * 기본 박스는 24×24이며, 터치 영역은 label 전체의 min-height로 확보한다.
+ */
+
+@layer components {
+  /* ─── 공통 컨테이너 ─── */
+  .check,
+  .radio {
+    @apply inline-flex items-center gap-[0.8rem] cursor-pointer select-none min-h-[4.4rem] text-[var(--color-text)] text-[1.7rem] leading-[1.5];
+  }
+
+  /* native input 숨김 */
+  .check input[type="checkbox"],
+  .radio input[type="radio"] {
+    @apply absolute w-[1px] h-[1px] m-[-1px] p-0 overflow-hidden whitespace-nowrap border-0 [clip-path:inset(50%)];
+  }
+
+  /* ─── Checkbox box (사각형) ─── */
+  .check__box {
+    @apply shrink-0 w-[2.4rem] h-[2.4rem] rounded-[0.4rem] bg-[var(--color-input-surface)] relative [border:1.5px_solid_var(--color-input-border)] [transition:background-color_0.15s_ease-in-out,_border-color_0.15s_ease-in-out];
+  }
+
+  /* 체크 표시 — SVG 배경 */
+  .check__box::after {
+    @apply content-[''] absolute inset-0 opacity-0 [background:url("data:image/svg+xml;utf8,<svg_xmlns='http://www.w3.org/2000/svg'_width='24'_height='24'_viewBox='0_0_24_24'_fill='none'><path_d='M5_12.5L10_17L19_7.5'_stroke='white'_stroke-width='2.5'_stroke-linecap='round'_stroke-linejoin='round'/></svg>")_no-repeat_center_/_contain] [transition:opacity_0.15s_ease-in-out];
+  }
+
+  .check input:checked ~ .check__box {
+    @apply bg-[var(--color-primary)] border-[var(--color-primary)];
+  }
+
+  .check input:checked ~ .check__box::after { @apply [opacity:1]; }
+
+  /* ─── Radio box (원형) ─── */
+  .radio__box {
+    @apply shrink-0 w-[2.4rem] h-[2.4rem] rounded-full bg-[var(--color-input-surface)] relative [border:1.5px_solid_var(--color-input-border)] [transition:border-color_0.15s_ease-in-out];
+  }
+
+  .radio__box::after {
+    @apply content-[''] absolute inset-0 w-[1.0rem] h-[1.0rem] rounded-full bg-[var(--color-primary)] opacity-0 m-auto [transition:opacity_0.15s_ease-in-out];
+  }
+
+  .radio input:checked ~ .radio__box {
+    @apply border-[var(--color-primary)] border-[2px];
+  }
+
+  .radio input:checked ~ .radio__box::after { @apply [opacity:1]; }
+
+  /* ─── 포커스 (input focus → box outline) ─── */
+  .check input:focus-visible ~ .check__box,
+  .radio input:focus-visible ~ .radio__box {
+    @apply [outline:0.4rem_solid_var(--color-border-primary)] [outline-offset:2px];
+  }
+
+  /* ─── Hover ─── */
+  .check:hover .check__box,
+  .radio:hover .radio__box {
+    @apply border-[var(--color-border-dark)];
+  }
+
+  /* ─── Disabled ─── */
+  .check input:disabled ~ .check__box,
+  .radio input:disabled ~ .radio__box,
+  .check input:disabled ~ .check__label,
+  .radio input:disabled ~ .radio__label {
+    @apply cursor-not-allowed text-[var(--color-text-disabled)];
+  }
+
+  .check input:disabled ~ .check__box,
+  .radio input:disabled ~ .radio__box {
+    @apply bg-[var(--color-input-surface-disabled)] border-[var(--color-input-border-disabled)];
+  }
+
+  .check input:disabled:checked ~ .check__box {
+    @apply bg-[var(--color-text-disabled)] border-[var(--color-text-disabled)];
+  }
+}

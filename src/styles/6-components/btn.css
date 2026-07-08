@@ -1,0 +1,101 @@
+/**
+ * Button — KRDS 기반 명세
+ *   Variants: primary / secondary / tertiary / text
+ *   Sizes:    xsmall / small / medium / large / xlarge
+ *   States:   default / hover / pressed / disabled (focus-visible은 reset.css 전역)
+ *
+ * 시각 높이: xsmall(32) · small(40) · medium(48) · large(56) · xlarge(64).
+ * 모바일 주요 액션은 medium 이상을 권장하고, 데스크탑 dense UI에서는 xsmall/small을 허용한다.
+ */
+
+@layer components {
+  /* ─── Base ─── */
+  .btn {
+    @apply inline-flex items-center justify-center bg-transparent text-[var(--color-text)] font-bold leading-none whitespace-nowrap cursor-pointer select-none no-underline border border-transparent [transition:background-color_0.15s_ease-in-out,_border-color_0.15s_ease-in-out,_color_0.15s_ease-in-out];
+  }
+
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    @apply bg-[var(--color-button-disabled-fill)] text-[var(--color-text-disabled)] border-[var(--color-button-disabled-border)] cursor-not-allowed pointer-events-none;
+  }
+
+  /* ─── Sizes (KRDS button size table) ─── */
+  .btn--xsmall {
+    @apply h-[3.2rem] px-[1rem] gap-[0.2rem] rounded-[0.4rem] text-[1.3rem];
+  }
+
+  .btn--small {
+    @apply h-[4rem] px-[1.2rem] gap-[0.2rem] rounded-[0.6rem] text-[1.5rem];
+  }
+
+  /* medium = 기본값. .btn에 별도 size 클래스 없을 때 적용 */
+  .btn,
+  .btn--medium {
+    @apply h-[4.8rem] px-[1.6rem] gap-[0.4rem] rounded-[0.6rem] text-[1.7rem];
+  }
+
+  .btn--large {
+    @apply h-[5.6rem] px-[2rem] gap-[0.4rem] rounded-[0.8rem] text-[1.9rem];
+  }
+
+  .btn--xlarge {
+    @apply h-[6.4rem] px-[2.4rem] gap-[0.4rem] rounded-[0.8rem] text-[1.9rem];
+  }
+
+  /* ─── Variant: primary (KRDS button.primary-fill) ─── */
+  .btn--primary {
+    @apply bg-[var(--color-button-primary-fill)] text-[var(--color-text-inverse)] border-[var(--color-button-primary-fill)];
+  }
+
+  .btn--primary:hover:not(:disabled):not([aria-disabled="true"]) {
+    @apply bg-[var(--color-button-primary-fill-hover)] border-[var(--color-button-primary-fill-hover)];
+  }
+
+  .btn--primary:active:not(:disabled):not([aria-disabled="true"]) {
+    @apply bg-[var(--color-button-primary-fill-pressed)] border-[var(--color-button-primary-fill-pressed)];
+  }
+
+  /* ─── Variant: secondary (KRDS button.secondary-*) ─── */
+  .btn--secondary {
+    @apply bg-[var(--color-button-secondary-fill)] text-[var(--color-primary)] border-[var(--color-button-secondary-border)];
+  }
+
+  .btn--secondary:hover:not(:disabled):not([aria-disabled="true"]) {
+    @apply bg-[var(--color-button-secondary-fill-hover)];
+  }
+
+  .btn--secondary:active:not(:disabled):not([aria-disabled="true"]) {
+    @apply bg-[var(--color-button-secondary-fill-pressed)];
+  }
+
+  /* ─── Variant: tertiary (KRDS button.tertiary-*) ─── */
+  .btn--tertiary {
+    @apply bg-[var(--color-button-tertiary-fill)] text-[var(--color-text)] border-[var(--color-button-tertiary-border)];
+  }
+
+  .btn--tertiary:hover:not(:disabled):not([aria-disabled="true"]) {
+    @apply bg-[var(--color-button-tertiary-fill-hover)];
+  }
+
+  .btn--tertiary:active:not(:disabled):not([aria-disabled="true"]) {
+    @apply bg-[var(--color-button-tertiary-fill-pressed)];
+  }
+
+  /* ─── Variant: text (KRDS button.text-*) ─── */
+  .btn--text {
+    @apply bg-[var(--color-button-text-fill)] text-[var(--color-text)] border-[var(--color-button-text-border)];
+  }
+
+  .btn--text:hover:not(:disabled):not([aria-disabled="true"]) {
+    @apply bg-[var(--color-button-text-fill-hover)];
+  }
+
+  .btn--text:active:not(:disabled):not([aria-disabled="true"]) {
+    @apply bg-[var(--color-button-text-fill-pressed)];
+  }
+
+  /* ─── Block (full width) ─── */
+  .btn--block {
+    @apply flex w-full;
+  }
+}

@@ -1,0 +1,254 @@
+﻿
+> infomind-project-starter@2.0.0 check
+> node ./scripts/check-violations.js
+
+[36m[check-violations][0m info-design 컨트랙트 검사 시작...
+
+node.exe : [31m[ERROR][0m src\styles\7-utilities\project.css:13
+At C:\nvm4w\nodejs\npm.ps1:29 char:3
++   & $NODE_EXE $NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([31m[ERROR][0...\project.css:13:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  [R-01] Raw hex 색상 금지. var(--color-*) 토큰 사용.
+  [2mbackground-color: #F6F4F0;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:21
+  [R-01] 하드코딩 `64px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mheight: 64px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:22
+  [R-01] 하드코딩 `12px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mpadding: 12px 16px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:31
+  [R-01] 하드코딩 `40px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mwidth: 40px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:32
+  [R-01] 하드코딩 `40px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mheight: 40px;[0m
+[31m[ERROR][0m src\styles\7-utilities\project.css:33
+  [R-01] Raw hex 색상 금지. var(--color-*) 토큰 사용.
+  [2mbackground: #fff;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:52
+  [R-01] 하드코딩 `8px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mgap: 8px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:80
+  [R-01] 하드코딩 `280px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mwidth: 280px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:99
+  [R-01] 하드코딩 `64px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mheight: 64px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:115
+  [R-01] 하드코딩 `44px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mwidth: 44px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:116
+  [R-01] 하드코딩 `44px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mheight: 44px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:134
+  [R-01] 하드코딩 `24px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mpadding: 24px 16px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:144
+  [R-01] 하드코딩 `8px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mgap: 8px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:153
+  [R-01] 하드코딩 `12px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mpadding: 12px 16px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:171
+  [R-01] 하드코딩 `16px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mpadding: 16px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:179
+  [R-01] 하드코딩 `8px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mgap: 8px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:185
+  [R-01] 하드코딩 `12px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mgap: 12px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:193
+  [R-01] 하드코딩 `10px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mpadding: 10px 16px;[0m
+[31m[ERROR][0m src\styles\7-utilities\project.css:235
+  [R-01] Raw hex 색상 금지. var(--color-*) 토큰 사용.
+  [2mbackground-color: #F6F4F0;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:244
+  [R-01] 하드코딩 `180px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mwidth: 180px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:245
+  [R-01] 하드코딩 `180px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mheight: 180px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:255
+  [R-01] 하드코딩 `560px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mmin-height: 560px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:261
+  [R-01] 하드코딩 `40px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mpadding: 40px 16px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:290
+  [R-01] 하드코딩 `440px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mmax-width: 440px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:297
+  [R-01] 하드코딩 `16px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 16px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:304
+  [R-01] 하드코딩 `280px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mmax-width: 280px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:314
+  [R-01] 하드코딩 `240px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mheight: 240px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:322
+  [R-01] 하드코딩 `16px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mpadding: 16px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:329
+  [R-01] 하드코딩 `8px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mgap: 8px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:338
+  [R-01] 하드코딩 `14px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 14px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:345
+  [R-01] 하드코딩 `12px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 12px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:357
+  [R-01] 하드코딩 `16px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mpadding: 16px 0;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:367
+  [R-01] 하드코딩 `226px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mwidth: 226px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:381
+  [R-01] 하드코딩 `226px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mwidth: 226px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:382
+  [R-01] 하드코딩 `248px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mheight: 248px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:390
+  [R-01] 하드코딩 `20px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mpadding: 20px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:396
+  [R-01] 하드코딩 `120px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mheight: 120px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:413
+  [R-01] 하드코딩 `15px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 15px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:423
+  [R-01] 하드코딩 `12px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 12px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:433
+  [R-01] 하드코딩 `6px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mgap: 6px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:438
+  [R-01] 하드코딩 `11px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 11px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:467
+  [R-01] 하드코딩 `36px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mwidth: 36px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:468
+  [R-01] 하드코딩 `36px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mheight: 36px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:483
+  [R-01] 하드코딩 `12px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mleft: 12px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:487
+  [R-01] 하드코딩 `12px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mright: 12px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:492
+  [R-01] 하드코딩 `40px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mpadding: 40px 16px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:502
+  [R-01] 하드코딩 `24px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 24px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:510
+  [R-01] 하드코딩 `14px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 14px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:525
+  [R-01] 하드코딩 `12px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mgap: 12px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:530
+  [R-01] 하드코딩 `52px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mheight: 52px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:534
+  [R-01] 하드코딩 `15px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 15px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:566
+  [R-01] 하드코딩 `14px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 14px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:575
+  [R-01] 하드코딩 `8px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mgap: 8px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:580
+  [R-01] 하드코딩 `40px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mmin-height: 40px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:585
+  [R-01] 하드코딩 `13px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 13px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:600
+  [R-01] 하드코딩 `40px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mpadding: 40px 16px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:606
+  [R-01] 하드코딩 `16px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mgap: 16px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:613
+  [R-01] 하드코딩 `13px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 13px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:620
+  [R-01] 하드코딩 `12px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 12px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:642
+  [R-01] 하드코딩 `80px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mheight: 80px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:652
+  [R-01] 하드코딩 `8px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mgap: 8px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:655
+  [R-01] 하드코딩 `20px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mtop: 20px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:656
+  [R-01] 하드코딩 `80px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mright: 80px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:661
+  [R-01] 하드코딩 `20px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mtop: 20px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:662
+  [R-01] 하드코딩 `80px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mleft: 80px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:671
+  [R-01] 하드코딩 `140px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mpadding: 140px 80px 20px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:676
+  [R-01] 하드코딩 `48px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mwidth: 48px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:677
+  [R-01] 하드코딩 `48px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mheight: 48px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:681
+  [R-01] 하드코딩 `28px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 28px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:689
+  [R-01] 하드코딩 `20px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mpadding: 20px 80px 40px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:694
+  [R-01] 하드코딩 `34px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 34px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:700
+  [R-01] 하드코딩 `15px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 15px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:702
+  [R-01] 하드코딩 `460px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mmax-width: 460px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:712
+  [R-01] 하드코딩 `16px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mgap: 16px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:713
+  [R-01] 하드코딩 `480px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mmax-width: 480px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:731
+  [R-01] 하드코딩 `20px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mpadding: 20px 80px 60px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:746
+  [R-01] 하드코딩 `60px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mpadding: 60px 48px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:755
+  [R-01] 하드코딩 `500px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mmax-width: 500px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:759
+  [R-01] 하드코딩 `18px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mfont-size: 18px;[0m
+[33m[WARN][0m  src\styles\7-utilities\project.css:769
+  [R-01] 하드코딩 `280px`. 반복되는 간격/크기라면 토큰화 권장.
+  [2mheight: 280px;[0m
+
+[31m오류 3개[0m, [33m경고 77개[0m

@@ -1,0 +1,49 @@
+/**
+ * Toggle Switch — KRDS Switch
+ *
+ * 구조: <label class="switch"><input type="checkbox"><span class="switch__track"></span><span class="switch__label">텍스트</span></label>
+ *
+ * 트랙: 44×24, 핸들: 20×20
+ */
+
+@layer components {
+  .switch {
+    @apply inline-flex items-center gap-[1.6rem] cursor-pointer select-none min-h-[4.4rem] text-[var(--color-text)] text-[1.7rem] leading-[1.5];
+
+
+  }
+
+  .switch input[type="checkbox"] {
+    @apply absolute w-[1px] h-[1px] m-[-1px] p-0 overflow-hidden whitespace-nowrap border-0 [clip-path:inset(50%)];
+
+  }
+
+  .switch__track {
+    @apply relative shrink-0 w-[4.4rem] h-[2.4rem] rounded-[100rem] bg-[var(--color-gray-30)] [transition:background-color_0.15s_ease-in-out];
+  }
+
+  .switch__track::after {
+    @apply content-[''] absolute w-[2.0rem] h-[2.0rem] rounded-full bg-[var(--color-bg)] top-[0.2rem] left-[0.2rem] [transition:transform_0.15s_ease-in-out];
+  }
+
+  .switch input:checked ~ .switch__track {
+    @apply bg-[var(--color-primary)];
+  }
+
+  .switch input:checked ~ .switch__track::after {
+    @apply [transform:translateX(2.0rem)];
+  }
+
+  .switch input:focus-visible ~ .switch__track {
+    @apply [outline:0.4rem_solid_var(--color-border-primary)] [outline-offset:2px];
+  }
+
+  .switch input:disabled ~ .switch__track,
+  .switch input:disabled ~ .switch__label {
+    @apply cursor-not-allowed text-[var(--color-text-disabled)];
+  }
+
+  .switch input:disabled ~ .switch__track {
+    @apply bg-[var(--color-gray-20)];
+  }
+}

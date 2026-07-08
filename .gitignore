@@ -1,0 +1,16 @@
+# 빌드 산출물 (재생성 가능)
+node_modules/
+dist/
+_site/
+.DS_Store
+
+# 로컬 설정
+.env
+.env.local
+
+# IDE
+.vscode/
+*.tsbuildinfo
+
+# 토큰 빌드 (build-tokens.js로 재생성)
+tokens/build/

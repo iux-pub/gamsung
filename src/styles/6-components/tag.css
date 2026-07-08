@@ -1,0 +1,64 @@
+/**
+ * Tag — KRDS Tag
+ *
+ * 카테고리/필터/속성 라벨. 클릭 가능한 변형도 지원.
+ *
+ * Shape: radius-small3 (4px) — KRDS Small 그룹
+ */
+
+@layer components {
+  .tag {
+    @apply inline-flex items-center gap-[0.4rem] h-[2.4rem] px-[1rem] border border-[var(--color-border)] rounded-[0.4rem] bg-[var(--color-surface)] text-[var(--color-text)] text-[1.3rem] font-bold leading-none no-underline [transition:background-color_0.15s_ease-in-out,_border-color_0.15s_ease-in-out];
+  }
+
+  /* 클릭 가능 (button/a) 변형 */
+  a.tag,
+  button.tag,
+  .tag--clickable {
+    @apply cursor-pointer;
+  }
+
+  a.tag:hover,
+  button.tag:hover,
+  .tag--clickable:hover {
+    @apply bg-[var(--color-bg-subtler)] border-[var(--color-border-dark)];
+  }
+
+  /* 닫기 버튼 (제거 가능 태그) */
+  .tag__close {
+    @apply bg-transparent border-0 text-[var(--color-text-subtle)] text-[1.4rem] leading-none cursor-pointer p-0 ms-[0.2rem];
+
+
+  }
+
+  /* Variants — 시맨틱 + outline 변형 */
+  .tag--primary {
+    @apply bg-[var(--color-surface-primary-subtler)] border-[var(--color-border-primary-light)] text-[var(--color-primary)];
+  }
+
+  .tag--info {
+    @apply bg-[var(--color-surface-information-subtler)] border-[var(--color-border-information-light)] text-[var(--color-info-text)];
+  }
+
+  .tag--success {
+    @apply bg-[var(--color-surface-success-subtler)] border-[var(--color-border-success-light)] text-[var(--color-success-text)];
+  }
+
+  .tag--warning {
+    @apply bg-[var(--color-surface-warning-subtler)] border-[var(--color-border-warning-light)] text-[var(--color-warning-text)];
+  }
+
+  .tag--danger {
+    @apply bg-[var(--color-surface-danger-subtler)] border-[var(--color-border-danger-light)] text-[var(--color-danger-text)];
+  }
+
+  /* 사이즈 변형 */
+  .tag--small {
+    @apply h-[2.0rem] px-[0.6rem];
+
+  }
+
+  .tag--large {
+    @apply h-[3.2rem] px-[1.2rem] text-[1.5rem];
+  }
+}

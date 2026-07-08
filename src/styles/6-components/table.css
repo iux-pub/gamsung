@@ -1,0 +1,82 @@
+/**
+ * Table — KRDS Table
+ *
+ * 구조:
+ *   <div class="table-wrap">
+ *     <table class="table">
+ *       <caption class="table__caption">표 제목</caption>
+ *       <thead>
+ *         <tr>
+ *           <th scope="col">열1</th>
+ *           <th scope="col">열2</th>
+ *         </tr>
+ *       </thead>
+ *       <tbody>
+ *         <tr><td>값1</td><td>값2</td></tr>
+ *       </tbody>
+ *     </table>
+ *   </div>
+ */
+
+@layer components {
+  /* 가로 스크롤 래퍼 (모바일 대응) */
+  .table-wrap {
+    @apply overflow-x-auto border border-[var(--color-border)] rounded-[0.6rem];
+  }
+
+  .table {
+    @apply w-full border-separate border-spacing-0 text-[1.7rem] text-[var(--color-text)];
+  }
+
+  .table__caption {
+    @apply text-left p-[1.6rem] font-bold text-[var(--color-text-bolder)] bg-[var(--color-bg-subtler)] border-b border-[var(--color-border)];
+  }
+
+  .table th,
+  .table td {
+    @apply p-[1.2rem_1.6rem] text-left border-b border-[var(--color-border-light)] align-middle;
+
+
+  }
+
+  .table thead th {
+    @apply bg-[var(--color-bg-subtler)] font-bold text-[var(--color-text-bolder)] text-[1.5rem] border-b-2 border-[var(--color-border)];
+  }
+
+  .table tbody tr:last-child td {
+  @apply border-b-0;
+  }
+
+  /* 호버 강조 */
+  .table--hover tbody tr {
+    @apply [transition:background-color_0.15s_ease-in-out];
+  }
+
+  .table--hover tbody tr:hover {
+    @apply bg-[var(--color-bg-subtler)];
+  }
+
+  /* 줄무늬 */
+  .table--striped tbody tr:nth-child(even) {
+    @apply bg-[var(--color-bg-subtler)];
+  }
+
+  /* 선택된 행 */
+  .table tbody tr[aria-selected="true"] {
+    @apply bg-[var(--color-surface-primary-subtler)];
+  }
+
+  /* 정렬 가능한 헤더 */
+  .table th[aria-sort] {
+    @apply cursor-pointer select-none;
+  }
+  .table th[aria-sort="ascending"]::after  { @apply [content:"_▲"] [font-size:0.75em] [color:var(--color-primary)]; }
+  .table th[aria-sort="descending"]::after { @apply [content:"_▼"] [font-size:0.75em] [color:var(--color-primary)]; }
+
+  /* 사이즈 변형 */
+  .table--compact th,
+  .table--compact td { @apply [padding:0.8rem_1.2rem]; /* 8px 12px */ }
+
+  .table--comfortable th,
+  .table--comfortable td { @apply [padding:2rem_2rem]; /* 20px */ }
+}

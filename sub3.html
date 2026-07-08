@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>감성미식 - AI 미식추천</title>
+    <link class="main-style" rel="stylesheet" href="dist/css/style.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-to-content">본문 바로가기</a>
+
+    <!-- 모바일 및 PC 공용 사이드바 (드로워 메뉴) -->
+    <div class="site-drawer__backdrop" aria-hidden="true"></div>
+    <aside id="site-drawer" class="site-drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="전체 메뉴">
+      <div class="site-drawer__header">
+        <div class="site-drawer__brand">
+          <img src="src/image/logo2.png" alt="감성미식 로고" class="site-drawer__logo-img" />
+        </div>
+        <button type="button" class="site-drawer__close" aria-label="메뉴 닫기">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="site-drawer__body">
+        <!-- + 새 대화 버튼 -->
+        <a href="sub2.html" class="site-drawer__new-chat-btn"> <span class="site-drawer__plus-icon" aria-hidden="true">+</span> 새 대화 </a>
+
+        <!-- 최근 세션 섹션 -->
+        <div class="site-drawer__section">
+          <h3 class="site-drawer__section-title">최근 세션</h3>
+          <ul class="site-drawer__session-list">
+            <li class="site-drawer__session-item">
+              <div class="site-drawer__session-card">
+                <div class="site-drawer__session-info">
+                  <h4 class="site-drawer__session-name">혼밥 · 애월 점심</h4>
+                  <p class="site-drawer__session-desc">현지 감성 탐험가형 <span>"얼큰한 국물" → 추천 5곳</span></p>
+                  <span class="site-drawer__session-time">3시간 전</span>
+                </div>
+                <button type="button" class="site-drawer__session-delete" aria-label="세션 삭제">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6H4V4H9V3H15V4H20V6H19V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM17 6H7V19H17V6ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z"
+                      fill="#5A928B"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </li>
+            <li class="site-drawer__session-item">
+              <div class="site-drawer__session-card">
+                <div class="site-drawer__session-info">
+                  <h4 class="site-drawer__session-name">동행 · 제주시 저녁</h4>
+                  <p class="site-drawer__session-desc">미식 탐험가형 <span>"회/해산물" → 추천 4곳</span></p>
+                  <span class="site-drawer__session-time">3시간 전</span>
+                </div>
+                <button type="button" class="site-drawer__session-delete" aria-label="세션 삭제">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6H4V4H9V3H15V4H20V6H19V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM17 6H7V19H17V6ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z"
+                      fill="#5A928B"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-drawer__footer">
+        <div class="site-drawer__user-actions">
+          <!-- 마이페이지 링크 -->
+          <a href="#" class="site-drawer__user-link">
+            <button type="button" class="site-drawer__session-user" aria-label="마이페이지">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                <path
+                  d="M6.90908 7.25794C6.0808 6.42966 5.66667 5.42701 5.66667 4.25C5.66667 3.07322 6.0808 2.0707 6.90908 1.24242C7.73712 0.41414 8.73965 0 9.91667 0C11.0937 0 12.0962 0.41414 12.9242 1.24242C13.7525 2.0707 14.1667 3.07322 14.1667 4.25C14.1667 5.42701 13.7525 6.42966 12.9242 7.25794C12.0962 8.08598 11.0937 8.5 9.91667 8.5C8.73965 8.5 7.73712 8.08598 6.90908 7.25794ZM0 18.7439V16.4117C0 15.8269 0.170236 15.2797 0.510708 14.7702C0.851417 14.2609 1.30959 13.8654 1.88523 13.5837C3.22209 12.9427 4.55978 12.4618 5.89829 12.1412C7.23681 11.8208 8.57626 11.6606 9.91667 11.6606C11.2571 11.6606 12.5965 11.8208 13.935 12.1412C15.2736 12.4618 16.6112 12.9427 17.9481 13.5837C18.5237 13.8654 18.9819 14.2609 19.3226 14.7702C19.6631 15.2797 19.8333 15.8269 19.8333 16.4117V18.7439H0Z"
+                  fill="#333333"
+                />
+              </svg>
+            </button>
+            <span class="site-drawer__user-text">마이페이지</span>
+          </a>
+
+          <!-- 언어 선택 영역 -->
+          <div class="site-drawer__lang-select">
+            <button type="button" class="site-drawer__lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="언어 선택 (현재 한국어)" aria-controls="site-drawer-lang-list">
+              <span class="site-drawer__lang-text">한국어</span>
+              <svg
+                class="site-drawer__lang-arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul id="site-drawer-lang-list" class="site-drawer__lang-list" role="listbox" aria-label="언어 선택 리스트" hidden>
+              <li role="option" aria-selected="true" class="site-drawer__lang-item site-drawer__lang-item--selected" data-value="ko" tabindex="0">한국어</li>
+              <li role="option" aria-selected="false" class="site-drawer__lang-item" data-value="en" tabindex="0">영어</li>
+              <li role="option" aria-selected="false" class="site-drawer__lang-item" data-value="ja" tabindex="0">일본어</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 상단 헤더 영역 -->
+    <header id="header" class="site-header">
+      <div class="container site-header__inner">
+        <button type="button" class="site-header__menu-btn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="site-drawer">
+          <!-- 햄버거 아이콘 -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M5 21C4.45 21 3.97917 20.8042 3.5875 20.4125C3.19583 20.0208 3 19.55 3 19V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H19C19.55 3 20.0208 3.19583 20.4125 3.5875C20.8042 3.97917 21 4.45 21 5V19C21 19.55 20.8042 20.0208 20.4125 20.4125C20.0208 20.8042 19.55 21 19 21H5ZM8 19V5H5V19H8ZM10 19H19V5H10V19Z"
+              fill="#333333"
+            />
+          </svg>
+        </button>
+
+        <!-- 헤더 중앙 타이틀 (AI 미식추천) -->
+        <div class="site-header__center site-header__title-text">AI 미식추천</div>
+
+        <div class="site-header__actions">
+          <!-- 프로필 아이콘 -->
+          <a href="#" class="site-header__profile-btn" aria-label="로그인">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+              <path
+                d="M6.90908 7.25794C6.0808 6.42966 5.66667 5.42701 5.66667 4.25C5.66667 3.07322 6.0808 2.0707 6.90908 1.24242C7.73712 0.41414 8.73965 0 9.91667 0C11.0937 0 12.0962 0.41414 12.9242 1.24242C13.7525 2.0707 14.1667 3.07322 14.1667 4.25C14.1667 5.42701 13.7525 6.42966 12.9242 7.25794C12.0962 8.08598 11.0937 8.5 9.91667 8.5C8.73965 8.5 7.73712 8.08598 6.90908 7.25794ZM0 18.7439V16.4117C0 15.8269 0.170236 15.2797 0.510708 14.7702C0.851417 14.2609 1.30959 13.8654 1.88523 13.5837C3.22209 12.9427 4.55978 12.4618 5.89829 12.1412C7.23681 11.8208 8.57626 11.6606 9.91667 11.6606C11.2571 11.6606 12.5965 11.8208 13.935 12.1412C15.2736 12.4618 16.6112 12.9427 17.9481 13.5837C18.5237 13.8654 18.9819 14.2609 19.3226 14.7702C19.6631 15.2797 19.8333 15.8269 19.8333 16.4117V18.7439H0Z"
+                fill="#333333"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 메인 챗봇 레이아웃 영역 -->
+    <main id="main">
+      <div class="main-container main-container--sub">
+        <!-- PC 대응을 위한 main-visual 영역 (모바일에서는 숨겨짐, 연두색 배경) -->
+        <div class="main-visual main-visual--sub main-visual--chatbot">
+          <div class="main-visual__content">
+            <div class="visual-panel__logo">
+              <img src="src/image/logo.png" alt="감성미식 로고" class="visual-panel__logo-img" />
+            </div>
+
+            <!-- 피그마 AI챗봇 PC 태그 요약 영역 -->
+            <div class="visual-panel__tags">
+              <span class="visual-panel__tag">#혼밥</span>
+              <span class="visual-panel__tag">#연인/부부</span>
+              <span class="visual-panel__tag">#점심</span>
+              <span class="visual-panel__tag">#애월읍</span>
+            </div>
+
+            <!-- 피그마 알약 모양 수정 버튼 -->
+            <a href="sub2.html" class="visual-panel__edit-btn">수정</a>
+          </div>
+        </div>
+
+        <!-- 콘텐츠 좌측 컬럼 (챗 영역) -->
+        <div class="main-container__left-col main-container__left-col--chatbot">
+          <section class="section section--chatbot" aria-labelledby="chatbot-title">
+            <div class="container container--chatbot">
+              <!-- 실시간 AI 대화 윈도우 -->
+              <div class="chatbot-window">
+                <div class="chatbot-messages" id="chatMessages">
+                  <!-- 첫 메세지 -->
+                  <div class="chatbot-row chatbot-row--bot">
+                    <div class="chatbot-bubble chatbot-bubble--start">
+                      <h3>안녕하세요!</h3>
+                      <p>지금 애월에서 점심 드시기 좋은 곳을 찾아드릴게요.<br />어떤 느낌의 식사를 원하세요?</p>
+                    </div>
+                  </div>
+
+                  <!-- 사용자 메시지 -->
+                  <div class="chatbot-row chatbot-row--user">
+                    <div class="chatbot-bubble chatbot-bubble--user">I want something spicy and warm, like a local soup</div>
+                  </div>
+
+                  <!-- 봇 메시지 2 (매칭 맛집 요약 및 리스트 제공, 줄바꿈 사양 적용) -->
+                  <div class="chatbot-row chatbot-row--bot">
+                    <div class="chatbot-bubble chatbot-bubble--bot">
+                      <p>"얼큰하다(spicy & hearty)" 감성에 딱 맞는 곳 4곳을 찾았어요!</p>
+
+                      <!-- 추천 맛집 슬라이더 영역 -->
+                      <div class="chatbot-recommend">
+                        <div class="recommend-slider">
+                          <!-- 맛집 카드 1 -->
+                          <a href="" class="recommend-card">
+                            <div class="recommend-card__image-wrap">
+                              <img src="src/image/food.png" alt="산지해장국 음식 이미지" class="recommend-card__img" />
+                              <span class="recommend-card__badge">QS92</span>
+                            </div>
+                            <h4 class="recommend-card__title">산지해장국</h4>
+                          </a>
+
+                          <!-- 맛집 카드 2 -->
+                          <a href="" class="recommend-card">
+                            <div class="recommend-card__image-wrap">
+                              <img src="src/image/food2.png" alt="우진해장국 음식 이미지" class="recommend-card__img" />
+                              <span class="recommend-card__badge">QS92</span>
+                            </div>
+                            <h4 class="recommend-card__title">우진해장국</h4>
+                          </a>
+
+                          <!-- 맛집 카드 3 -->
+                          <a href="" class="recommend-card">
+                            <div class="recommend-card__image-wrap">
+                              <img src="src/image/food3.png" alt="얼큰이식당 음식 이미지" class="recommend-card__img" />
+                              <span class="recommend-card__badge">QS92</span>
+                            </div>
+                            <h4 class="recommend-card__title">얼큰이식당</h4>
+                          </a>
+
+                          <!-- 맛집 카드 4 -->
+                          <a href="" class="recommend-card">
+                            <div class="recommend-card__image-wrap">
+                              <img src="src/image/food.png" alt="그집글라 음식 이미지" class="recommend-card__img" />
+                              <span class="recommend-card__badge">QS92</span>
+                            </div>
+                            <h4 class="recommend-card__title">그집글라</h4>
+                          </a>
+                        </div>
+
+                        <div class="recommend-card__info">
+                          <div class="recommend-card__footer">
+                            <div class="recommend-card__tags">
+                              <span class="recommend-card__tag">#얼큰하다</span>
+                              <span class="recommend-card__tag">#국물요리</span>
+                              <span class="recommend-card__tag">#혼밥환영</span>
+                            </div>
+                            <div class="recommend-card__actions">
+                              <a href="" class="recommend-card__btn">전체보기</a>
+                              <a href="" class="recommend-card__btn map">지도로 보기</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="chatbot-row chatbot-row--bot">
+                    <div class="chatbot-bubble chatbot-bubble--bot">
+                      <p>"얼큰하다(spicy & hearty)" 감성에 딱 맞는 곳 4곳을 찾았어요!</p>
+                    </div>
+                  </div>
+
+                  <!-- 로딩 상태 바 -->
+                  <div class="chatbot-loading">
+                    <span class="chatbot-loading__indicator" aria-hidden="true"></span>
+                    <span>리뷰 1,254건 분석중...</span>
+                  </div>
+                </div>
+
+                <!-- 하단 입력 영역 -->
+                <div class="chatbot-footer">
+                  <!-- 폼 전송 바 (Figma 버튼 및 텍스트 반영) -->
+                  <form class="chatbot-input-bar" id="chatInputForm" action="#" method="POST">
+                    <label for="chatInputField" class="sr-only">메시지 입력</label>
+                    <textarea type="text" id="chatInputField" class="chatbot-input-bar__field" placeholder="메시지를 입력하세요" required autocomplete="off"></textarea>
+                    <button type="submit" class="chatbot-input-bar__btn">전송</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <script src="src/js/modal.js"></script>
+    <script src="src/js/tab.js"></script>
+    <script src="src/js/common.js?v=7"></script>
+  </body>
+</html>

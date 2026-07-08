@@ -1,0 +1,79 @@
+/**
+ * Header — Site header
+ * 공통 헤더 패턴. 공식 배너/정부 상징/운영기관 식별자는
+ * 공공서비스/공공기관 중 요구사항이 확인된 경우에만 별도 추가한다.
+ *
+ * 구조:
+ *   <header id="header" class="site-header">
+ *     <div class="container site-header__inner">
+ *       <a class="site-header__brand" href="/">
+ *         <img src="/logo.svg" alt="기관명">
+ *         <span class="site-header__brand-name">기관명</span>
+ *       </a>
+ *       <nav class="site-header__nav" aria-label="주 메뉴">
+ *         <ul class="site-header__menu">
+ *           <li><a href="/about">소개</a></li>
+ *           <li><a href="/services">서비스</a></li>
+ *         </ul>
+ *       </nav>
+ *       <div class="site-header__actions">
+ *         <button class="btn btn--text btn--small">로그인</button>
+ *       </div>
+ *     </div>
+ *   </header>
+ *
+ * 페이지 기본 골격은 header/main/footer를 유지하고,
+ * main 내부 콘텐츠는 section > .container 단위로 구성한다.
+ */
+
+@layer components {
+  .site-header {
+    @apply bg-[var(--color-bg)] border-b border-[var(--color-border-light)] sticky top-0 z-[1020];
+
+  }
+
+  .site-header__inner {
+    @apply flex items-center gap-[2.4rem] h-[6.4rem] pc:h-[8rem];
+  }
+
+  /* 브랜드 영역 */
+  .site-header__brand {
+    @apply inline-flex items-center gap-[1.6rem] no-underline text-[var(--color-text)] text-[1.9rem] font-bold;
+
+
+  }
+
+  .site-header__brand img {
+    @apply h-[3.2rem] w-auto;
+  }
+
+  /* 주 메뉴 (PC) */
+  .site-header__nav {
+    @apply hidden flex-1 pc:block;
+  }
+
+  .site-header__menu {
+    @apply flex items-center gap-[1.6rem] list-none m-0 p-0;
+
+  }
+
+  .site-header__menu a {
+    @apply inline-flex items-center h-[4.8rem] px-[1.2rem] text-[var(--color-text)] font-bold no-underline [transition:color_0.15s_ease-in-out];
+  }
+
+  .site-header__menu a:hover { @apply [color:var(--color-primary)]; }
+  .site-header__menu a[aria-current="page"] { @apply [color:var(--color-primary)]; }
+
+  /* 우측 액션 영역 */
+  .site-header__actions {
+    @apply inline-flex items-center gap-[0.8rem] ms-auto;
+
+
+
+  }
+
+  /* 모바일 햄버거 토글 */
+  .site-header__toggle {
+    @apply inline-flex items-center justify-center w-[4.4rem] h-[4.4rem] bg-transparent border border-[var(--color-border)] rounded-[0.6rem] cursor-pointer pc:hidden;
+  }
+}

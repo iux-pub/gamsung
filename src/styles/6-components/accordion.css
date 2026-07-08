@@ -1,0 +1,52 @@
+/**
+ * Accordion — KRDS Accordion
+ *
+ * 구조: native <details>/<summary> 활용
+ *   <div class="accordion">
+ *     <details class="accordion__item">
+ *       <summary class="accordion__summary">질문 1</summary>
+ *       <div class="accordion__panel">답변 1</div>
+ *     </details>
+ *     <details class="accordion__item">...</details>
+ *   </div>
+ */
+
+@layer components {
+  .accordion {
+    @apply border-t border-[var(--color-border)];
+  }
+
+  .accordion__item {
+    @apply border-b border-[var(--color-border)];
+  }
+
+  .accordion__summary {
+    @apply flex items-center justify-between gap-[1.6rem] py-[1.6rem] px-0 min-h-[4.4rem] cursor-pointer list-none text-[var(--color-text)] text-[1.7rem] font-bold leading-[1.5] select-none [transition:color_0.15s_ease-in-out];
+  }
+
+  /* native marker 제거 */
+  .accordion__summary::-webkit-details-marker { @apply [display:none]; }
+  .accordion__summary::marker { @apply [content:""]; }
+
+  /* 화살표 indicator */
+  .accordion__summary::after {
+    @apply content-[''] shrink-0 w-[1.6rem] h-[1.6rem] [background:url("data:image/svg+xml;utf8,<svg_xmlns='http://www.w3.org/2000/svg'_width='16'_height='16'_viewBox='0_0_16_16'_fill='none'><path_d='M4_6L8_10L12_6'_stroke='%2333363D'_stroke-width='1.5'_stroke-linecap='round'_stroke-linejoin='round'/></svg>")_no-repeat_center_/_contain] [transition:transform_0.4s_ease-in-out];
+  }
+
+  .accordion__item[open] > .accordion__summary {
+    @apply text-[var(--color-primary)];
+  }
+
+  .accordion__item[open] > .accordion__summary::after {
+    @apply rotate-180;
+  }
+
+  .accordion__summary:hover {
+    @apply text-[var(--color-primary)];
+  }
+
+  .accordion__panel {
+    @apply text-[var(--color-text)] text-[1.7rem] leading-[1.7] pt-0 px-0 pb-[1.6rem];
+
+  }
+}

@@ -1,0 +1,7 @@
+- [x] `sub5.html` 뼈대 작성 (헤더, 사이드바, Skip Link 등 `sub.html` 이식)
+- [x] `sub5.html` 좌측 비주얼 패널 및 Swiper 슬라이더 구현
+- [x] `sub5.html` 우측 정보 패널 (날씨 만족도, 기본 정보, 영업시간, 지도 영역, 퀵 액션 바) 구현
+- [x] `src/styles/6-components/detail.css` 생성 및 스타일링
+- [x] `src/styles/6-components/index.css`에 `@import "./detail.css"` 추가
+- [x] CSS 빌드 및 린트 검증 수행
+- [x] 브라우저 렌더링 확인 및 수동 검증 수행

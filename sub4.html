@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>감성미식 - 맛집 추천 결과</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="dist/css/style.css">
+</head>
+<body>
+  <a href="#main" class="skip-to-content">본문 바로가기</a>
+
+  <!-- 모바일 및 PC 공용 사이드바 (드로워 메뉴) -->
+  <div class="site-drawer__backdrop" aria-hidden="true"></div>
+  <aside id="site-drawer" class="site-drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="전체 메뉴">
+    <div class="site-drawer__header">
+      <div class="site-drawer__brand">
+        <img src="/src/image/logo2.png" alt="감성미식 로고" class="site-drawer__logo-img">
+      </div>
+      <button type="button" class="site-drawer__close" aria-label="메뉴 닫기">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="site-drawer__body">
+      <!-- + 새 대화 버튼 -->
+      <a href="" type="button" class="site-drawer__new-chat-btn">
+        <span class="site-drawer__plus-icon" aria-hidden="true">+</span> 새 대화
+      </a>
+      
+      <!-- 최근 세션 섹션 -->
+      <div class="site-drawer__section">
+        <h3 class="site-drawer__section-title">최근 세션</h3>
+        <ul class="site-drawer__session-list">
+          <li class="site-drawer__session-item">
+            <div class="site-drawer__session-card">
+              <div class="site-drawer__session-info">
+                <h4 class="site-drawer__session-name">혼밥 · 애월 점심</h4>
+                <p class="site-drawer__session-desc">현지 감성 탐험가형 <span>"얼큰한 국물" → 추천 5곳</span></p>
+                <span class="site-drawer__session-time">3시간 전</span>
+              </div>
+              <button type="button" class="site-drawer__session-delete" aria-label="세션 삭제">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6H4V4H9V3H15V4H20V6H19V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM17 6H7V19H17V6ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z" fill="#5A928B"/>
+                </svg>
+              </button>
+            </div>
+          </li>
+          <li class="site-drawer__session-item">
+            <div class="site-drawer__session-card">
+              <div class="site-drawer__session-info">
+                <h4 class="site-drawer__session-name">동행 · 제주시 저녁</h4>
+                <p class="site-drawer__session-desc">미식 탐험가형 <span>"회/해산물" → 추천 4곳</span></p>
+                <span class="site-drawer__session-time">3시간 전</span>
+              </div>
+              <button type="button" class="site-drawer__session-delete" aria-label="세션 삭제">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6H4V4H9V3H15V4H20V6H19V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM17 6H7V19H17V6ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z" fill="#5A928B"/>
+                </svg>
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="site-drawer__footer">
+      <div class="site-drawer__user-actions">
+        <!-- 마이페이지 링크 -->
+        <a href="#" class="site-drawer__user-link">
+          <button type="button" class="site-drawer__session-user" aria-label="마이페이지">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+              <path d="M6.90908 7.25794C6.0808 6.42966 5.66667 5.42701 5.66667 4.25C5.66667 3.07322 6.0808 2.0707 6.90908 1.24242C7.73712 0.41414 8.73965 0 9.91667 0C11.0937 0 12.0962 0.41414 12.9242 1.24242C13.7525 2.0707 14.1667 3.07322 14.1667 4.25C14.1667 5.42701 13.7525 6.42966 12.9242 7.25794C12.0962 8.08598 11.0937 8.5 9.91667 8.5C8.73965 8.5 7.73712 8.08598 6.90908 7.25794ZM0 18.7439V16.4117C0 15.8269 0.170236 15.2797 0.510708 14.7702C0.851417 14.2609 1.30959 13.8654 1.88523 13.5837C3.22209 12.9427 4.55978 12.4618 5.89829 12.1412C7.23681 11.8208 8.57626 11.6606 9.91667 11.6606C11.2571 11.6606 12.5965 11.8208 13.935 12.1412C15.2736 12.4618 16.6112 12.9427 17.9481 13.5837C18.5237 13.8654 18.9819 14.2609 19.3226 14.7702C19.6631 15.2797 19.8333 15.8269 19.8333 16.4117V18.7439H0Z" fill="#333333"/>
+            </svg>
+          </button>
+          <span class="site-drawer__user-text">마이페이지</span>
+        </a>
+        
+        <!-- 언어 선택 영역 (커스텀 드롭다운) -->
+        <div class="site-drawer__lang-select">
+          <button type="button" class="site-drawer__lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="언어 선택 (현재 한국어)" aria-controls="site-drawer-lang-list">
+            <span class="site-drawer__lang-text">한국어</span>
+            <svg class="site-drawer__lang-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <ul id="site-drawer-lang-list" class="site-drawer__lang-list" role="listbox" aria-label="언어 선택 리스트" hidden>
+            <li role="option" aria-selected="true" class="site-drawer__lang-item site-drawer__lang-item--selected" data-value="ko" tabindex="0">한국어</li>
+            <li role="option" aria-selected="false" class="site-drawer__lang-item" data-value="en" tabindex="0">영어</li>
+            <li role="option" aria-selected="false" class="site-drawer__lang-item" data-value="ja" tabindex="0">일본어</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 상단 헤더 영역 -->
+  <header id="header" class="site-header">
+    <div class="container site-header__inner">
+      <button type="button" class="site-header__menu-btn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="site-drawer">
+        <!-- 햄버거 아이콘 -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M5 21C4.45 21 3.97917 20.8042 3.5875 20.4125C3.19583 20.0208 3 19.55 3 19V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H19C19.55 3 20.0208 3.19583 20.4125 3.5875C20.8042 3.97917 21 4.45 21 5V19C21 19.55 20.8042 20.0208 20.4125 20.4125C20.0208 20.8042 19.55 21 19 21H5ZM8 19V5H5V19H8ZM10 19H19V5H10V19Z" fill="#333333"/>
+        </svg>
+      </button>
+
+      <!-- 헤더 중앙 타이틀 노출 -->
+      <div class="site-header__center site-header__title-text">맛집 리스트</div>
+
+      <div class="site-header__actions">
+        <!-- 로그인 -->
+        <a href="" type="button" class="site-header__profile-btn" aria-label="로그인">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+            <path d="M6.90908 7.25794C6.0808 6.42966 5.66667 5.42701 5.66667 4.25C5.66667 3.07322 6.0808 2.0707 6.90908 1.24242C7.73712 0.41414 8.73965 0 9.91667 0C11.0937 0 12.0962 0.41414 12.9242 1.24242C13.7525 2.0707 14.1667 3.07322 14.1667 4.25C14.1667 5.42701 13.7525 6.42966 12.9242 7.25794C12.0962 8.08598 11.0937 8.5 9.91667 8.5C8.73965 8.5 7.73712 8.08598 6.90908 7.25794ZM0 18.7439V16.4117C0 15.8269 0.170236 15.2797 0.510708 14.7702C0.851417 14.2609 1.30959 13.8654 1.88523 13.5837C3.22209 12.9427 4.55978 12.4618 5.89829 12.1412C7.23681 11.8208 8.57626 11.6606 9.91667 11.6606C11.2571 11.6606 12.5965 11.8208 13.935 12.1412C15.2736 12.4618 16.6112 12.9427 17.9481 13.5837C18.5237 13.8654 18.9819 14.2609 19.3226 14.7702C19.6631 15.2797 19.8333 15.8269 19.8333 16.4117V18.7439H0Z" fill="#333333"/>
+          </svg>
+        </a>
+      </div>
+      <nav id="gnb-menu" class="site-header__nav" aria-label="주 메뉴" hidden>
+        <ul class="site-header__menu">
+          <li><a href="main.html">홈</a></li>
+          <li><a href="detail.html">맛집 탐색(지도)</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="main-container main-container--sub">
+      
+      <!-- 지도 및 비주얼 영역 (sub.html의 main-visual 스타일 상속 + 이미지 지도 삽입을 위한 빈 영역 확보) -->
+      <div class="main-visual main-visual--sub recommend-result__map-placeholder">
+        <div class="main-visual__content">
+          <!-- 이미지 지도가 들어갈 빈 영역 -->
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15719.802182823936!2d126.492439!3d33.5074941!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x350d55758e387b5f%3A0xa52a0399b21b661d!2z7Ya17Yq464uk6riP66qp7IKs!5e0!3m2!1sko!2skr!4v1751790007640!5m2!1sko!2skr" width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="식당 위치 지도"></iframe>
+        </div>
+        <!-- 지도 열고 닫기 버튼 -->
+        <div class="map-btn__wrap">
+          <button class="map-btn" type="button"></button>
+        </div>
+      </div>
+
+      <!-- 좌측 컬럼 (맛집 추천 결과 콘텐츠 영역) -->
+      <div class="main-container__left-col">
+        <div class="recommend-result__content-wrap">
+          
+          <!-- 감성 클러스터 필터 섹션 -->
+          <section class="section section--recommend-filter" aria-labelledby="filter-title">
+            <div class="container container--recommend-filter">
+              <div class="recommend-result__filter-card">
+                <h3 id="filter-title" class="recommend-result__filter-title">감성 클러스터</h3>
+                <div class="recommend-result__filter-chips" role="radiogroup" aria-label="감성 필터 선택">
+                  <input type="radio" name="filter_chip" id="filter-chip-1" value="얼큰·든든" class="chip-radio" checked>
+                  <label for="filter-chip-1" class="recommend-result__filter-chip">
+                    얼큰·든든 (2)
+                  </label>
+                  
+                  <input type="radio" name="filter_chip" id="filter-chip-2" value="시원·깔끔" class="chip-radio">
+                  <label for="filter-chip-2" class="recommend-result__filter-chip">
+                    시원·깔끔 (1)
+                  </label>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 맛집 리스트 섹션 -->
+          <section class="section section--recommend-list" aria-labelledby="result-title">
+            <div class="container container--recommend-list">
+              <div class="recommend-result__list-header">
+                <h2 id="result-title" class="recommend-result__list-title">
+                  맛집 추천 결과 (3건)
+                </h2>
+                <div class="recommend-result__view-toggles" role="group" aria-label="리스트보기">
+                  <button type="button" class="recommend-result__toggle-btn recommend-result__toggle-btn--active" aria-label="리스트형 보기" aria-pressed="true">
+                    <!-- 리스트 아이콘 -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M3 19V16.923H5.077V19H3ZM7.84625 19V16.923H21V19H7.84625ZM3 13.0385V10.9615H5.077V13.0385H3ZM7.84625 13.0385V10.9615H21V13.0385H7.84625ZM3 7.077V5H5.077V7.077H3ZM7.84625 7.077V5H21V7.077H7.84625Z" fill="currentColor"/>
+                    </svg>
+                  </button>
+                  <button type="button" class="recommend-result__toggle-btn  " aria-label="썸네일형 보기" aria-pressed="false">
+                    <!-- 썸네일 아이콘 -->
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 21C4.45 21 3.97917 20.8042 3.5875 20.4125C3.19583 20.0208 3 19.55 3 19V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H19C19.55 3 20.0208 3.19583 20.4125 3.5875C20.8042 3.97917 21 4.45 21 5V19C21 19.55 20.8042 20.0208 20.4125 20.4125C20.0208 20.8042 19.55 21 19 21H5ZM5 19H19V5H5V19ZM6 17H18L14.25 12L11.25 16L9 13L6 17Z" fill="currentColor"/>
+                    </svg>
+
+                  </button>
+                </div>
+              </div>
+
+              <!-- 맛집 리스트 -->
+              <ul class="recommend-result__list">
+                <li>
+                  <a href="" class="recommend-result__card">
+                  <div class="recommend-result__card-thumb">
+                    <img src="src/image/food.png" alt="산지해장국 음식 전경" class="recommend-result__card-img">
+                    <span class="recommend-result__card-badge">QS92</span>
+                  </div>
+                  <div class="recommend-result__card-info">
+                    <div class="recommend-result__card-header">
+                      <h3 class="recommend-result__card-name">산지해장국</h3>
+                    </div>
+                    <p class="recommend-result__card-meta">
+                      아라1동·도보 8분·영업중
+                    </p>
+                    <div class="recommend-result__card-tags">
+                      <span class="recommend-result__card-tag">#얼큰하다</span>
+                      <span class="recommend-result__card-tag">#국물요리</span>
+                      <span class="recommend-result__card-tag">#편안한곳</span>
+                    </div>
+                    <p class="recommend-result__card-review">
+                      리뷰 1,254건 분석
+                    </p>
+                  </div>
+                  </a>
+                </li>
+                
+                <li>
+                  <a href="" class="recommend-result__card">
+                  <div class="recommend-result__card-thumb">
+                    <img src="src/image/food2.png" alt="산지해장국 내관 및 상차림" class="recommend-result__card-img">
+                    <span class="recommend-result__card-badge">QS92</span>
+                  </div>
+                  <div class="recommend-result__card-info">
+                    <div class="recommend-result__card-header">
+                      <h3 class="recommend-result__card-name">산지해장국</h3>
+                    </div>
+                    <p class="recommend-result__card-meta">
+                      아라1동·도보 8분·영업중
+                    </p>
+                    <div class="recommend-result__card-tags">
+                      <span class="recommend-result__card-tag">#얼큰하다</span>
+                      <span class="recommend-result__card-tag">#국물요리</span>
+                      <span class="recommend-result__card-tag">#편안한곳</span>
+                    </div>
+                    <p class="recommend-result__card-review">
+                      리뷰 1,254건 분석
+                    </p>
+                  </div>
+                  </a>
+                </li>
+                
+                <li>
+                  <a href="" class="recommend-result__card">
+                  <div class="recommend-result__card-thumb">
+                    <img src="src/image/food3.png" alt="산지해장국 대표 식사 사진" class="recommend-result__card-img">
+                    <span class="recommend-result__card-badge">QS92</span>
+                  </div>
+                  <div class="recommend-result__card-info">
+                    <div class="recommend-result__card-header">
+                      <h3 class="recommend-result__card-name">산지해장국</h3>
+                    </div>
+                    <p class="recommend-result__card-meta">
+                      아라1동·도보 8분·영업중
+                    </p>
+                    <div class="recommend-result__card-tags">
+                      <span class="recommend-result__card-tag">#얼큰하다</span>
+                      <span class="recommend-result__card-tag">#국물요리</span>
+                      <span class="recommend-result__card-tag">#편안한곳</span>
+                    </div>
+                    <p class="recommend-result__card-review">
+                      리뷰 1,254건 분석
+                    </p>
+                  </div>
+                  </a>
+                </li>
+              </ul>
+
+              <!-- 맛집 썸네일 리스트 -->
+              <ul class="recommend-result__thum">
+                
+                <li>
+                  <a href="" class="recommend-result__card">
+                  <div class="recommend-result__card-thumb">
+                    <img src="src/image/food.png" alt="산지해장국 음식 전경" class="recommend-result__card-img">
+                    <span class="recommend-result__card-badge">QS92</span>
+                  </div>
+                  <div class="recommend-result__card-info">
+                    <div class="recommend-result__card-header">
+                      <h3 class="recommend-result__card-name">산지해장국</h3>
+                    </div>
+                    <p class="recommend-result__card-meta">
+                      아라1동·도보 8분·영업중
+                    </p>
+                    <div class="recommend-result__card-tags">
+                      <span class="recommend-result__card-tag">#얼큰하다</span>
+                      <span class="recommend-result__card-tag">#국물요리</span>
+                      <span class="recommend-result__card-tag">#편안한곳</span>
+                    </div>
+                    <p class="recommend-result__card-review">
+                      리뷰 1,254건 분석
+                    </p>
+                  </div>
+                  </a>
+                </li>
+                
+                <li>
+                  <a href="" class="recommend-result__card">
+                  <div class="recommend-result__card-thumb">
+                    <img src="src/image/food2.png" alt="산지해장국 내관 및 상차림" class="recommend-result__card-img">
+                    <span class="recommend-result__card-badge">QS92</span>
+                  </div>
+                  <div class="recommend-result__card-info">
+                    <div class="recommend-result__card-header">
+                      <h3 class="recommend-result__card-name">산지해장국</h3>
+                    </div>
+                    <p class="recommend-result__card-meta">
+                      아라1동·도보 8분·영업중
+                    </p>
+                    <div class="recommend-result__card-tags">
+                      <span class="recommend-result__card-tag">#얼큰하다</span>
+                      <span class="recommend-result__card-tag">#국물요리</span>
+                      <span class="recommend-result__card-tag">#편안한곳</span>
+                    </div>
+                    <p class="recommend-result__card-review">
+                      리뷰 1,254건 분석
+                    </p>
+                  </div>
+                  </a>
+                </li>
+                
+                <li>
+                  <a href="" class="recommend-result__card">
+                  <div class="recommend-result__card-thumb">
+                    <img src="src/image/food3.png" alt="산지해장국 대표 식사 사진" class="recommend-result__card-img">
+                    <span class="recommend-result__card-badge">QS92</span>
+                  </div>
+                  <div class="recommend-result__card-info">
+                    <div class="recommend-result__card-header">
+                      <h3 class="recommend-result__card-name">산지해장국</h3>
+                    </div>
+                    <p class="recommend-result__card-meta">
+                      아라1동·도보 8분·영업중
+                    </p>
+                    <div class="recommend-result__card-tags">
+                      <span class="recommend-result__card-tag">#얼큰하다</span>
+                      <span class="recommend-result__card-tag">#국물요리</span>
+                      <span class="recommend-result__card-tag">#편안한곳</span>
+                    </div>
+                    <p class="recommend-result__card-review">
+                      리뷰 1,254건 분석
+                    </p>
+                  </div>
+                  </a>
+                </li>
+              </ul>
+            </section>
+
+
+            <!-- 하단 재추천 버튼 -->
+            <div class="recommend-result__actions">
+              <button type="button" class="btn btn--primary recommend-result__retry-btn">
+                조건 바꿔서 다시 추천받기
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="src/js/modal.js"></script>
+  <script src="src/js/tab.js"></script>
+  <script src="src/js/common.js?v=7"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+/**
+ * Side Panel — KRDS Help panel 패턴 응용
+ *
+ * 우측에서 슬라이드 인. 모달과 달리 본문 스크롤 차단하지 않음.
+ *
+ * 구조:
+ *   <aside class="side-panel" role="dialog" aria-labelledby="panel-title">
+ *     <header class="side-panel__header">
+ *       <h2 id="panel-title" class="side-panel__title">상세 정보</h2>
+ *       <button class="side-panel__close" aria-label="닫기">×</button>
+ *     </header>
+ *     <div class="side-panel__body">...</div>
+ *     <footer class="side-panel__footer">
+ *       <button class="btn btn--primary">저장</button>
+ *     </footer>
+ *   </aside>
+ */
+
+@layer components {
+  .side-panel {
+    @apply fixed top-0 right-0 bottom-0 w-full max-w-[48rem] z-[1050] flex flex-col bg-[var(--color-surface)] shadow-[0_0_0.2rem_0_#00000014,_0_0.8rem_1.6rem_0_#0000001f] [transform:translateX(100%)] [transition:transform_0.4s_ease-in-out];
+  }
+
+  .side-panel[aria-hidden="false"],
+  .side-panel--open {
+    @apply [transform:translateX(0)];
+  }
+
+  .side-panel--small  { @apply [max-width:36rem]; }
+  .side-panel--medium { @apply [max-width:48rem]; }
+  .side-panel--large  { @apply [max-width:64rem]; }
+
+  .side-panel__header {
+    @apply flex items-start justify-between gap-[1.6rem] p-[2.4rem] border-b border-[var(--color-border-light)];
+  }
+
+  .side-panel__title {
+    @apply text-[2.4rem] font-bold leading-[1.5] text-[var(--color-text)] m-0;
+  }
+
+  .side-panel__close {
+    @apply shrink-0 w-[4.4rem] h-[4.4rem] flex items-center justify-center bg-transparent border-0 rounded-[0.6rem] text-[var(--color-text-subtle)] text-[2.4rem] leading-none cursor-pointer;
+
+
+
+  }
+
+  .side-panel__close:hover {
+    @apply bg-[var(--color-bg-subtler)] text-[var(--color-text)];
+  }
+
+  .side-panel__body {
+    @apply flex-1 overflow-y-auto p-[2.4rem] text-[var(--color-text)];
+  }
+
+  .side-panel__footer {
+    @apply flex items-center justify-end gap-[1.6rem] p-[1.6rem_2.4rem_2.4rem] border-t border-[var(--color-border-light)];
+  }
+}

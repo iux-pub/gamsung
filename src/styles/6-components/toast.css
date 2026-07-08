@@ -1,0 +1,59 @@
+/**
+ * Toast — KRDS Toast (모바일) + 데스크탑 사용
+ *
+ * 일시적 피드백 메시지. 화면 우측 상단/하단에 잠시 노출 후 자동 사라짐.
+ *
+ * 구조:
+ *   <div class="toast-stack">
+ *     <div class="toast toast--success" role="status">
+ *       <span class="toast__icon" aria-hidden="true">✓</span>
+ *       <p class="toast__message">저장되었습니다</p>
+ *       <button class="toast__close" aria-label="닫기">×</button>
+ *     </div>
+ *   </div>
+ */
+
+@layer components {
+  /* 토스트 컨테이너 — 화면 우측 상단 또는 하단에 고정 */
+  .toast-stack {
+    @apply fixed z-[1070] flex flex-col gap-[1.6rem] pointer-events-none w-[36rem] top-[2.4rem] right-[2.4rem] max-w-[calc(100vw_-_2.4rem_*_2)];
+
+  }
+
+  .toast-stack--bottom {
+  @apply top-[auto] bottom-[2.4rem];
+  }
+
+  /* 개별 토스트 */
+  .toast {
+    @apply flex items-start gap-[1.6rem] p-[1.6rem] bg-[var(--color-surface)] border border-[var(--color-border-light)] rounded-[0.6rem] shadow-[0_0_0.2rem_0_#00000014,_0_0.8rem_1.6rem_0_#0000001f] pointer-events-auto [animation:toast-slide-in_0.4s_cubic-bezier(0.0,_0.0,_0.2,_1)];
+  }
+
+  @keyframes toast-slide-in {
+    from { opacity: 0; transform: translateX(2rem); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .toast__icon {
+    @apply shrink-0 w-[2.4rem] h-[2.4rem] flex items-center justify-center text-[1.8rem] leading-none;
+
+
+  }
+
+  .toast__message {
+    @apply flex-1 m-0 text-[var(--color-text)] text-[1.7rem] leading-[1.5];
+  }
+
+  .toast__close {
+    @apply shrink-0 bg-transparent border-0 text-[var(--color-text-subtle)] text-[1.8rem] cursor-pointer p-0 w-[2rem] h-[2rem] flex items-center justify-center;
+
+
+
+  }
+
+  /* Variants */
+  .toast--info    .toast__icon { @apply [color:var(--color-info)]; }
+  .toast--success .toast__icon { @apply [color:var(--color-success)]; }
+  .toast--warning .toast__icon { @apply [color:var(--color-warning)]; }
+  .toast--danger  .toast__icon { @apply [color:var(--color-danger)]; }
+}

@@ -1,0 +1,70 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-selector-bem-pattern"],
+  "defaultSeverity": "warning",
+  "rules": {
+    "selector-class-pattern": [
+      "^[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$",
+      {
+        "message": "BEM 네이밍 규칙: block__element--modifier (소문자, 하이픈)",
+        "severity": "error"
+      }
+    ],
+    "plugin/selector-bem-pattern": {
+      "preset": "bem",
+      "presetOptions": {
+        "namespace": ""
+      },
+      "componentName": "[a-z][a-z0-9]*(-[a-z0-9]+)*",
+      "componentSelectors": {
+        "initial": "^\\.{componentName}(?:__[a-z0-9]+(?:-[a-z0-9]+)*)?(?:--[a-z0-9]+(?:-[a-z0-9]+)*)?(?:[:.\\[].*)?$",
+        "combined": "^\\.combined-{componentName}"
+      },
+      "ignoreSelectors": [
+        ":root",
+        "::before",
+        "::after",
+        "::backdrop",
+        "::placeholder",
+        "::selection"
+      ]
+    },
+    "no-duplicate-selectors": [true, { "severity": "error" }],
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "tailwind",
+          "theme",
+          "apply",
+          "layer",
+          "import",
+          "config",
+          "plugin",
+          "source",
+          "utility",
+          "variant",
+          "custom-variant",
+          "reference"
+        ]
+      }
+    ],
+    "declaration-property-value-no-unknown": [
+      true,
+      {
+        "severity": "warning",
+        "ignoreProperties": {
+          "/.*/": ["/^var\\(--/", "/^env\\(/"]
+        }
+      }
+    ],
+    "color-no-invalid-hex": [true, { "severity": "error" }],
+    "no-descending-specificity": null,
+    "import-notation": null,
+    "media-feature-range-notation": null,
+    "selector-not-notation": null,
+    "alpha-value-notation": null,
+    "color-function-notation": null,
+    "declaration-block-single-line-max-declarations": null
+  }
+}

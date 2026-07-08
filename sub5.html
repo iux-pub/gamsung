@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>산지해장국 본점 - 맛집 상세정보</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="dist/css/style.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-to-content">본문 바로가기</a>
+
+    <!-- 모바일 및 PC 공용 사이드바 (드로워 메뉴) -->
+    <div class="site-drawer__backdrop" aria-hidden="true"></div>
+    <aside id="site-drawer" class="site-drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="전체 메뉴">
+      <div class="site-drawer__header">
+        <div class="site-drawer__brand">
+          <img src="src/image/logo2.png" alt="감성미식 로고" class="site-drawer__logo-img" />
+        </div>
+        <button type="button" class="site-drawer__close" aria-label="메뉴 닫기">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="site-drawer__body">
+        <a href="sub2.html" class="site-drawer__new-chat-btn"> <span class="site-drawer__plus-icon" aria-hidden="true">+</span> 새 대화 </a>
+
+        <div class="site-drawer__section">
+          <h3 class="site-drawer__section-title">최근 세션</h3>
+          <ul class="site-drawer__session-list">
+            <li class="site-drawer__session-item">
+              <div class="site-drawer__session-card">
+                <div class="site-drawer__session-info">
+                  <h4 class="site-drawer__session-name">혼밥 · 애월 점심</h4>
+                  <p class="site-drawer__session-desc">현지 감성 탐험가형 <span>"얼큰한 국물" → 추천 5곳</span></p>
+                  <span class="site-drawer__session-time">3시간 전</span>
+                </div>
+                <button type="button" class="site-drawer__session-delete" aria-label="세션 삭제">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6H4V4H9V3H15V4H20V6H19V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM17 6H7V19H17V6ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z"
+                      fill="#5A928B"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-drawer__footer">
+        <div class="site-drawer__user-actions">
+          <!-- 마이페이지 링크 -->
+          <a href="#" class="site-drawer__user-link">
+            <button type="button" class="site-drawer__session-user" aria-label="마이페이지">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                <path
+                  d="M6.90908 7.25794C6.0808 6.42966 5.66667 5.42701 5.66667 4.25C5.66667 3.07322 6.0808 2.0707 6.90908 1.24242C7.73712 0.41414 8.73965 0 9.91667 0C11.0937 0 12.0962 0.41414 12.9242 1.24242C13.7525 2.0707 14.1667 3.07322 14.1667 4.25C14.1667 5.42701 13.7525 6.42966 12.9242 7.25794C12.0962 8.08598 11.0937 8.5 9.91667 8.5C8.73965 8.5 7.73712 8.08598 6.90908 7.25794ZM0 18.7439V16.4117C0 15.8269 0.170236 15.2797 0.510708 14.7702C0.851417 14.2609 1.30959 13.8654 1.88523 13.5837C3.22209 12.9427 4.55978 12.4618 5.89829 12.1412C7.23681 11.8208 8.57626 11.6606 9.91667 11.6606C11.2571 11.6606 12.5965 11.8208 13.935 12.1412C15.2736 12.4618 16.6112 12.9427 17.9481 13.5837C18.5237 13.8654 18.9819 14.2609 19.3226 14.7702C19.6631 15.2797 19.8333 15.8269 19.8333 16.4117V18.7439H0Z"
+                  fill="#333333"
+                />
+              </svg>
+            </button>
+            <span class="site-drawer__user-text">마이페이지</span>
+          </a>
+
+          <!-- 언어 선택 영역 (커스텀 드롭다운) -->
+          <div class="site-drawer__lang-select">
+            <button type="button" class="site-drawer__lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="언어 선택 (현재 한국어)" aria-controls="site-drawer-lang-list">
+              <span class="site-drawer__lang-text">한국어</span>
+              <svg
+                class="site-drawer__lang-arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul id="site-drawer-lang-list" class="site-drawer__lang-list" role="listbox" aria-label="언어 선택 리스트" hidden>
+              <li role="option" aria-selected="true" class="site-drawer__lang-item site-drawer__lang-item--selected" data-value="ko" tabindex="0">한국어</li>
+              <li role="option" aria-selected="false" class="site-drawer__lang-item" data-value="en" tabindex="0">영어</li>
+              <li role="option" aria-selected="false" class="site-drawer__lang-item" data-value="ja" tabindex="0">일본어</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 상단 헤더 영역 -->
+    <header id="header" class="site-header">
+      <div class="container site-header__inner">
+        <button type="button" class="site-header__menu-btn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="site-drawer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M5 21C4.45 21 3.97917 20.8042 3.5875 20.4125C3.19583 20.0208 3 19.55 3 19V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H19C19.55 3 20.0208 3.19583 20.4125 3.5875C20.8042 3.97917 21 4.45 21 5V19C21 19.55 20.8042 20.0208 20.4125 20.4125C20.0208 20.8042 19.55 21 19 21H5ZM8 19V5H5V19H8ZM10 19H19V5H10V19Z"
+              fill="#333333"
+            />
+          </svg>
+        </button>
+
+        <div class="site-header__center site-header__title-text">맛집 상세정보</div>
+
+        <div class="site-header__actions">
+          <a href="" class="site-header__profile-btn" aria-label="로그인">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+              <path
+                d="M6.90908 7.25794C6.0808 6.42966 5.66667 5.42701 5.66667 4.25C5.66667 3.07322 6.0808 2.0707 6.90908 1.24242C7.73712 0.41414 8.73965 0 9.91667 0C11.0937 0 12.0962 0.41414 12.9242 1.24242C13.7525 2.0707 14.1667 3.07322 14.1667 4.25C14.1667 5.42701 13.7525 6.42966 12.9242 7.25794C12.0962 8.08598 11.0937 8.5 9.91667 8.5C8.73965 8.5 7.73712 8.08598 6.90908 7.25794ZM0 18.7439V16.4117C0 15.8269 0.170236 15.2797 0.510708 14.7702C0.851417 14.2609 1.30959 13.8654 1.88523 13.5837C3.22209 12.9427 4.55978 12.4618 5.89829 12.1412C7.23681 11.8208 8.57626 11.6606 9.91667 11.6606C11.2571 11.6606 12.5965 11.8208 13.935 12.1412C15.2736 12.4618 16.6112 12.9427 17.9481 13.5837C18.5237 13.8654 18.9819 14.2609 19.3226 14.7702C19.6631 15.2797 19.8333 15.8269 19.8333 16.4117V18.7439H0Z"
+                fill="#333333"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="main-container main-container--sub">
+        <!-- 상단바: 식당명 + 퀵 액션 (PC 한 줄 / 모바일 이미지 위·아래로 분리) -->
+        <div class="detail-topbar">
+          <h2 class="detail-topbar__name">산지해장국 본점</h2>
+          <div class="detail-topbar__actions">
+            <span class="detail-topbar__qs-badge" aria-label="미식 추천 지수 92%">QS92</span>
+
+            <!-- 클래스 detail-topbar__btn--active 추가 -->
+            <button type="button" class="detail-topbar__btn detail-topbar__btn--bookmark" aria-pressed="false" aria-label="북마크 등록">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="icon-heart">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
+            <button type="button" class="detail-topbar__btn detail-topbar__btn--share" aria-label="공유하기">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M17 22C16.1667 22 15.4583 21.7083 14.875 21.125C14.2917 20.5417 14 19.8333 14 19C14 18.9 14.025 18.6667 14.075 18.3L7.05 14.2C6.78333 14.45 6.475 14.6458 6.125 14.7875C5.775 14.9292 5.4 15 5 15C4.16667 15 3.45833 14.7083 2.875 14.125C2.29167 13.5417 2 12.8333 2 12C2 11.1667 2.29167 10.4583 2.875 9.875C3.45833 9.29167 4.16667 9 5 9C5.4 9 5.775 9.07083 6.125 9.2125C6.475 9.35417 6.78333 9.55 7.05 9.8L14.075 5.7C14.0417 5.58333 14.0208 5.47083 14.0125 5.3625C14.0042 5.25417 14 5.13333 14 5C14 4.16667 14.2917 3.45833 14.875 2.875C15.4583 2.29167 16.1667 2 17 2C17.8333 2 18.5417 2.29167 19.125 2.875C19.7083 3.45833 20 4.16667 20 5C20 5.83333 19.7083 6.54167 19.125 7.125C18.5417 7.70833 17.8333 8 17 8C16.6 8 16.225 7.92917 15.875 7.7875C15.525 7.64583 15.2167 7.45 14.95 7.2L7.925 11.3C7.95833 11.4167 7.97917 11.5292 7.9875 11.6375C7.99583 11.7458 8 11.8667 8 12C8 12.1333 7.99583 12.2542 7.9875 12.3625C7.97917 12.4708 7.95833 12.5833 7.925 12.7L14.95 16.8C15.2167 16.55 15.525 16.3542 15.875 16.2125C16.225 16.0708 16.6 16 17 16C17.8333 16 18.5417 16.2917 19.125 16.875C19.7083 17.4583 20 18.1667 20 19C20 19.8333 19.7083 20.5417 19.125 21.125C18.5417 21.7083 17.8333 22 17 22ZM17 20C17.2833 20 17.5208 19.9042 17.7125 19.7125C17.9042 19.5208 18 19.2833 18 19C18 18.7167 17.9042 18.4792 17.7125 18.2875C17.5208 18.0958 17.2833 18 17 18C16.7167 18 16.4792 18.0958 16.2875 18.2875C16.0958 18.4792 16 18.7167 16 19C16 19.2833 16.0958 19.5208 16.2875 19.7125C16.4792 19.9042 16.7167 20 17 20ZM5 13C5.28333 13 5.52083 12.9042 5.7125 12.7125C5.90417 12.5208 6 12.2833 6 12C6 11.7167 5.90417 11.4792 5.7125 11.2875C5.52083 11.0958 5.28333 11 5 11C4.71667 11 4.47917 11.0958 4.2875 11.2875C4.09583 11.4792 4 11.7167 4 12C4 12.2833 4.09583 12.5208 4.2875 12.7125C4.47917 12.9042 4.71667 13 5 13ZM17.7125 5.7125C17.9042 5.52083 18 5.28333 18 5C18 4.71667 17.9042 4.47917 17.7125 4.2875C17.5208 4.09583 17.2833 4 17 4C16.7167 4 16.4792 4.09583 16.2875 4.2875C16.0958 4.47917 16 4.71667 16 5C16 5.28333 16.0958 5.52083 16.2875 5.7125C16.4792 5.90417 16.7167 6 17 6C17.2833 6 17.5208 5.90417 17.7125 5.7125Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 우측 비주얼 고정 패널 (PC: 우측 648px 고정 및 sticky, 모바일: 최상단 노출) -->
+        <div class="main-visual main-visual--sub detail-visual-panel">
+          <!-- 대표 이미지 슬라이더 (Swiper.js 탑재) -->
+          <div class="swiper detail-slider" aria-roledescription="carousel" aria-label="대표 사진 슬라이더">
+            <div class="swiper-wrapper detail-slider__wrapper">
+              <!-- 슬라이드 1 -->
+              <div class="swiper-slide detail-slider__slide">
+                <div class="detail-slider__img" style="background-image: url('src/image/food.png')"></div>
+              </div>
+              <!-- 슬라이드 2 -->
+              <div class="swiper-slide detail-slider__slide">
+                <div class="detail-slider__img" style="background-image: url('src/image/food2.png')"></div>
+              </div>
+              <!-- 슬라이드 3 -->
+              <div class="swiper-slide detail-slider__slide">
+                <div class="detail-slider__img" style="background-image: url('src/image/food3.png')"></div>
+              </div>
+            </div>
+
+            <div class="detail-slider__pagination"></div>
+            <button type="button" class="detail-slider__nav detail-slider__nav--prev" aria-label="이전 사진">‹</button>
+            <button type="button" class="detail-slider__nav detail-slider__nav--next" aria-label="다음 사진">›</button>
+          </div>
+
+          <!-- 썸네일 리스트 -->
+          <div class="detail-thumbnails" aria-label="사진 목록 썸네일">
+            <button type="button" class="detail-thumbnails__item detail-thumbnails__item--active" aria-label="1번째 대표 사진 보기" style="background-image: url('src/image/food.png')"></button>
+            <button type="button" class="detail-thumbnails__item" aria-label="2번째 사진 보기" style="background-image: url('src/image/food2.png')"></button>
+            <button type="button" class="detail-thumbnails__item" aria-label="3번째 사진 보기" style="background-image: url('src/image/food3.png')"></button>
+          </div>
+        </div>
+
+        <!-- 좌측 컬럼 (PC: 좌측 1열 유연한 너비 및 개별 스크롤, 모바일: 아래로 노출) -->
+        <div class="main-container__left-col">
+          <!-- 정보 패널 -->
+          <div class="detail-info-panel">
+            <!-- 식당 정보 헤더 카드 -->
+            <div class="detail-card detail-header-card">
+              <!-- 주소 / 영업시간 간단 리스트 -->
+              <ul class="detail-header-card__meta-list">
+                <li>
+                  <span class="detail-header-card__meta-label">주소</span>
+                  <span class="detail-header-card__meta-val">제주특별자치도 제주시 귀아랑길 24 (연동)</span>
+                </li>
+                <li>
+                  <span class="detail-header-card__meta-label">영업시간</span>
+                  <span class="detail-header-card__meta-val">06:00 ~ 15:00 · <span class="text-primary-green">영업중</span></span>
+                </li>
+              </ul>
+
+              <!-- 날씨/상황 추천 띠 배너 -->
+              <div class="detail-header-card__weather-banner">
+                <div class="weather__icon-wrap">
+                  <span class="detail-header-card__weather-icon">☔</span>
+                  <strong>지금 비가 와요</strong>
+                </div>
+                <p class="detail-header-card__weather-text">비 오는 날 "뜨끈한 국물" 감성 만족도가 23% 높아요</p>
+              </div>
+            </div>
+
+            <!-- 사용자 평가 감성 피드백 (카드 없이 배경 위 노출 — Figma 시안) -->
+            <div class="sentiment-card">
+              <blockquote class="sentiment-card__quote">"국물이 얼큰하고 속이 풀려요"</blockquote>
+              <div class="sentiment-card__tags">
+                <span class="sentiment-card__tag">
+                  <span class="sentiment-card__tag-label">#얼큰하다</span>
+                  <span class="sentiment-card__tag-value">92%</span>
+                </span>
+                <span class="sentiment-card__tag">
+                  <span class="sentiment-card__tag-label">#든든하다</span>
+                  <span class="sentiment-card__tag-value">87%</span>
+                </span>
+                <span class="sentiment-card__tag">
+                  <span class="sentiment-card__tag-label">#친절해요</span>
+                  <span class="sentiment-card__tag-value">81%</span>
+                </span>
+              </div>
+              <p class="sentiment-card__source">리뷰 1,254건 기반</p>
+            </div>
+
+            <!-- 기본 정보 (타이틀은 카드 밖 상단 — Figma 시안) -->
+            <section class="detail-section">
+              <h3 class="detail-section__title">기본정보</h3>
+              <div class="detail-card info-card">
+                <dl class="detail-info-list">
+                  <div class="detail-info-list__item">
+                    <dt class="detail-info-list__label">대표메뉴</dt>
+                    <dd class="detail-info-list__value">
+                      <div class="menu-grid">
+                        <span class="menu-grid__name">소고기해장국</span>
+                        <span class="menu-grid__price">10,000원</span>
+                        <span class="menu-grid__name">소내장탕</span>
+                        <span class="menu-grid__price">11,000원</span>
+                        <span class="menu-grid__name">소주 맥주</span>
+                        <span class="menu-grid__price">4,000원</span>
+                        <span class="menu-grid__name">막걸리</span>
+                        <span class="menu-grid__price">3,000원</span>
+                      </div>
+                    </dd>
+                  </div>
+                  <div class="detail-info-list__item">
+                    <dt class="detail-info-list__label">전화번호</dt>
+                    <dd class="detail-info-list__value">
+                      <a href="tel:064-777-8888" class="detail-info-list__link">064-777-8888</a>
+                    </dd>
+                  </div>
+                  <div class="detail-info-list__item">
+                    <dt class="detail-info-list__label">편의시설</dt>
+                    <dd class="detail-info-list__value">Take out, 예약 가능, 주차장 (없음)</dd>
+                  </div>
+                </dl>
+              </div>
+            </section>
+
+            <!-- 지도 영역 (타이틀은 카드 밖 상단 — Figma 시안) -->
+            <section class="detail-section" aria-label="지도 위치 정보">
+              <h3 class="detail-section__title">지도로 보기</h3>
+              <div class="detail-card map-card">
+                <!-- 지도 영역 -->
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15719.802182823936!2d126.492439!3d33.5074941!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x350d55758e387b5f%3A0xa52a0399b21b661d!2z7Ya17Yq464uk6riP66qp7IKs!5e0!3m2!1sko!2skr!4v1751790007640!5m2!1sko!2skr"
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="식당 위치 지도"
+                ></iframe>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <!-- PC 버전 레이아웃 좌우 경계면 플로팅 내비게이션 버튼 -->
+      <div class="floating-nav-buttons" aria-label="퀵 액션 버튼">
+        <a href="sub4.html" class="floating-nav-btn floating-nav-btn--list" aria-label="목록으로 가기">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="floating-nav-btn__icon" aria-hidden="true">
+            <line x1="8" y1="6" x2="21" y2="6"></line>
+            <line x1="8" y1="12" x2="21" y2="12"></line>
+            <line x1="8" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+          </svg>
+          <span>LIST</span>
+        </a>
+        <a href="sub3.html" class="floating-nav-btn floating-nav-btn--chat" aria-label="챗봇 대화하기">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="floating-nav-btn__icon" aria-hidden="true">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>CHAT</span>
+        </a>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="src/js/modal.js"></script>
+    <script src="src/js/tab.js"></script>
+    <script src="src/js/common.js?v=7"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Swiper 슬라이더 초기화
+        let detailSwiper;
+        if (typeof Swiper !== 'undefined' && document.querySelector('.detail-slider')) {
+          detailSwiper = new Swiper('.detail-slider', {
+            spaceBetween: 0,
+            slidesPerView: 1,
+            loop: true,
+            pagination: {
+              el: '.detail-slider__pagination',
+              clickable: true,
+            },
+            navigation: {
+              nextEl: '.detail-slider__nav--next',
+              prevEl: '.detail-slider__nav--prev',
+            },
+            on: {
+              slideChange: function () {
+                const activeIndex = this.realIndex;
+                const thumbs = document.querySelectorAll('.detail-thumbnails__item');
+                if (thumbs && thumbs.length > 0) {
+                  thumbs.forEach((thumb, idx) => {
+                    if (idx === activeIndex) {
+                      thumb.classList.add('detail-thumbnails__item--active');
+                      thumb.setAttribute('aria-label', `${idx + 1}번째 사진 보기 (선택됨)`);
+                    } else {
+                      thumb.classList.remove('detail-thumbnails__item--active');
+                      thumb.setAttribute('aria-label', `${idx + 1}번째 사진 보기`);
+                    }
+                  });
+                }
+              },
+            },
+          });
+        }
+
+        // 썸네일 클릭 시 슬라이드 이동 동기화
+        const clickThumbs = document.querySelectorAll('.detail-thumbnails__item');
+        if (clickThumbs && clickThumbs.length > 0) {
+          clickThumbs.forEach((thumb, idx) => {
+            thumb.addEventListener('click', () => {
+              if (detailSwiper) {
+                detailSwiper.slideToLoop(idx);
+              }
+            });
+          });
+        }
+
+        // 북마크(찜) 버튼 상태 토글
+        const bookmarkBtn = document.querySelector('.detail-topbar__btn--bookmark');
+        if (bookmarkBtn) {
+          bookmarkBtn.addEventListener('click', () => {
+            const pressed = bookmarkBtn.getAttribute('aria-pressed') === 'true';
+            bookmarkBtn.setAttribute('aria-pressed', !pressed);
+            bookmarkBtn.classList.toggle('detail-topbar__btn--active');
+          });
+        }
+
+        // 공유하기 버튼 데모
+        const shareBtn = document.querySelector('.detail-topbar__btn--share');
+        if (shareBtn) {
+          shareBtn.addEventListener('click', () => {
+            if (navigator.share) {
+              navigator
+                .share({
+                  title: document.title,
+                  url: window.location.href,
+                })
+                .catch(console.error);
+            } else {
+              alert('현재 환경에서는 공유하기 기능을 지원하지 않습니다. 링크를 복사해주세요: ' + window.location.href);
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

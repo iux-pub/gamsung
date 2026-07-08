@@ -1,0 +1,54 @@
+/**
+ * Progress — KRDS 진행률 바
+ *
+ * native <progress> + 시각 커스터마이즈.
+ *
+ * 구조:
+ *   <div class="progress">
+ *     <div class="progress__label">
+ *       <span>업로드 중</span>
+ *       <span>60%</span>
+ *     </div>
+ *     <progress class="progress__bar" value="60" max="100" aria-label="업로드 진행률">60%</progress>
+ *   </div>
+ */
+
+@layer components {
+  .progress {
+    @apply flex flex-col gap-[0.8rem];
+  }
+
+  .progress__label {
+    @apply flex items-center justify-between text-[1.5rem] text-[var(--color-text)];
+  }
+
+  .progress__bar {
+    @apply appearance-none w-full h-[0.8rem] border-0 rounded-[0.2rem] bg-[var(--color-bg-subtle)] overflow-hidden;
+
+
+
+
+  }
+
+  /* WebKit */
+  .progress__bar::-webkit-progress-bar {
+    @apply bg-[var(--color-bg-subtle)] rounded-[0.2rem];
+  }
+
+  .progress__bar::-webkit-progress-value {
+    @apply bg-[var(--color-primary)] rounded-[0.2rem] [transition:width_0.4s_ease-in-out];
+  }
+
+  /* Firefox */
+  .progress__bar::-moz-progress-bar {
+    @apply bg-[var(--color-primary)] rounded-[0.2rem];
+  }
+
+  /* Variants */
+  .progress--success .progress__bar::-webkit-progress-value { @apply [background:var(--color-success)]; }
+  .progress--success .progress__bar::-moz-progress-bar     { @apply [background:var(--color-success)]; }
+  .progress--warning .progress__bar::-webkit-progress-value { @apply [background:var(--color-warning)]; }
+  .progress--warning .progress__bar::-moz-progress-bar     { @apply [background:var(--color-warning)]; }
+  .progress--danger  .progress__bar::-webkit-progress-value { @apply [background:var(--color-danger)]; }
+  .progress--danger  .progress__bar::-moz-progress-bar     { @apply [background:var(--color-danger)]; }
+}

@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static2",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8906"],
+      "port": 8906
+    },
+    {
+      "name": "static-mypage",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8913"],
+      "port": 8913
+    },
+    {
+      "name": "biz-static",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5510", "--directory", "C:/Users/iUX03/Desktop/업무/업무파일/biz"],
+      "port": 5510
+    }
+  ]
+}

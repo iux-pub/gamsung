@@ -1,0 +1,72 @@
+/**
+ * Alert / Critical alerts — KRDS
+ *
+ * 페이지에 고정되는 정보/경고/오류 메시지.
+ *
+ * 구조:
+ *   <div class="alert alert--info" role="alert">
+ *     <div class="alert__icon" aria-hidden="true">ℹ</div>
+ *     <div class="alert__body">
+ *       <p class="alert__title">알림 제목</p>
+ *       <p class="alert__message">상세 메시지</p>
+ *     </div>
+ *     <button class="alert__close" aria-label="닫기">×</button>
+ *   </div>
+ */
+
+@layer components {
+  .alert {
+    @apply flex items-start gap-[1.6rem] p-[1.6rem] border border-[var(--color-border-light)] rounded-[0.6rem] bg-[var(--color-surface)] shadow-[0_0_0.2rem_0_#0000000d,_0_0.4rem_0.8rem_0_#00000014];
+  }
+
+  .alert__icon {
+    @apply shrink-0 w-[2.4rem] h-[2.4rem] flex items-center justify-center text-[2rem] leading-none;
+
+
+  }
+
+  .alert__body { @apply [flex:1] [min-width:0]; }
+
+  .alert__title {
+    @apply text-[1.7rem] font-bold leading-[1.5] text-[var(--color-text)] [margin:0_0_0.4rem_0];
+  }
+
+  .alert__message {
+    @apply text-[1.7rem] leading-[1.5] text-[var(--color-text)] m-0;
+  }
+
+  .alert__close {
+    @apply shrink-0 w-[3.2rem] h-[3.2rem] flex items-center justify-center bg-transparent border-0 rounded-[0.4rem] text-[var(--color-text-subtle)] text-[2rem] cursor-pointer;
+
+
+
+  }
+
+  .alert__close:hover {
+    @apply bg-[var(--color-bg-subtler)];
+  }
+
+  /* Variants — 시맨틱 색상 */
+  .alert--info {
+    @apply border-[var(--color-border-information-light)] bg-[var(--color-surface-information-subtler)];
+  }
+  .alert--info .alert__icon { @apply [color:var(--color-info)]; }
+
+  .alert--success {
+    @apply border-[var(--color-border-success-light)] bg-[var(--color-surface-success-subtler)];
+  }
+  .alert--success .alert__icon { @apply [color:var(--color-success)]; }
+
+  .alert--warning {
+    @apply border-[var(--color-border-warning-light)] bg-[var(--color-surface-warning-subtler)];
+  }
+  .alert--warning .alert__icon { @apply [color:var(--color-warning)]; }
+
+  .alert--danger,
+  .alert--critical {
+    @apply border-[var(--color-border-danger-light)] bg-[var(--color-surface-danger-subtler)];
+  }
+
+  .alert--danger .alert__icon,
+  .alert--critical .alert__icon { @apply [color:var(--color-danger)]; }
+}

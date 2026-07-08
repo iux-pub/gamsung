@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>감성미식 - 마이페이지</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="dist/css/style.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-to-content">본문 바로가기</a>
+
+    <!-- 모바일 및 PC 공용 사이드바 (드로워 메뉴) -->
+    <div class="site-drawer__backdrop" aria-hidden="true"></div>
+    <aside id="site-drawer" class="site-drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="전체 메뉴">
+      <div class="site-drawer__header">
+        <div class="site-drawer__brand">
+          <img src="/src/image/logo2.png" alt="감성미식 로고" class="site-drawer__logo-img" />
+        </div>
+        <button type="button" class="site-drawer__close" aria-label="메뉴 닫기">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="site-drawer__body">
+        <!-- + 새 대화 버튼 -->
+        <a href="" type="button" class="site-drawer__new-chat-btn"> <span class="site-drawer__plus-icon" aria-hidden="true">+</span> 새 대화 </a>
+
+        <!-- 최근 세션 섹션 -->
+        <div class="site-drawer__section">
+          <h3 class="site-drawer__section-title">최근 세션</h3>
+          <ul class="site-drawer__session-list">
+            <li class="site-drawer__session-item">
+              <div class="site-drawer__session-card">
+                <div class="site-drawer__session-info">
+                  <h4 class="site-drawer__session-name">혼밥 · 애월 점심</h4>
+                  <p class="site-drawer__session-desc">현지 감성 탐험가형 <span>"얼큰한 국물" → 추천 5곳</span></p>
+                  <span class="site-drawer__session-time">3시간 전</span>
+                </div>
+                <button type="button" class="site-drawer__session-delete" aria-label="세션 삭제">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6H4V4H9V3H15V4H20V6H19V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM17 6H7V19H17V6ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z"
+                      fill="#5A928B"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </li>
+            <li class="site-drawer__session-item">
+              <div class="site-drawer__session-card">
+                <div class="site-drawer__session-info">
+                  <h4 class="site-drawer__session-name">동행 · 제주시 저녁</h4>
+                  <p class="site-drawer__session-desc">미식 탐험가형 <span>"회/해산물" → 추천 4곳</span></p>
+                  <span class="site-drawer__session-time">3시간 전</span>
+                </div>
+                <button type="button" class="site-drawer__session-delete" aria-label="세션 삭제">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6H4V4H9V3H15V4H20V6H19V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM17 6H7V19H17V6ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z"
+                      fill="#5A928B"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-drawer__footer">
+        <div class="site-drawer__user-actions">
+          <!-- 마이페이지 링크 -->
+          <a href="sub7.html" class="site-drawer__user-link">
+            <button type="button" class="site-drawer__session-user" aria-label="마이페이지">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                <path
+                  d="M6.90908 7.25794C6.0808 6.42966 5.66667 5.42701 5.66667 4.25C5.66667 3.07322 6.0808 2.0707 6.90908 1.24242C7.73712 0.41414 8.73965 0 9.91667 0C11.0937 0 12.0962 0.41414 12.9242 1.24242C13.7525 2.0707 14.1667 3.07322 14.1667 4.25C14.1667 5.42701 13.7525 6.42966 12.9242 7.25794C12.0962 8.08598 11.0937 8.5 9.91667 8.5C8.73965 8.5 7.73712 8.08598 6.90908 7.25794ZM0 18.7439V16.4117C0 15.8269 0.170236 15.2797 0.510708 14.7702C0.851417 14.2609 1.30959 13.8654 1.88523 13.5837C3.22209 12.9427 4.55978 12.4618 5.89829 12.1412C7.23681 11.8208 8.57626 11.6606 9.91667 11.6606C11.2571 11.6606 12.5965 11.8208 13.935 12.1412C15.2736 12.4618 16.6112 12.9427 17.9481 13.5837C18.5237 13.8654 18.9819 14.2609 19.3226 14.7702C19.6631 15.2797 19.8333 15.8269 19.8333 16.4117V18.7439H0Z"
+                  fill="#333333"
+                />
+              </svg>
+            </button>
+            <span class="site-drawer__user-text">마이페이지</span>
+          </a>
+
+          <!-- 언어 선택 영역 (커스텀 드롭다운) -->
+          <div class="site-drawer__lang-select">
+            <button type="button" class="site-drawer__lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="언어 선택 (현재 한국어)" aria-controls="site-drawer-lang-list">
+              <span class="site-drawer__lang-text">한국어</span>
+              <svg
+                class="site-drawer__lang-arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul id="site-drawer-lang-list" class="site-drawer__lang-list" role="listbox" aria-label="언어 선택 리스트" hidden>
+              <li role="option" aria-selected="true" class="site-drawer__lang-item site-drawer__lang-item--selected" data-value="ko" tabindex="0">한국어</li>
+              <li role="option" aria-selected="false" class="site-drawer__lang-item" data-value="en" tabindex="0">영어</li>
+              <li role="option" aria-selected="false" class="site-drawer__lang-item" data-value="ja" tabindex="0">일본어</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 상단 헤더 영역 -->
+    <header id="header" class="site-header">
+      <div class="container site-header__inner">
+        <button type="button" class="site-header__menu-btn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="site-drawer">
+          <!-- 햄버거 아이콘 -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M5 21C4.45 21 3.97917 20.8042 3.5875 20.4125C3.19583 20.0208 3 19.55 3 19V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H19C19.55 3 20.0208 3.19583 20.4125 3.5875C20.8042 3.97917 21 4.45 21 5V19C21 19.55 20.8042 20.0208 20.4125 20.4125C20.0208 20.8042 19.55 21 19 21H5ZM8 19V5H5V19H8ZM10 19H19V5H10V19Z"
+              fill="#333333"
+            />
+          </svg>
+        </button>
+
+        <!-- 헤더 중앙 타이틀 노출 -->
+        <div class="site-header__center site-header__title-text">마이페이지</div>
+
+        <div class="site-header__actions">
+          <!-- 마이페이지(프로필) -->
+          <a href="sub7.html" type="button" class="site-header__profile-btn" aria-label="마이페이지">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+              <path
+                d="M6.90908 7.25794C6.0808 6.42966 5.66667 5.42701 5.66667 4.25C5.66667 3.07322 6.0808 2.0707 6.90908 1.24242C7.73712 0.41414 8.73965 0 9.91667 0C11.0937 0 12.0962 0.41414 12.9242 1.24242C13.7525 2.0707 14.1667 3.07322 14.1667 4.25C14.1667 5.42701 13.7525 6.42966 12.9242 7.25794C12.0962 8.08598 11.0937 8.5 9.91667 8.5C8.73965 8.5 7.73712 8.08598 6.90908 7.25794ZM0 18.7439V16.4117C0 15.8269 0.170236 15.2797 0.510708 14.7702C0.851417 14.2609 1.30959 13.8654 1.88523 13.5837C3.22209 12.9427 4.55978 12.4618 5.89829 12.1412C7.23681 11.8208 8.57626 11.6606 9.91667 11.6606C11.2571 11.6606 12.5965 11.8208 13.935 12.1412C15.2736 12.4618 16.6112 12.9427 17.9481 13.5837C18.5237 13.8654 18.9819 14.2609 19.3226 14.7702C19.6631 15.2797 19.8333 15.8269 19.8333 16.4117V18.7439H0Z"
+                fill="#333333"
+              />
+            </svg>
+          </a>
+        </div>
+        <nav id="gnb-menu" class="site-header__nav" aria-label="주 메뉴" hidden>
+          <ul class="site-header__menu">
+            <li><a href="main.html">홈</a></li>
+            <li><a href="detail.html">맛집 탐색(지도)</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- sub.html과 동일하게 main-container--sub 사용 (PC 좌우 분할 레이아웃 상속) -->
+      <div class="main-container main-container--sub main-container--mypage">
+        <!-- PC 대응 우측 비주얼 패널 (모바일에서는 숨김, PC에서만 노출) -->
+        <div class="main-visual main-visual--sub">
+          <div class="main-visual__content">
+            <div class="visual-panel__logo">
+              <!-- 메인 로고 이미지 배치 -->
+              <img src="/src/image/logo.png" alt="감성미식 로고" class="visual-panel__logo-img" />
+            </div>
+            <!-- 진단 결과 페르소나 -->
+            <div class="mypage-persona">
+              <h2 class="mypage-persona__title">당신은 <strong>현지 감성 탐험가형</strong> 입니다</h2>
+              <p class="mypage-persona__desc">20대 · 함께 식사 선호</p>
+              <a href="sub.html" class="mypage-persona__btn">다시 진단하기</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 좌측 컬럼 (마이페이지 콘텐츠) -->
+        <div class="main-container__left-col">
+          <section class="section section--mypage" aria-label="마이페이지">
+            <div class="container container--mypage">
+              <!-- 1. 즐겨찾기 영역 -->
+              <h2 class="mypage__section-title">즐겨찾기 (4)</h2>
+              <div class="favorite-card">
+                <!-- 지도 영역 (요청에 따라 빈 공간으로 유지) -->
+                <div class="favorite-card__map" aria-hidden="true">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15719.802182823936!2d126.492439!3d33.5074941!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x350d55758e387b5f%3A0xa52a0399b21b661d!2z7Ya17Yq464uk6riP66qp7IKs!5e0!3m2!1sko!2skr!4v1751790007640!5m2!1sko!2skr"
+                    width="100%"
+                    height="100%"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="식당 위치 지도"
+                  ></iframe>
+                </div>
+
+                <!-- 즐겨찾기 맛집 썸네일 (가로 스크롤, 우측 페이드로 스크롤 힌트) -->
+                <div class="favorite-card__scroll">
+                  <ul class="favorite-card__list" aria-label="즐겨찾기 맛집 목록">
+                    <li>
+                      <a href="detail.html" class="favorite-card__item">
+                        <span class="favorite-card__thumb" style="background-image: url(/src/image/food.png)">
+                          <span class="favorite-card__badge">QS92</span>
+                        </span>
+                        <span class="favorite-card__name">산지해장국</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="detail.html" class="favorite-card__item">
+                        <span class="favorite-card__thumb" style="background-image: url(/src/image/food2.png)">
+                          <span class="favorite-card__badge">QS92</span>
+                        </span>
+                        <span class="favorite-card__name">우진해장국</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="detail.html" class="favorite-card__item">
+                        <span class="favorite-card__thumb" style="background-image: url(/src/image/food3.png)">
+                          <span class="favorite-card__badge">QS92</span>
+                        </span>
+                        <span class="favorite-card__name">얼큰이식당</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="detail.html" class="favorite-card__item">
+                        <span class="favorite-card__thumb" style="background-image: url(/src/image/food.png)">
+                          <span class="favorite-card__badge">QS92</span>
+                        </span>
+                        <span class="favorite-card__name">그집글라</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 2. 하단 액션 카드 -->
+              <div class="mypage-menu">
+                <!-- 대화이력 -->
+                <a href="#" class="action-card action-card--link">
+                  <span class="action-card__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52" fill="none">
+                      <path d="M44.6678 41.8335L38.001 35.1666H17.3342C16.4177 35.1666 15.633 34.8402 14.9802 34.1873C14.3273 33.5348 14.0008 32.7501 14.0008 31.8332V31.3333H37.3342C38.2966 31.3333 39.1206 30.9906 39.8064 30.3052C40.4917 29.6198 40.8344 28.7959 40.8344 27.8335V13H41.3344C42.2509 13 43.0356 13.3264 43.6885 13.9793C44.3414 14.6319 44.6678 15.4166 44.6678 16.3334V41.8335ZM9.50065 28.4207L13.0887 24.8333H33.0009C33.3898 24.8333 33.7092 24.7083 33.9591 24.4584C34.2093 24.2085 34.3344 23.8891 34.3344 23.5002V10.0002C34.3344 9.61133 34.2093 9.29175 33.9591 9.0415C33.7092 8.79161 33.3898 8.66667 33.0009 8.66667H10.8342C10.4453 8.66667 10.1259 8.79161 9.87603 9.0415C9.62578 9.29175 9.50065 9.61133 9.50065 10.0002V28.4207ZM7.33398 33.6667V10.0002C7.33398 9.03753 7.67686 8.21347 8.36261 7.52808C9.048 6.84269 9.87187 6.5 10.8342 6.5H33.0009C33.9632 6.5 34.7873 6.84269 35.473 7.52808C36.1584 8.21347 36.5011 9.03753 36.5011 10.0002V23.5002C36.5011 24.4626 36.1584 25.2864 35.473 25.9718C34.7873 26.6572 33.9632 26.9999 33.0009 26.9999H14.0008L7.33398 33.6667Z" fill="#5A928B"/>
+                    </svg>
+                  </span>
+                  <span class="action-card__label">대화이력</span>
+                </a>
+
+                <!-- 언어설정 -->
+                <div class="action-card action-card--lang">
+                  <div class="lang-dropdown">
+                    <button type="button" class="lang-dropdown__btn" aria-haspopup="listbox" aria-expanded="false" aria-label="언어 선택 (현재 한국어)" aria-controls="mypage-lang-list">
+                      <span class="lang-dropdown__text">한국어</span>
+                      <svg
+                        class="lang-dropdown__arrow"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                    <ul id="mypage-lang-list" class="lang-dropdown__list" role="listbox" aria-label="언어 선택 리스트" hidden>
+                      <li role="option" aria-selected="true" class="lang-dropdown__item lang-dropdown__item--selected" data-value="ko" tabindex="0">한국어</li>
+                      <li role="option" aria-selected="false" class="lang-dropdown__item" data-value="en" tabindex="0">영어</li>
+                      <li role="option" aria-selected="false" class="lang-dropdown__item" data-value="ja" tabindex="0">일본어</li>
+                    </ul>
+                  </div>
+                  <span class="action-card__label">언어설정</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // 마이페이지 언어 선택 드롭다운 (커스텀 listbox)
+      document.addEventListener('DOMContentLoaded', () => {
+        const langBtn = document.querySelector('.lang-dropdown__btn');
+        const langList = document.getElementById('mypage-lang-list');
+        const langText = document.querySelector('.lang-dropdown__text');
+        if (!(langBtn && langList && langText)) return;
+        const langItems = langList.querySelectorAll('.lang-dropdown__item');
+
+        const closeList = () => {
+          langBtn.setAttribute('aria-expanded', 'false');
+          langList.hidden = true;
+        };
+
+        langBtn.addEventListener('click', () => {
+          const isExpanded = langBtn.getAttribute('aria-expanded') === 'true';
+          langBtn.setAttribute('aria-expanded', String(!isExpanded));
+          langList.hidden = isExpanded;
+        });
+
+        const selectItem = (item) => {
+          const txt = item.textContent;
+          langText.textContent = txt;
+          langBtn.setAttribute('aria-label', `언어 선택 (현재 ${txt})`);
+          langItems.forEach((i) => {
+            i.setAttribute('aria-selected', 'false');
+            i.classList.remove('lang-dropdown__item--selected');
+          });
+          item.setAttribute('aria-selected', 'true');
+          item.classList.add('lang-dropdown__item--selected');
+          closeList();
+          langBtn.focus();
+        };
+
+        langItems.forEach((item) => {
+          item.addEventListener('click', () => selectItem(item));
+          item.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              selectItem(item);
+            }
+          });
+        });
+
+        // 바깥 클릭 시 닫기
+        document.addEventListener('click', (e) => {
+          if (!langList.hidden && !langList.contains(e.target) && e.target !== langBtn && !langBtn.contains(e.target)) {
+            closeList();
+          }
+        });
+
+        // ESC 키로 닫기
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !langList.hidden) {
+            closeList();
+            langBtn.focus();
+          }
+        });
+      });
+    </script>
+
+    <script src="src/js/modal.js"></script>
+    <script src="src/js/tab.js"></script>
+    <script src="src/js/common.js?v=7"></script>
+  </body>
+</html>

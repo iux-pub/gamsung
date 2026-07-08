@@ -1,0 +1,60 @@
+/**
+ * Card — KRDS 카드
+ *
+ * 사이즈: xsmall / small / medium (기본) / large
+ *   각 사이즈는 PC/Mobile 패딩이 다름 (KRDS 정의)
+ *   Mobile (< 768px) / Tablet (≥ 768px) / PC (≥ 1280px)
+ *   컴포넌트 패딩은 프로젝트 맥락에 맞는 직접값으로 조정
+ *
+ * Shape: radius-large1 (10px) — KRDS Large 그룹
+ * Surface: gray.0 (white)
+ * Border: gray-light (1px)
+ */
+
+@layer components {
+  .card {
+    @apply bg-[var(--color-surface)] border border-[var(--color-border-light)] rounded-[1rem] p-[3.2rem];
+  }
+
+  .card--xsmall { @apply [padding:1.6rem]; }
+  .card--small  { @apply [padding:2.4rem]; }
+  .card--medium { @apply [padding:3.2rem]; }
+  .card--large  { @apply [padding:4rem]; }
+
+  /* 헤더/본문/푸터 분리 — KRDS 카드 패턴 */
+  .card__header {
+    @apply flex items-center justify-between gap-[1.6rem] mb-[2.4rem];
+  }
+
+  .card__title {
+    @apply text-[2.4rem] font-bold leading-[1.5] text-[var(--color-text)] m-0;
+  }
+
+  .card__body { @apply [color:var(--color-text)]; }
+
+  .card__footer {
+    @apply flex items-center justify-end gap-[1.6rem] mt-[2.4rem];
+  }
+
+  /* Variants */
+  .card--inverse {
+    @apply bg-[var(--color-bg-inverse)] text-[var(--color-text-inverse)] border-transparent;
+
+  }
+  .card--inverse .card__title { @apply [color:var(--color-text-inverse)]; }
+
+  .card--elevated {
+    @apply border-0 shadow-[0_0_0.2rem_0_#00000014,_0_0.8rem_1.6rem_0_#0000001f];
+  }
+
+  /* 링크형 카드 — 호버 시 elevation up */
+  a.card,
+  .card--link {
+    @apply block no-underline text-inherit [transition:box-shadow_0.15s_ease-in-out,_transform_0.15s_ease-in-out];
+  }
+
+  a.card:hover,
+  .card--link:hover {
+    @apply shadow-[0_0_0.2rem_0_#00000014,_0_0.8rem_1.6rem_0_#0000001f] [transform:translateY(-2px)];
+  }
+}
