@@ -44,12 +44,6 @@
   padding: 20px;
 }
 
-.site-drawer__brand {
-  display: flex;
-  align-items: center;
-  margin: 0;
-}
-
 .site-drawer__logo-img {
   width: 72px;
   height: 50px;
@@ -210,9 +204,6 @@
 .site-drawer__footer {
   padding: 20px;
   background-color: var(--color-surface);
-}
-
-.site-drawer__user-actions {
   display: flex;
   flex-direction: column;
   gap: 16px;

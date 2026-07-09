@@ -14,9 +14,7 @@
     <div class="site-drawer__backdrop" aria-hidden="true"></div>
     <aside id="site-drawer" class="site-drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="전체 메뉴">
       <div class="site-drawer__header">
-        <div class="site-drawer__brand">
-          <img src="src/image/logo2.png" alt="감성미식 로고" class="site-drawer__logo-img" />
-        </div>
+        <img src="src/image/logo2.png" alt="감성미식 로고" class="site-drawer__logo-img" />
         <button type="button" class="site-drawer__close" aria-label="메뉴 닫기">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -53,45 +51,43 @@
       </div>
 
       <div class="site-drawer__footer">
-        <div class="site-drawer__user-actions">
-          <!-- 마이페이지 링크 -->
-          <a href="#" class="site-drawer__user-link">
-            <button type="button" class="site-drawer__session-user" aria-label="마이페이지">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
-                <path
-                  d="M6.90908 7.25794C6.0808 6.42966 5.66667 5.42701 5.66667 4.25C5.66667 3.07322 6.0808 2.0707 6.90908 1.24242C7.73712 0.41414 8.73965 0 9.91667 0C11.0937 0 12.0962 0.41414 12.9242 1.24242C13.7525 2.0707 14.1667 3.07322 14.1667 4.25C14.1667 5.42701 13.7525 6.42966 12.9242 7.25794C12.0962 8.08598 11.0937 8.5 9.91667 8.5C8.73965 8.5 7.73712 8.08598 6.90908 7.25794ZM0 18.7439V16.4117C0 15.8269 0.170236 15.2797 0.510708 14.7702C0.851417 14.2609 1.30959 13.8654 1.88523 13.5837C3.22209 12.9427 4.55978 12.4618 5.89829 12.1412C7.23681 11.8208 8.57626 11.6606 9.91667 11.6606C11.2571 11.6606 12.5965 11.8208 13.935 12.1412C15.2736 12.4618 16.6112 12.9427 17.9481 13.5837C18.5237 13.8654 18.9819 14.2609 19.3226 14.7702C19.6631 15.2797 19.8333 15.8269 19.8333 16.4117V18.7439H0Z"
-                  fill="#333333"
-                />
-              </svg>
-            </button>
-            <span class="site-drawer__user-text">마이페이지</span>
-          </a>
+        <!-- 마이페이지 링크 -->
+        <a href="#" class="site-drawer__user-link">
+          <button type="button" class="site-drawer__session-user" aria-label="마이페이지">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+              <path
+                d="M6.90908 7.25794C6.0808 6.42966 5.66667 5.42701 5.66667 4.25C5.66667 3.07322 6.0808 2.0707 6.90908 1.24242C7.73712 0.41414 8.73965 0 9.91667 0C11.0937 0 12.0962 0.41414 12.9242 1.24242C13.7525 2.0707 14.1667 3.07322 14.1667 4.25C14.1667 5.42701 13.7525 6.42966 12.9242 7.25794C12.0962 8.08598 11.0937 8.5 9.91667 8.5C8.73965 8.5 7.73712 8.08598 6.90908 7.25794ZM0 18.7439V16.4117C0 15.8269 0.170236 15.2797 0.510708 14.7702C0.851417 14.2609 1.30959 13.8654 1.88523 13.5837C3.22209 12.9427 4.55978 12.4618 5.89829 12.1412C7.23681 11.8208 8.57626 11.6606 9.91667 11.6606C11.2571 11.6606 12.5965 11.8208 13.935 12.1412C15.2736 12.4618 16.6112 12.9427 17.9481 13.5837C18.5237 13.8654 18.9819 14.2609 19.3226 14.7702C19.6631 15.2797 19.8333 15.8269 19.8333 16.4117V18.7439H0Z"
+                fill="#333333"
+              />
+            </svg>
+          </button>
+          <span class="site-drawer__user-text">마이페이지</span>
+        </a>
 
-          <!-- 언어 선택 영역 (커스텀 드롭다운) -->
-          <div class="site-drawer__lang-select">
-            <button type="button" class="site-drawer__lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="언어 선택 (현재 한국어)" aria-controls="site-drawer-lang-list">
-              <span class="site-drawer__lang-text">한국어</span>
-              <svg
-                class="site-drawer__lang-arrow"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-            <ul id="site-drawer-lang-list" class="site-drawer__lang-list" role="listbox" aria-label="언어 선택 리스트" hidden>
-              <li role="option" aria-selected="true" class="site-drawer__lang-item site-drawer__lang-item--selected" data-value="ko" tabindex="0">한국어</li>
-              <li role="option" aria-selected="false" class="site-drawer__lang-item" data-value="en" tabindex="0">영어</li>
-              <li role="option" aria-selected="false" class="site-drawer__lang-item" data-value="ja" tabindex="0">일본어</li>
-            </ul>
-          </div>
+        <!-- 언어 선택 영역 (커스텀 드롭다운) -->
+        <div class="site-drawer__lang-select">
+          <button type="button" class="site-drawer__lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="언어 선택 (현재 한국어)" aria-controls="site-drawer-lang-list">
+            <span class="site-drawer__lang-text">한국어</span>
+            <svg
+              class="site-drawer__lang-arrow"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <ul id="site-drawer-lang-list" class="site-drawer__lang-list" role="listbox" aria-label="언어 선택 리스트" hidden>
+            <li role="option" aria-selected="true" class="site-drawer__lang-item site-drawer__lang-item--selected" data-value="ko" tabindex="0">한국어</li>
+            <li role="option" aria-selected="false" class="site-drawer__lang-item" data-value="en" tabindex="0">영어</li>
+            <li role="option" aria-selected="false" class="site-drawer__lang-item" data-value="ja" tabindex="0">일본어</li>
+          </ul>
         </div>
       </div>
     </aside>

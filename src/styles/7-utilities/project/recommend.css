@@ -254,17 +254,11 @@
   flex-grow: 1;
 }
 
-.recommend-result__card-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
-}
-
 .recommend-result__card-name {
   font-size: 16px;
   font-weight: 700;
   color: var(--color-text-bolder);
+  margin-bottom: 4px; /* wrapper(card-header) 제거 — 간격을 제목에 직접 부여 */
 }
 
 .recommend-result__card-meta {
@@ -353,17 +347,11 @@
   padding: 0 10px 10px 10px;
 }
 
-.recommend-result__thum .recommend-result__card-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
-}
-
 .recommend-result__thum .recommend-result__card-name {
   font-size: 16px;
   font-weight: 700;
   color: var(--color-text-bolder);
+  margin-bottom: 4px;
 }
 
 .recommend-result__thum .recommend-result__card-meta {
@@ -465,12 +453,9 @@
     position: relative;
   }
 
-  .recommend-result__card-header {
-    margin-bottom: 8px;
-  }
-
   .recommend-result__card-name {
     font-size: 18px;
+    margin-bottom: 8px;
   }
 
   .recommend-result__card-meta,
@@ -523,12 +508,6 @@
 
   .recommend-result__thum .recommend-result__card-info {
     padding: 5px 20px 20px 20px;
-  }
-
-  .recommend-result__thum .recommend-result__card-header {
-  }
-
-  .recommend-result__thum .recommend-result__card-name {
   }
 
   .recommend-result__thum .recommend-result__card-meta {

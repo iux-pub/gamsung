@@ -72,7 +72,20 @@
       "Bash(curl -s -o icon-instagram.svg \"http://localhost:3845/assets/868f6bc0dc2dbc96c64b0b3bb7bed7a42f118af6.svg\")",
       "Bash(node scripts/check-violations.js src/styles/7-utilities/project/biz-create.css sub4.html sub5.html)",
       "Bash(node scripts/check-violations.js src/styles/7-utilities/project/biz-history.css src/styles/7-utilities/project/biz-sns.css sub6.html sub7.html)",
-      "Bash(node scripts/check-violations.js sub3.html)"
+      "Bash(node scripts/check-violations.js sub3.html)",
+      "Bash(git remote *)",
+      "Bash(git fetch *)",
+      "Bash(git ls-tree *)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(node \"C:/Users/iUX03/AppData/Local/Temp/claude/C--Users-iUX03-Desktop---------gamsung/8d9792f1-ea84-4d01-b999-7adce15a7f98/scratchpad/find-wrappers.js\" \"C:/Users/iUX03/Desktop/업무/업무파일/gamsung\")",
+      "Bash(node \"C:/Users/iUX03/AppData/Local/Temp/claude/C--Users-iUX03-Desktop---------gamsung/8d9792f1-ea84-4d01-b999-7adce15a7f98/scratchpad/unwrap.js\" \"C:/Users/iUX03/Desktop/업무/업무파일/gamsung\")",
+      "Bash(git diff *)",
+      "Bash(perl -i -pe 's/\\\\\\(\\\\?=S\\\\\\)/\\(?=\\\\\\\\S\\)/g' unwrap.js)",
+      "Bash(node unwrap.js \"C:/Users/iUX03/Desktop/업무/업무파일/gamsung\")",
+      "Bash(node \"C:/Users/iUX03/AppData/Local/Temp/claude/C--Users-iUX03-Desktop---------gamsung/8d9792f1-ea84-4d01-b999-7adce15a7f98/scratchpad/find-wrappers.js\" .)"
     ]
   }
 }

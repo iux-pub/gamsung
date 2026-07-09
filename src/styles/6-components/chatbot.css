@@ -239,15 +239,6 @@
   text-align: center;
 }
 
-/* 카드 콘텐츠 정보 */
-.recommend-card__info {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-
-
 /* 카드 푸터 (태그 + 액션 버튼 수용) */
 .recommend-card__footer {
   display: flex;
@@ -452,22 +443,14 @@
   width: 100%;
 }
 
-/* 로고 박스 (모바일은 완전히 숨기고, PC에서만 보이도록 지시사항 적용) */
+/* 로고 이미지 (모바일 숨김, PC 노출 — wrapper 제거로 img에 직접 적용) */
 .main-visual--chatbot .visual-panel__logo {
   display: none; /* 기본 모바일에서는 숨김 */
-  flex-direction: column;
-  align-items: center;
   margin-bottom: 28px;
 
   @media (min-width: 1280px) {
-    display: flex; /* PC에서는 노출 */
+    display: block; /* PC에서는 노출 */
     margin-bottom: 32px;
-  }
-}
-
-/* PC 로고 이미지 크기 분기 */
-.main-visual--chatbot .visual-panel__logo-img {
-  @media (min-width: 1280px) {
     width: 240px;
     height: 240px;
     object-fit: contain;

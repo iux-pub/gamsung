@@ -68,16 +68,13 @@
   margin: 0;
 }
 
+/* ─── 피그마 사양 매칭 스텝 인디케이터 오버라이드 (ol에 직접 적용) ─── */
 .diagnosis-steps {
   margin-bottom: 44px;
-}
-
-/* ─── 피그마 사양 매칭 스텝 인디케이터 오버라이드 ─── */
-.diagnosis-steps .step-indicator {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px; /* 스텝 간 간격 (후행 중복 선언 병합) */
+  gap: 10px; /* 스텝 간 간격 */
 }
 
 .diagnosis-steps .step-indicator__item {
@@ -351,12 +348,10 @@
     align-items: center;
   }
 
+  /* 로고 이미지에 직접 적용 (wrapper 제거 — html-semantics § 6.6) */
   .main-visual--sub .visual-panel__logo {
     display: block;
     margin-bottom: 28px;
-  }
-
-  .main-visual--sub .visual-panel__logo-img {
     width: 240px;
     height: 240px;
     object-fit: contain;
@@ -383,13 +378,8 @@
 
   /* ─── 피그마 페르소나 진단 D2 PC 폼 스타일 재구성 ─── */
   .section--diagnosis .diagnosis-steps {
-    display: flex;
-    justify-content: end;
+    justify-content: end; /* PC: 스텝 우측 정렬 */
     margin-bottom: 49px;
-  }
-
-  .diagnosis-steps .step-indicator {
-    gap: 10px; /* PC에서는 간격을 더 넉넉하게 */
   }
 
   .diagnosis-steps .step-indicator__item {
@@ -524,25 +514,11 @@
   padding: 70px 16px 40px; /* 헤더 고정 대비 패딩 */
 }
 
-.quick-select-panel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
+/* 로고 이미지에 직접 적용 (wrapper 제거 — html-semantics § 6.6) */
 .quick-select-logo {
   width: 180px;
   height: 180px;
   margin-bottom: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.quick-select-logo__img {
-  width: 100%;
-  height: 100%;
   object-fit: contain;
 }
 
