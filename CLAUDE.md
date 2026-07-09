@@ -1,15 +1,16 @@
 # [프로젝트명] — 개발 가이드
 
-## ⚠ UI/스타일 작업 시 — `info-design` 스킬 필수 활성화
+## UI/스타일 작업 시 자동 적용
 
-**모든 CSS·HTML·UI 코드 작성 시 다음 트리거를 먼저 발화한다:**
+CSS·HTML·UI 작업은 별도 트리거 없이 infoUX 컨트랙트를 적용한다.
 
-> "info-design 스킬 기준으로 가자"
+1. `contracts/task-contract.md` 형식으로 사이트 유형, 핵심 과업, 페이지 패턴, 재사용 컴포넌트, 위젯과 예외를 선언한다.
+2. `.claude/skills`에서 작업에 맞는 스킬을 적용한다.
+3. 수정 파일과 가장 가까운 `AGENTS.md`를 읽는다.
+4. 기존 카탈로그와 승인 패턴을 조합한 뒤 구현한다.
+5. 검사는 마지막 안전망으로 실행한다.
 
-이 트리거 후에는 LLM이 컨트랙트(`.claude/skills/info-design/SKILL.md`)에 따라
-**색상/상태 토큰과 INFOMIND 컴포넌트 패턴을 우선 사용**한다. KRDS는 품질 원칙과 접근성 기준으로 적용하고, 수치 체계는 프로젝트 맥락에 맞게 조정한다.
-
-위반 발견 시 LLM은 즉시 작업을 중단하고 사용자에게 보고한다.
+Task Contract의 필수 판단이 비어 있으면 UI 구현을 시작하지 않는다. 위반 발견 시 즉시 작업을 중단하고 사용자에게 보고한다.
 
 > 스킬이 설치되지 않았으면 UX팀(infoUX 가이드 저장소)에서 받아 `.claude/skills/info-design/`에 배치한다.
 
@@ -81,7 +82,7 @@ npm run check          # info-design 컨트랙트 위반 검출
 
 ### CSS/HTML 작성 시
 
-1. ✅ `info-design 스킬 기준으로 가자` 트리거 발화
+1. ✅ Task Contract의 사이트 유형·핵심 과업·재사용 패턴 확정
 2. ✅ 사용 색상 = `--color-*` 시맨틱 토큰
 3. ✅ 기본 폰트 = `--font-sans` / `--font-mono`
 4. ✅ 간격/크기/타이포 스케일은 CSS/Tailwind 직접값 사용

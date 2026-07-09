@@ -80,22 +80,20 @@ project/
 
 ---
 
-## 3. 개발팀 CLAUDE.md — 강제 임포트 패턴
+## 3. 개발팀 CLAUDE.md — 자동 적용 패턴
 
 개발팀 프로젝트의 `CLAUDE.md` 상단에 다음 추가:
 
 ```markdown
 # [프로젝트명] — 개발 가이드
 
-## ⚠ UI/스타일 작업 시 필수
+## UI/스타일 작업 시 자동 적용
 
-**모든 CSS/HTML/UI 코드 작성 시 `info-design` 스킬을 반드시 활성화한다.**
+모든 CSS/HTML/UI 작업은 별도 트리거 없이 infoUX 컨트랙트를 적용한다.
 
-작업 시작 시 첫 번째로:
-> "info-design 스킬 기준으로 가자"
-
-이 트리거 후에는 LLM이 컨트랙트(`.claude/skills/info-design/SKILL.md`)에 따라
-KRDS 토큰·INFOMIND 컴포넌트만 사용하며, 임의 생성을 일절 거부한다.
+1. `contracts/task-contract.md` 형식으로 사이트 유형, 핵심 과업, 재사용 패턴과 위젯을 먼저 확정한다.
+2. `.claude/skills`에서 작업에 맞는 스킬을 선택한다.
+3. 기존 컴포넌트와 승인 패턴을 조합한 뒤 구현한다.
 
 위반 발견 시 LLM은 즉시 작업을 중단하고 사용자에게 보고한다.
 

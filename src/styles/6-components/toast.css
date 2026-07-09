@@ -34,6 +34,13 @@
     to   { opacity: 1; transform: translateX(0); }
   }
 
+  /* prefers-reduced-motion 대응 — 진입 애니메이션 정지 (R-22) */
+  @media (prefers-reduced-motion: reduce) {
+    .toast {
+      @apply [animation:none];
+    }
+  }
+
   .toast__icon {
     @apply shrink-0 w-[2.4rem] h-[2.4rem] flex items-center justify-center text-[1.8rem] leading-none;
 

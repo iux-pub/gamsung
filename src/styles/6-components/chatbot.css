@@ -189,7 +189,7 @@
   flex-direction: column;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-decoration: none;
-  color: #2E332E;
+  color: var(--color-brand-text);
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px color-mix(in srgb, var(--color-gray-100) 6%, transparent);

@@ -10,7 +10,7 @@
     "build": "npm run build:tokens && npm run build:css",
     "lint:css": "stylelint \"src/styles/**/*.css\"",
     "lint:css:fix": "stylelint \"src/styles/**/*.css\" --fix",
-    "check": "node ./scripts/check-violations.js"
+    "check": "node ./scripts/check-violations.js && node ./scripts/check-html-structure.js"
   },
   "browserslist": [
     "last 2 Chrome versions",

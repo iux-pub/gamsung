@@ -14,6 +14,7 @@
 4. **키보드 동등성** — 마우스로 가능한 모든 조작이 키보드로도 가능해야 한다 (KWCAG 2.1.1).
 5. **포커스 가시성** — 모든 인터랙티브 요소는 `:focus-visible` 4px primary outline (reset 전역 처리, 컴포넌트 단위 override 금지).
 6. **단계 차이 50 규칙** — KRDS 색상에서 두 단계 차이 50 이상 = 명도 대비 4.5:1 자동 충족.
+7. **wrapper 최소화** — 자식이 하나뿐이고 그 자식에 직접 스타일·의미를 줄 수 있으면 감싸는 `<div>`를 두지 않는다. 시맨틱 요소(`<section>`/`<nav>`/`<ul>`/`<figure>`)가 맞으면 `<div>` 대신 그것을 쓴다. "이유를 댈 수 없는 wrapper"는 제거한다 (상세: § 6.6).
 
 ## 0.1. Page Shell 계약
 
@@ -409,6 +410,42 @@ ARIA로 연결되는 ID는 충돌 방지를 위해 다음 패턴:
 | 긴급 (오류·경고) | `role="alert"` (`aria-live="assertive"` 자동 부여됨) |
 | 일반 (저장 완료·로딩) | `role="status"` (`aria-live="polite"` 자동 부여됨) |
 | 사용자 직접 트리거 (form submit 결과) | `aria-live="polite"` + `aria-atomic="true"` |
+
+### 6.6 wrapper 최소화 — 이유 없는 div 금지
+
+무의미한 래핑은 접근성(스크린리더가 빈 계층을 훑음), CSS 복잡도(cascade 깊이·`@apply` 사슬), 유지보수, DOM 무게를 모두 해친다. 다음 기준으로 판별한다.
+
+**제거 대상 (이유 없는 wrapper)**
+
+- 자식이 하나뿐이고 그 자식에 직접 클래스·스타일을 줄 수 있는 `<div>`
+- `wrapper > inner > content`처럼 역할이 겹치는 연속 래핑
+- `<section>`/`<nav>`/`<ul>`/`<figure>`가 맞는데 쓴 `<div>` (원칙 1·7)
+- 스타일 훅도 레이아웃 역할도 없는 순수 껍데기
+
+**남길 대상 (이유 있는 컨테이너)**
+
+- `.container` — 폭·정렬 담당
+- flex/grid 레이아웃 부모 — 자식 배치를 실제로 제어
+- overflow/스크롤 컨테이너 (`.table-wrap` 등)
+- 컴포넌트 루트(BEM Block), `role`을 가진 그룹(`role="radiogroup"`/`role="tablist"` 등)
+
+**판별 질문 하나**: "이 `<div>`를 지우면 레이아웃·의미·접근성 중 무엇이 깨지는가?" — 아무것도 안 깨지면 제거한다.
+
+```html
+<!-- ❌ 이유 없는 wrapper: img/ol 하나를 감싸기만 함 -->
+<div class="visual-panel__logo">
+  <img src="logo.png" alt="감성미식 로고" />
+</div>
+<div class="diagnosis-steps">
+  <ol class="step-indicator" aria-label="진행 단계">...</ol>
+</div>
+
+<!-- ✅ 대상 요소에 직접 클래스 -->
+<img src="logo.png" alt="감성미식 로고" class="visual-panel__logo" />
+<ol class="step-indicator" aria-label="진행 단계">...</ol>
+```
+
+> 이 원칙은 자동 강제(error)가 아니라 생성·리뷰 단계 판단 기준이다. "과한 계층"은 맥락 의존적이라 정량 강제 시 오탐이 크다. `review-ui`는 Task Contract·승인 패턴과 대조할 때 이 기준으로 wrapper 깊이를 점검한다.
 
 ---
 

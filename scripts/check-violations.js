@@ -100,6 +100,12 @@ const FOCUS_OUTLINE_NONE = /:focus(?![-:\w])\s*\{[^}]*outline\s*:\s*(?:none\b|0\
 // 8. 호환성 위험 CSS 선택자 — 공공/기관 납품물은 폴백 없는 최신 선택자 의존 금지
 const CSS_HAS_SELECTOR = /:has\(/
 
+// 8-1. 모션 접근성 — animation/@keyframes는 reduced-motion 가드 필요 (R-22)
+//   transition은 hover 효과 등 오탐이 많아 제외하고, 자동/반복 모션 신호인 animation·@keyframes만 검출한다.
+const CSS_ANIMATION = /(?:^|[\s;{])animation(?:-name)?\s*:\s*(?!none\b)/
+const CSS_KEYFRAMES = /@keyframes\s/
+const REDUCED_MOTION = /prefers-reduced-motion/
+
 // 9. BEM 위반
 const BEM_DOUBLE_ELEMENT = /\.([\w-]+)__([\w-]+)__([\w-]+)/
 
@@ -209,6 +215,14 @@ function checkCssFile(filePath) {
   if (FOCUS_OUTLINE_NONE.test(contentNoComments)) {
     const matchLine = lines.findIndex(l => l.match(/:focus(?![-:\w])\s*\{/))
     error(relPath, matchLine + 1, '[R-11] :focus { outline: none } 금지. KRDS 4px primary outline 유지.', '')
+  }
+
+  // R-22: animation/@keyframes 사용 시 prefers-reduced-motion 가드 필요 — 파일 단위 멀티라인 스캔
+  //   전정기관 장애·멀미 민감 사용자를 위해 자동/반복 모션은 모션 최소화 선호를 존중해야 한다.
+  const hasAnimation = CSS_ANIMATION.test(contentNoComments) || CSS_KEYFRAMES.test(contentNoComments)
+  if (hasAnimation && !REDUCED_MOTION.test(contentNoComments)) {
+    const animLine = lines.findIndex(l => CSS_ANIMATION.test(l) || CSS_KEYFRAMES.test(l))
+    warn(relPath, animLine + 1, '[R-22] animation/@keyframes 사용 파일에 @media (prefers-reduced-motion: reduce) 가드가 없다. 모션 최소화 선호 시 애니메이션을 축소·정지해야 한다.', '')
   }
 }
 

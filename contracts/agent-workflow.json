@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "INFOUX Agent Workflow",
+  "version": 1,
+  "description": "Codex, Claude 및 다른 에이전트가 동일하게 수행해야 하는 UI 작업 절차.",
+  "steps": [
+    {
+      "id": "task-contract",
+      "instruction": "contracts/task-contract.md 형식으로 사이트 유형, 핵심 과업, 페이지 패턴, 재사용 컴포넌트, 위젯과 예외를 선언한다."
+    },
+    {
+      "id": "select-skill",
+      "instruction": "작업에 맞는 .agents/skills의 스킬을 적용한다. 도구별 스킬 경로는 동일 원본에서 생성한다."
+    },
+    {
+      "id": "load-scope",
+      "instruction": "수정 파일과 가장 가까운 AGENTS.md를 읽고 경로별 규칙을 적용한다."
+    },
+    {
+      "id": "compose-approved-patterns",
+      "instruction": "기존 컴포넌트 카탈로그와 승인 패턴을 우선 조합해 구현한다."
+    },
+    {
+      "id": "verify",
+      "instruction": "동일한 check, lint, test 명령을 실행하고 실패를 숨기지 않는다."
+    }
+  ],
+  "stopConditions": [
+    "Task Contract 필수 판단이 비어 있음",
+    "필수 접근성 패턴이 확정되지 않음",
+    "규칙 또는 검증 명령 실패"
+  ],
+  "parity": {
+    "skillSource": ".agents/skills",
+    "claudeSkillTarget": ".claude/skills",
+    "codexHooks": ".codex/hooks.json",
+    "claudeHooks": ".claude/settings.json",
+    "requiredOutcome": "동일 입력에는 도구와 무관하게 동일 절차와 동일 통과 기준을 적용한다."
+  }
+}

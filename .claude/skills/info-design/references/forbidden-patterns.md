@@ -222,6 +222,28 @@ body { font-family: var(--font-sans); }
 <a href="/menu">메뉴 페이지</a>
 ```
 
+### 이유 없는 wrapper 금지 (적용 원칙 7 · `html-semantics.md` § 6.6)
+
+자식 하나를 감싸기만 하는 `<div>`, 역할이 겹치는 연속 래핑은 두지 않는다. 대상 요소에 직접 클래스를 주거나 시맨틱 요소를 쓴다.
+
+#### ❌ 금지
+
+```html
+<div class="visual-panel__logo"><img src="logo.png" alt="로고" /></div>  <!-- img 하나만 감쌈 -->
+<div class="diagnosis-steps"><ol class="step-indicator">...</ol></div>    <!-- ol 하나만 감쌈 -->
+<div class="wrap"><div class="inner"><p>텍스트</p></div></div>             <!-- 역할 겹치는 연속 래핑 -->
+```
+
+#### ✅ 허용
+
+```html
+<img src="logo.png" alt="로고" class="visual-panel__logo" />
+<ol class="step-indicator" aria-label="진행 단계">...</ol>
+<p class="wrap">텍스트</p>
+```
+
+판별: "이 `<div>`를 지우면 레이아웃·의미·접근성 중 뭐가 깨지나? 안 깨지면 제거." 단 `.container`·flex/grid 부모·스크롤 래퍼(`.table-wrap`)·`role` 그룹은 이유 있는 컨테이너이므로 유지한다.
+
 ---
 
 ## 7. 접근성 — 누락 금지 (R-09 · R-11 · R-12 · R-13 · R-14)

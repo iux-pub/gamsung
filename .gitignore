@@ -1,8 +1,10 @@
 # 빌드 산출물 (재생성 가능)
 node_modules/
-# dist/
 _site/
 .DS_Store
+
+# dist/ 는 커밋한다 — npm 미사용(수동) 개발자에게 완성 CSS를 함께 전달하기 위함.
+# 커밋 전 반드시 `npm run build`로 최신화한다 (src와 dist 불일치 방지).
 
 # 로컬 설정
 .env

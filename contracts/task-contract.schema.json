@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/iux-pub/guide/contracts/task-contract.schema.json",
+  "title": "INFOUX Task Contract",
+  "description": "UI 구현 전에 작업 의도, 재사용 패턴, 접근성 요구를 확정하는 계약.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profile", "primaryTask", "pagePattern", "reuse", "interactive", "exceptions"],
+  "properties": {
+    "profile": {
+      "enum": ["general-site", "public-service", "public-institution", "cms-admin", "commerce-reservation"]
+    },
+    "primaryTask": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pagePattern": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reuse": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "interactive": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "tokens": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true,
+      "default": ["semantic-color"]
+    },
+    "publicIdentity": {
+      "enum": ["required", "not-applicable", "unconfirmed"],
+      "default": "unconfirmed"
+    },
+    "exceptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rule", "reason"],
+        "properties": {
+          "rule": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string", "minLength": 1 },
+          "owner": { "type": "string" },
+          "expires": { "type": "string", "format": "date" }
+        }
+      }
+    }
+  }
+}

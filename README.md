@@ -6,6 +6,8 @@ KRDS(범정부 UI/UX 디자인 시스템) + INFOMIND UX팀 표준이 적용된 T
 
 ## 🚀 시작하기 (3단계)
 
+처음 starter를 내려받은 퍼블리셔는 먼저 [`PUBLISHER_GUIDE.md`](PUBLISHER_GUIDE.md)를 읽어 주세요. 설치 후 어느 파일을 열고, 화면을 어떤 순서로 만들고, 어떤 검사를 통과해야 하는지 작업 흐름 중심으로 정리되어 있습니다.
+
 ### 1. 클론 + 의존성 설치
 
 ```bash
@@ -28,13 +30,15 @@ npm run build       # 토큰 + CSS 한 번에
 npm run watch:css   # 개발 시 CSS 변경 감지
 ```
 
-### 3. AI 코드 생성 시 (Claude Code 사용 시)
+### 3. AI 코드 생성 시
 
-작업 시작 시 한 줄 발화:
-> **"info-design 스킬 기준으로 가자"**
+UI/CSS/HTML 작업은 별도 트리거 없이 infoUX 계약이 적용됩니다.
 
-이 트리거 후 모든 CSS·HTML 코드 생성이 INFOUX 토큰·INFOMIND 컴포넌트 패턴을 우선 사용하도록 강제됩니다.
-스킬은 `.claude/skills/info-design/`에 동봉되어 있어 자동 인식됩니다.
+1. `contracts/task-contract.md` 형식으로 사이트 유형과 핵심 과업을 확정합니다.
+2. `.agents/skills` 또는 `.claude/skills`에서 작업별 절차를 적용합니다.
+3. 기존 컴포넌트와 승인 패턴을 조합한 뒤 구현합니다.
+
+상세 참조 스킬은 `.claude/skills/info-design/`에 동봉되어 있습니다.
 
 ---
 
@@ -60,7 +64,10 @@ my-project/
 │   └── js/
 ├── scripts/
 │   ├── build-tokens.js          ← foundation 토큰 → CSS 변환
-│   └── check-violations.js      ← 컨트랙트 위반 검출
+│   ├── check-violations.js      ← CSS/기본 마크업 위반 검출
+│   └── check-html-structure.js  ← page shell/ARIA/label 관계 검출
+├── contracts/
+│   └── html-page-contract.json  ← page shell 실행 계약
 └── dist/css/style.css           ← 빌드 산출물
 ```
 
@@ -75,7 +82,7 @@ my-project/
 | `npm run watch:css` | CSS 워치 모드 |
 | `npm run build` | 전체 빌드 (tokens + CSS) |
 | `npm run lint:css` | Stylelint 검사 |
-| `npm run check` | info-design 컨트랙트 위반 검출 |
+| `npm run check` | CSS, page shell, ARIA, label 관계 위반 검출 |
 
 ## 🌐 브라우저 기준
 
