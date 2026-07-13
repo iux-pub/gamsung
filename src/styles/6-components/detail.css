@@ -305,10 +305,16 @@
 
   /* 좌측 콘텐츠 칼럼 (페이지 스크롤, 비주얼은 sticky) */
   .main-container__left-col {
-    @apply bg-[var(--color-surface)] h-full;
+    @apply bg-[var(--color-surface)];
 
     grid-column: 1;
     grid-row: 2;
+  }
+
+  /* 높이만 복합 셀렉터로 특이도 상승 — 후행 로드되는 form.css의 h-[100vh]를 대체해
+     좌측 칼럼이 콘텐츠만큼 늘어나 페이지 스크롤로 동작 (비주얼 패널은 sticky) */
+  .main-container--sub .main-container__left-col {
+    @apply h-full;
   }
 
   .detail-info-panel {

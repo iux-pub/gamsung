@@ -4071,10 +4071,12 @@
     padding: 0;
   }
   .main-container__left-col {
-    height: 100%;
     background-color: var(--color-surface);
     grid-column: 1;
     grid-row: 2;
+  }
+  .main-container--sub .main-container__left-col {
+    height: 100%;
   }
   .detail-info-panel {
     margin: 0 auto;
