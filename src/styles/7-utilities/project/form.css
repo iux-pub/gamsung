@@ -1,672 +1,446 @@
 /* ─── 페르소나 진단 페이지 (sub.html) 스타일 ─── */
 .main-container--sub {
-  @apply flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: var(--color-bg-subtler);
+  @apply flex flex-col min-h-[100vh] bg-[var(--color-bg-subtler)];
 }
 
 .main-visual--sub {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 30px 20px 20px; /* 크기 반응형: 모바일 기기에 맞게 컴팩트하지만 시원한 패딩 */
-  background-color: var(--color-brand-5); /* 데스크탑 비주얼 패널 백그라운드와 동일한 연두색 배경 */
-  text-align: center;
-  box-sizing: border-box;
-  width: 100%;
-  height: auto;
-  margin-top: 64px;
+  /* 크기 반응형: 모바일 기기에 맞게 컴팩트하지만 시원한 패딩 */
+
+  /* 데스크탑 비주얼 패널 백그라운드와 동일한 연두색 배경 */
+  @apply flex flex-col justify-center items-center [padding:30px_20px_20px] bg-[var(--color-brand-5)] text-center [box-sizing:border-box] w-full h-auto mt-[64px];
 }
 
 /* 모바일일 때는 로고가 노출되지 않습니다 (pc일때는 나오고 모바일때는 없고) */
 .main-visual--sub .visual-panel__logo {
-  display: none;
+  @apply hidden;
 }
 
 .main-visual--sub .diagnosis-intro__title {
-  font-size: 20px;
-  font-weight: 900;
-  color: var(--color-brand);
-  margin-bottom: 10px;
-  line-height: 24px;
+  @apply text-[20px] [font-weight:900] text-[var(--color-brand)] mb-[10px] leading-[24px];
 }
 
 .main-visual--sub .diagnosis-intro__desc {
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--color-text-subtle);
-  margin: 0;
+  @apply text-[16px] font-normal text-[var(--color-text-subtle)] m-0;
 }
 
 .section--diagnosis {
-  padding: 30px 20px 80px; /* 헤더 64px 겹침을 방지하기 위해 상단 패딩을 80px로 확보 */
-  width: 100%;
-  box-sizing: border-box;
+  /* 헤더 64px 겹침을 방지하기 위해 상단 패딩을 80px로 확보 */
+  @apply [padding:30px_20px_80px] w-full [box-sizing:border-box];
 }
 
 .container--diagnosis {
-  margin: 0 auto;
+  @apply [margin:0_auto];
 }
 
 .diagnosis-intro {
-  text-align: center;
+  @apply text-center;
 }
 
 .diagnosis-intro__title {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--color-brand-60); /* 피그마 시안 청록색 매칭 */
-  margin-bottom: 8px;
-  line-height: 1.3;
+  /* 피그마 시안 청록색 매칭 */
+  @apply text-[28px] font-bold text-[var(--color-brand-60)] mb-[8px] leading-[1.3];
 }
 
 .diagnosis-intro__desc {
-  font-size: 16px;
-  color: var(--color-text-subtle);
-  margin: 0;
+  @apply text-[16px] text-[var(--color-text-subtle)] m-0;
 }
 
 /* ─── 피그마 사양 매칭 스텝 인디케이터 오버라이드 (ol에 직접 적용) ─── */
 .diagnosis-steps {
-  margin-bottom: 44px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px; /* 스텝 간 간격 */
+  /* gap: 스텝 간 간격 */
+  @apply mb-[44px] flex justify-center items-center gap-[10px];
 }
 
 .diagnosis-steps .step-indicator__item {
-  font-size: 14px;
-  color: var(--color-text-disabled); /* 비활성 회색 */
-  flex: 0 1 auto;
-  gap: 8px;
+  /* 비활성 회색 */
+  @apply text-[14px] text-[var(--color-text-disabled)] [flex:0_1_auto] gap-[8px];
 }
 
 /* 피그마 사양: 스텝 사이 연결선(가로선)을 완전히 제거 */
 .diagnosis-steps .step-indicator__item:not(:last-child)::after {
-  display: none;
+  @apply hidden;
 }
 
 .diagnosis-steps .step-indicator__num {
-  width: 30px;
-  height: 30px;
-  background-color: var(--color-brand-step-muted); /* 미진행 회색 원 (피그마 --color-surface-step-muted #d9d9d9) */
-  border: none;
-  color: var(--color-text-inverse);
-  font-size: 15px;
-  font-weight: 700;
+  /* 미진행 회색 원 (피그마 --color-surface-step-muted #d9d9d9) */
+  @apply w-[30px] h-[30px] bg-[var(--color-brand-step-muted)] border-none text-[var(--color-text-inverse)] text-[15px] font-bold;
 }
 
 .diagnosis-steps .step-indicator__label {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--color-brand);
+  @apply text-[18px] font-bold text-[var(--color-brand)];
 }
 
 /* 현재 활성화된 단계 (1단계) */
 .diagnosis-steps .step-indicator__item--current {
-  color: var(--color-brand-60); /* 피그마 브랜드 청록색 (var(--color-brand-60) 통일) */
+  /* 피그마 브랜드 청록색 (var(--color-brand-60) 통일) */
+  @apply text-[var(--color-brand-60)];
 }
 
 .diagnosis-steps .step-indicator__item--current .step-indicator__num {
-  background-color: var(--color-brand); /* 채워진 청록색 원 */
-  border: none;
-  color: var(--color-text-inverse);
+  /* 채워진 청록색 원 */
+  @apply bg-[var(--color-brand)] border-none text-[var(--color-text-inverse)];
 }
 
 .diagnosis-steps .step-indicator__item--current .step-indicator__label {
-  font-weight: 700;
-  color: var(--color-brand);
-  font-size: 18px;
+  @apply font-bold text-[var(--color-brand)] text-[18px];
 }
 
 /* 비활성 단계의 라벨은 모바일/PC 모두 기본적으로 숨김 (피그마 D2 공통 사양) */
 .diagnosis-steps .step-indicator__item:not(.step-indicator__item--current) .step-indicator__label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
+  @apply absolute w-[1px] h-[1px] p-0 m-[-1px] overflow-hidden border-0;
+
   clip: rect(0, 0, 0, 0);
-  border: 0;
 }
 
 .diagnosis-form__section {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  margin-bottom: 0;
+  @apply bg-transparent border-none p-0 [margin-bottom:0];
 }
 
 .diagnosis-form__section-title {
-  font-size: 19px;
-  font-weight: 700;
-  color: var(--color-brand-text);
-  margin: 0 0 20px; /* 카드 상단에 어울리는 여백 */
-  padding: 0;
-  border-bottom: none;
+  /* margin: 카드 상단에 어울리는 여백 */
+  @apply text-[19px] font-bold text-[var(--color-brand-text)] [margin:0_0_20px] p-0 [border-bottom:none];
 }
 
 .diagnosis-form__card {
-  background-color: var(--color-brand-card); /* 흰색 배경 카드 (피그마 D2 매치) */
-  border-radius: 16px;
-  padding: 20px; /* 모바일 카드 패딩 */
-  margin-bottom: 30px;
-  box-sizing: border-box;
+  /* 흰색 배경 카드 (피그마 D2 매치) / padding: 모바일 카드 패딩 */
+  @apply bg-[var(--color-brand-card)] rounded-[16px] p-[20px] mb-[30px] [box-sizing:border-box];
 }
 
 .form-group {
-  margin-bottom: 20px;
+  @apply mb-[20px];
 }
 
 .form-group:last-child {
-  margin-bottom: 0;
+  @apply [margin-bottom:0];
 }
 
 .form-group__label {
-  display: block;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--color-brand-text);
-  margin-bottom: 10px;
+  @apply block text-[16px] font-bold text-[var(--color-brand-text)] mb-[10px];
 }
 
 /* 칩 그룹 및 칩 스타일 */
 .chip-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px; /* 모바일은 8px 간격 */
+  /* 모바일은 8px 간격 */
+  @apply flex flex-wrap gap-[8px];
 }
 
 .chip-group--column {
-  flex-direction: column;
-  gap: 12px;
+  @apply flex-col gap-[12px];
 }
 
 /* 숨김 처리할 라디오 단추 */
 .chip-radio {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
+  @apply absolute w-[1px] h-[1px] p-0 m-[-1px] overflow-hidden border-0;
+
   clip: rect(0, 0, 0, 0);
-  border: 0;
 }
 
 .chip-label {
-  background-color: var(--color-bg-subtler); /* 피그마 크림/웜샌드 칩 배경 (#f6f4f0) */
-  color: var(--color-brand-text); /* 피그마 칩 텍스트 기본색 (#2e332e) */
-  border-radius: 14px; /* 피그마 모바일 칩 radius 14px */
-  padding: 9px 18px; /* 피그마 모바일 칩 패딩(py9/px18) */
-  min-height: 44px; /* WCAG 2.5.5 모바일 터치 영역 확보 */
-  font-size: 14px; /* 모바일 폰트 14px */
-  font-weight: 400;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: center;
-  width: auto;
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  /* 피그마 크림/웜샌드 칩 배경 (#f6f4f0) / 피그마 칩 텍스트 기본색 (#2e332e) */
+
+  /* radius: 피그마 모바일 칩 radius 14px / padding: 피그마 모바일 칩 패딩(py9/px18) */
+
+  /* min-height: WCAG 2.5.5 모바일 터치 영역 확보 / font-size: 모바일 폰트 14px */
+  @apply bg-[var(--color-bg-subtler)] text-[var(--color-brand-text)] rounded-[14px] [padding:9px_18px] min-h-[44px] text-[14px] font-normal cursor-pointer [transition:all_0.2s_ease] text-center w-auto [box-sizing:border-box] inline-flex items-center justify-center;
 }
 
 .chip-group--column .chip-label {
-  display: block;
-  width: 100%;
-  border-radius: 12px;
-  text-align: left;
-  padding: 16px 20px;
+  @apply block w-full rounded-[12px] text-left [padding:16px_20px];
 }
 
 .chip-label:hover {
-  background-color: var(--color-bg-subtle);
+  @apply bg-[var(--color-bg-subtle)];
 }
 
 /* 체크되었을 때 인접 라벨 활성 스타일 매핑 */
 .chip-radio:checked + .chip-label,
 .chip-radio:checked + .chip-label:hover {
-  background-color: var(--color-brand); /* 피그마 활성 청록색 매핑 */
-  color: var(--color-text-inverse);
-  font-weight: 700;
+  /* 피그마 활성 청록색 매핑 */
+  @apply bg-[var(--color-brand)] text-[var(--color-text-inverse)] font-bold;
 }
 
 /* 키보드 포커스 접근성 */
 .chip-radio:focus-visible + .chip-label {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  @apply [outline:2px_solid_var(--color-primary)] [outline-offset:2px];
 }
 
 .diagnosis-form__notice {
-  font-size: 12px;
-  color: var(--color-gray-60);
-  font-weight: 400;
-  text-align: start;
-  line-height: 160%;
-  margin: 0 0 30px;
+  @apply text-[12px] text-[var(--color-gray-60)] font-normal [text-align:start] leading-[160%] [margin:0_0_30px];
 }
 
 .diagnosis-form__actions {
-  display: flex;
-  justify-content: center;
+  @apply flex justify-center;
 }
 
 .diagnosis-form__submit {
-  width: 100%;
-  height: 58px; /* 피그마 모바일 다음 버튼 높이 58px */
-  border-radius: 16px;
-  background-color: var(--color-brand-point); /* 피그마 다음 버튼 다홍색 매핑 */
-  color: var(--color-text-inverse);
+  /* height: 피그마 모바일 다음 버튼 높이 58px / 피그마 다음 버튼 다홍색 매핑 */
+  @apply w-full h-[58px] rounded-[16px] bg-[var(--color-brand-point)] text-[var(--color-text-inverse)];
 }
 
 .diagnosis-form__submit:hover {
-  background-color: var(--color-brand-30); /* 톤다운된 다홍색 */
-  border-color: var(--color-brand-30);
+  /* 톤다운된 다홍색 */
+  @apply bg-[var(--color-brand-30)] border-[var(--color-brand-30)];
 }
 
 /* GNB 헤더 중앙 타이틀 정렬 */
 .site-header__title-text {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--color-brand-text);
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  pointer-events: none;
+  @apply text-[22px] font-bold text-[var(--color-brand-text)] absolute left-[50%] [transform:translateX(-50%)] z-[10] pointer-events-none;
 }
 
 /* PC 매칭 스타일 (1280px 이상) */
 @media (min-width: 1280px) {
   .site-header__title-text {
-    font-size: 30px;
+    @apply text-[30px];
   }
 
   .main-container--sub {
-    display: grid;
+    /* height: 화면 전체 고정 */
+    @apply grid h-[100vh] overflow-hidden;
+
     grid-template-columns: minmax(0, 1fr) 648px;
-    height: 100vh; /* 화면 전체 고정 */
-    overflow: hidden;
   }
 
   /* 좌측 열 wrapper */
   .main-container__left-col {
+    /* overflow-y: 좌측에만 세로 스크롤 부여 */
+    @apply h-[100vh] [overflow-y:auto] flex flex-col bg-[var(--color-bg-subtler)];
+
     grid-column: 1;
-    height: 100vh;
-    overflow-y: auto; /* 좌측에만 세로 스크롤 부여 */
-    display: flex;
-    flex-direction: column;
-    background-color: var(--color-bg-subtler);
   }
 
   .main-container--sub .section--diagnosis {
-    flex: 1 0 auto;
-    background-color: var(--color-bg-subtler);
-    padding: 74px 0px 20px; /* 좌우 패딩을 조절해 안정성 부여 */
-    display: flex;
-    flex-direction: column;
-    max-width: 712px;
-    width: 100%;
-    margin: 80px auto 0;
+    /* padding: 좌우 패딩을 조절해 안정성 부여 */
+    @apply [flex:1_0_auto] bg-[var(--color-bg-subtler)] [padding:74px_0px_20px] flex flex-col max-w-[712px] w-full [margin:80px_auto_0];
 
     /* justify-content: center; */
   }
 
   /* 폼 콘텐츠 가로 중앙 정렬 및 최대 너비 고정 */
   .main-container--sub .container--diagnosis {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
+    @apply w-full [margin:0_auto] p-0;
   }
 
   .main-visual--sub {
-    margin-top: 0;
+    /* 피그마 연두색 배경 */
+    @apply [margin-top:0] sticky top-0 h-[100vh] flex flex-col [justify-content:start] items-center [box-sizing:border-box] [padding:126px_0_0] bg-[var(--color-brand-5)] [border-bottom:none];
+
     grid-column: 2;
     grid-row: 1 / 4;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 126px 0 0;
-    background-color: var(--color-brand-5); /* 피그마 연두색 배경 */
-    border-bottom: none;
   }
 
   .main-visual__content {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
+    @apply flex flex-col text-center items-center;
   }
 
   /* 로고 이미지에 직접 적용 (wrapper 제거 — html-semantics § 6.6) */
   .main-visual--sub .visual-panel__logo {
-    display: block;
-    margin-bottom: 28px;
-    width: 240px;
-    height: 240px;
-    object-fit: contain;
+    @apply block mb-[28px] w-[240px] h-[240px] [object-fit:contain];
   }
 
   .main-visual--sub .diagnosis-intro__title {
-    font-size: 28px;
-    font-weight: 900;
-    color: var(--color-brand); /* 피그마 진한 청록색 */
-    margin-bottom: 20px;
-    line-height: 1.2;
-    letter-spacing: -1px;
-    text-align: center;
+    /* 피그마 진한 청록색 */
+    @apply text-[28px] [font-weight:900] text-[var(--color-brand)] mb-[20px] leading-[1.2] tracking-[-1px] text-center;
   }
 
   .main-visual--sub .diagnosis-intro__desc {
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--color-brand-text);
-    margin: 0;
-    letter-spacing: -1px;
-    text-align: center;
+    @apply text-[18px] font-normal text-[var(--color-brand-text)] m-0 tracking-[-1px] text-center;
   }
 
   /* ─── 피그마 페르소나 진단 D2 PC 폼 스타일 재구성 ─── */
   .section--diagnosis .diagnosis-steps {
-    justify-content: end; /* PC: 스텝 우측 정렬 */
-    margin-bottom: 49px;
+    /* PC: 스텝 우측 정렬 */
+    @apply [justify-content:end] mb-[49px];
   }
 
   .diagnosis-steps .step-indicator__item {
-    font-size: 16px;
+    @apply text-[16px];
   }
 
   .diagnosis-steps .step-indicator__num {
-    width: 31px;
-    height: 31px;
-    font-size: 16px;
+    @apply w-[31px] h-[31px] text-[16px];
   }
 
   .diagnosis-steps .step-indicator__item--current .step-indicator__label {
-    font-size: 22px; /* PC 활성 텍스트 18px */
-    margin-right: 10px;
+    /* PC 활성 텍스트 18px */
+    @apply text-[22px] mr-[10px];
   }
 
   .section--diagnosis .diagnosis-form__section-title {
-    font-size: 20px;
-    font-weight: 900;
-    color: var(--color-brand-text);
-    border-bottom: none;
-    padding-bottom: 0;
-    margin-bottom: 20px;
+    @apply text-[20px] [font-weight:900] text-[var(--color-brand-text)] [border-bottom:none] [padding-bottom:0] mb-[20px];
   }
 
   /* PC 해상도일 때 개별 섹션 카드 스타일 */
   .section--diagnosis .diagnosis-form__card {
-    background-color: var(--color-bg);
-    border-radius: 16px;
-    padding: 30px; /* 태블릿/PC 카드 패딩 */
-    margin-bottom: 54px;
-    box-shadow: none;
+    /* padding: 태블릿/PC 카드 패딩 */
+    @apply bg-[var(--color-bg)] rounded-[16px] p-[30px] mb-[54px] [box-shadow:none];
   }
 
   .section--diagnosis .form-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 24px; /* 카드 내부의 세로 간격 */
-    background-color: transparent;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    box-shadow: none;
+    /* margin-bottom: 카드 내부의 세로 간격 */
+    @apply flex [flex-direction:row] items-center mb-[24px] bg-transparent border-none [border-radius:0] p-0 [box-shadow:none];
   }
 
   .section--diagnosis .form-group--column {
-    flex-direction: column;
-    align-items: start;
+    @apply flex-col [align-items:start];
   }
 
   .section--diagnosis .form-group--column .form-group__label {
-    width: 100%;
-    margin-bottom: 18px;
+    @apply w-full mb-[18px];
   }
 
   .section--diagnosis .form-group:last-child {
-    margin-bottom: 0;
+    @apply [margin-bottom:0];
   }
 
   .section--diagnosis .form-group__label {
-    width: 100px; /* 라벨 영역 가로 크기 고정 */
-    margin-bottom: 0;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--color-brand-text);
-    text-align: left;
-    flex-shrink: 0;
+    /* width: 라벨 영역 가로 크기 고정 */
+    @apply w-[100px] [margin-bottom:0] text-[18px] font-bold text-[var(--color-brand-text)] text-left shrink-0;
   }
 
   .section--diagnosis .chip-group {
-    display: flex;
-    flex-flow: row wrap;
-    gap: 10px;
-    flex-grow: 1;
+    @apply flex [flex-flow:row_wrap] gap-[10px] grow;
   }
 
   .section--diagnosis .chip-label {
-    min-height: 40px; /* 피그마 PC 칩 높이 40px */
-    padding: 0 25px; /* 피그마 PC 칩 좌우 패딩 25px */
-    border-radius: 16px; /* 피그마 PC 칩 radius 16px */
-    font-size: 16px;
+    /* 피그마 PC 칩 높이 40px / 좌우 패딩 25px / radius 16px */
+    @apply min-h-[40px] [padding:0_25px] rounded-[16px] text-[16px];
   }
 
   /* PC에서 1열로 늘어나던 세로형 여행성향 칩 그룹도 수평 정렬로 자동 변경 */
   .section--diagnosis .chip-group--column {
-    flex-direction: row;
-    gap: 12px;
+    @apply [flex-direction:row] gap-[12px];
   }
 
   .section--diagnosis .chip-group--column .chip-label {
-    display: inline-block;
-    width: auto;
-    border-radius: 50px;
-    padding: 12px 20px;
-    text-align: center;
+    @apply inline-block w-auto rounded-[50px] [padding:12px_20px] text-center;
   }
 
   /* 카드 칩의 시작점(카드패딩 24px + 라벨너비 140px = 164px)과 칼각 정렬 */
   .section--diagnosis .diagnosis-form__notice {
-    text-align: center;
-    font-size: 16px;
+    @apply text-center text-[16px];
   }
 
   .section--diagnosis .diagnosis-form__actions {
-    justify-content: flex-start;
+    @apply justify-start;
   }
 
   .section--diagnosis .diagnosis-form__submit {
-    width: 100%;
-    height: 66px; /* 피그마 PC 다음 버튼 높이 66px */
+    /* height: 피그마 PC 다음 버튼 높이 66px */
+    @apply w-full h-[66px];
   }
 }
 
 /* 지도 SVG 반응형 및 모바일 가로넘침 방지 */
 .main-map-placeholder svg {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
+  @apply w-full h-auto max-w-full;
 }
 
 /* 전면 전형 관광행동 퀵 선택 스타일 (Figma 기준) */
 .quick-select-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
-  box-sizing: border-box;
-  background-color: var(--color-brand-5); /* 피그마 연녹색 배경 (var(--color-brand-5)) */
-  padding: 70px 16px 40px; /* 헤더 고정 대비 패딩 */
+  /* 피그마 연녹색 배경 (var(--color-brand-5)) / padding: 헤더 고정 대비 패딩 */
+  @apply flex flex-col items-center justify-start min-h-[100vh] [box-sizing:border-box] bg-[var(--color-brand-5)] [padding:70px_16px_40px];
 }
 
 /* 로고 이미지에 직접 적용 (wrapper 제거 — html-semantics § 6.6) */
 .quick-select-logo {
-  width: 180px;
-  height: 180px;
-  margin-bottom: 30px;
-  object-fit: contain;
+  @apply w-[180px] h-[180px] mb-[30px] [object-fit:contain];
 }
 
 .quick-select-title {
-  font-size: 20px;
-  font-weight: 900;
-  color: var(--color-brand);
-  margin: 0 0 40px;
-  text-align: center;
-  line-height: 1.3;
+  @apply text-[20px] [font-weight:900] text-[var(--color-brand)] [margin:0_0_40px] text-center leading-[1.3];
 }
 
 .quick-select-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @apply w-full flex flex-col items-center;
 }
 
 .quick-select-card {
-  width: 100%;
-
   /* max-width: 320px; */
-  background-color: var(--color-brand-card); /* 피그마 glass 카드 배경 (#ffffffcc) */
-  border: 1px solid var(--color-brand-border); /* 피그마 glass 테두리 (#ffffff80) */
-  border-radius: 16px;
-  box-sizing: border-box;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+
+  /* 피그마 glass 카드 배경 (#ffffffcc) / 피그마 glass 테두리 (#ffffff80) */
+  @apply w-full bg-[var(--color-brand-card)] border border-[var(--color-brand-border)] rounded-[16px] [box-sizing:border-box] p-[20px] flex flex-col gap-[20px];
+
   box-shadow: 0 4px 12px color-mix(in srgb, var(--color-gray-100) 4%, transparent);
 }
 
 .quick-select-row {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  @apply flex flex-col gap-[10px];
 }
 
 .quick-select-row__label {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--color-brand-text);
+  @apply text-[16px] font-bold text-[var(--color-brand-text)];
 }
 
 .quick-select-row__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  @apply flex flex-wrap gap-[8px];
 }
 
 .quick-select-actions {
-  margin-top: 24px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  @apply mt-[24px] w-full flex justify-center;
 }
 
 .quick-select-submit {
-  width: 100%;
-  height: 58px;
-  font-size: 18px;
-  border-radius: 16px;
-  background-color: var(--color-brand-point); /* 다홍/주황색 */
-  color: var(--color-text-inverse);
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  cursor: pointer;
-  box-sizing: border-box;
+  /* 다홍/주황색 */
+  @apply w-full h-[58px] text-[18px] rounded-[16px] bg-[var(--color-brand-point)] text-[var(--color-text-inverse)] font-bold flex items-center justify-center border-none cursor-pointer [box-sizing:border-box];
 }
 
 /* PC 해상도 반응형 제어 (1280px 이상) */
 @media (min-width: 1280px) {
   .quick-select-container {
-    padding: 60px 40px;
+    @apply [padding:60px_40px];
   }
 
   .quick-select-logo {
-    width: 240px;
-    height: 240px;
-    margin-bottom: 28px;
+    @apply w-[240px] h-[240px] mb-[28px];
   }
 
   .quick-select-title {
-    font-size: 28px;
-    margin-bottom: 40px;
+    @apply text-[28px] mb-[40px];
   }
 
   .quick-select-card {
-    max-width: 568px; /* 피그마 고정 너비 */
-    padding: 24px 20px 20px 30px; /* 피그마 카드 내부 패딩(t24/r20/b20/l30) */
+    /* max-width: 피그마 고정 너비 / padding: 피그마 카드 내부 패딩(t24/r20/b20/l30) */
+    @apply max-w-[568px] [padding:24px_20px_20px_30px];
   }
 
   .quick-select-row {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 30px; /* 피그마 PC 라벨-칩 간격 30px */
+    /* gap: 피그마 PC 라벨-칩 간격 30px */
+    @apply [flex-direction:row] items-start gap-[30px];
   }
 
   .quick-select-row__label {
-    width: 68px; /* 피그마 PC 라벨 슬롯 너비 68px */
-    flex-shrink: 0;
-    padding-top: 6px; /* 칩 텍스트 라인 맞추기 */
-    font-size: 18px;
+    /* width: 피그마 PC 라벨 슬롯 너비 68px / padding-top: 칩 텍스트 라인 맞추기 */
+    @apply w-[68px] shrink-0 pt-[6px] text-[18px];
   }
 
   .quick-select-row__chips {
-    gap: 10px; /* 피그마 PC 칩 간격 10px */
+    /* 피그마 PC 칩 간격 10px */
+    @apply gap-[10px];
   }
 
   .quick-select-row__chips .chip-label {
-    min-height: 40px; /* 피그마 PC 칩 높이 40px */
-    padding: 0 25px; /* 피그마 PC 칩 좌우 패딩 25px */
-    border-radius: 16px; /* 피그마 PC 칩 radius 16px */
-    font-size: 16px; /* 피그마 PC 칩 폰트 16px */
+    /* 피그마 PC 칩 높이 40px / 좌우 패딩 25px / radius 16px / 폰트 16px */
+    @apply min-h-[40px] [padding:0_25px] rounded-[16px] text-[16px];
   }
 
   .quick-select-actions {
-    margin-top: 40px;
+    @apply mt-[40px];
   }
 
   .quick-select-submit {
-    max-width: 568px;
-    height: 66px;
-    font-size: 22px;
-    border-radius: 16px;
+    @apply max-w-[568px] h-[66px] text-[22px] rounded-[16px];
   }
 }
 
 /* 퀵 선택 페이지 전용 헤더 스타일 (배경색 투명화 및 테두리 제거) */
 .site-header--quick-select {
-  background-color: transparent;
-  border-bottom: none;
-  box-shadow: none;
+  @apply bg-transparent [border-bottom:none] [box-shadow:none];
 }
 
 .site-header__back {
-  background-color: var(--color-surface);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  padding-inline: 0;
+  @apply bg-[var(--color-surface)] w-[40px] h-[40px] rounded-full [padding-inline:0];
 }
 
 .site-header__back:hover {
-  background-color: var(--color-gray-20);
+  @apply bg-[var(--color-gray-20)];
 }

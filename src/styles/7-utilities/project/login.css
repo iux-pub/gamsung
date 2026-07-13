@@ -1,179 +1,100 @@
 /* ─── 로그인 페이지 전용 스타일 (sub6.html) ─── */
 .section--login {
-  flex: 1 0 auto;
-  @apply flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 46px 20px;
-  width: 100%;
-  box-sizing: border-box;
+  @apply [flex:1_0_auto] flex flex-col justify-center items-center [padding:46px_20px] w-full [box-sizing:border-box];
 }
 
 .container--login {
-  max-width: 470px;
-  width: 100%;
-  margin: 0 auto;
+  @apply max-w-[470px] w-full [margin:0_auto];
 }
 
 /* 로그인 타이틀 영역 */
 .login-header {
-  text-align: center;
-  margin-bottom: 40px;
+  @apply text-center mb-[40px];
 }
 
 .login-header__title {
-  font-size: 24px;
-  font-weight: 900;
-  color: var(--color-brand-80);
-  margin-bottom: 12px;
-  letter-spacing: -1px;
+  @apply text-[24px] [font-weight:900] text-[var(--color-brand-80)] mb-[12px] tracking-[-1px];
 }
 
 .login-header__desc {
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--color-text-subtle);
-  letter-spacing: -0.5px;
+  @apply text-[15px] leading-[1.5] text-[var(--color-text-subtle)] tracking-[-0.5px];
 }
 
 /* 소셜 로그인 버튼 영역 */
 .login-social {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* 피그마 버튼 간격 20px */
-  margin-bottom: 40px;
+  /* 피그마 버튼 간격 20px */
+  @apply flex flex-col gap-[20px] mb-[40px];
 }
 
 /* 소셜 로그인 공통 버튼 */
 .btn-social {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  height: 54px; /* 피그마 모바일 버튼 높이 54px */
-  border-radius: 16px;
-  font-size: 18px;
-  font-weight: 700;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: opacity 0.2s ease-in-out;
-  padding: 0 24px;
-  text-decoration: none;
+  /* 피그마 모바일 버튼 높이 54px, PC 66px */
+  @apply flex items-center justify-center relative w-full h-[54px] rounded-[16px] text-[18px] font-bold border border-transparent cursor-pointer [transition:opacity_0.2s_ease-in-out] [padding:0_24px] no-underline pc:max-w-[470px] pc:h-[66px] pc:rounded-[16px] pc:text-[22px] pc:font-bold;
 }
 
 .btn-social:hover {
-  transform: scale(1.03);
+  @apply [transform:scale(1.03)];
 }
 
 .btn-social__icon {
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
+  /* PC 아이콘: 34px 박스, 각 SVG 뷰박스 비율 유지 (피그마 x181 = 버튼 좌측 20px) */
+  @apply absolute left-[20px] top-[50%] [transform:translateY(-50%)] w-[30px] h-[30px] pc:w-[34px] pc:h-[34px] pc:left-[20px];
 }
 
 .btn-social__text {
-  flex-grow: 1;
-  text-align: center;
+  @apply grow text-center;
 }
 
 /* 개별 소셜 브랜드 컬러링 */
 .btn-social--google {
-  background-color: var(--color-text-inverse);
-  color: var(--color-brand-text); /* 피그마 #2e332e */
+  @apply bg-[var(--color-text-inverse)] text-[var(--color-brand-text)]; /* 피그마 #2e332e */
 }
 
 .btn-social--kakao {
-  background-color: var(--color-social-kakao-bg);
-  color: var(--color-brand-text); /* 피그마 #2e332e */
+  @apply bg-[var(--color-social-kakao-bg)] text-[var(--color-brand-text)]; /* 피그마 #2e332e */
 }
 
 .btn-social--apple {
-  background-color: var(--color-social-apple-bg);
-  color: var(--color-text-inverse);
+  @apply bg-[var(--color-social-apple-bg)] text-[var(--color-text-inverse)];
 }
 
 .btn-social--line {
-  background-color: var(--color-social-line-bg);
-  color: var(--color-text-inverse);
+  @apply bg-[var(--color-social-line-bg)] text-[var(--color-text-inverse)];
 }
 
 .btn-social--wechat {
-  background-color: var(--color-social-wechat-bg);
-  color: var(--color-text-inverse);
+  @apply bg-[var(--color-social-wechat-bg)] text-[var(--color-text-inverse)];
 }
 
 /* 로그인 동의 및 푸터 */
 .login-footer {
-  text-align: center;
-  font-size: 14px; /* 피그마 안내문 14px */
-  color: var(--color-brand-text);
-  line-height: 1.4;
+  /* 피그마 안내문 14px */
+  @apply text-center text-[14px] text-[var(--color-brand-text)] leading-[1.4] pc:text-[14px];
 }
 
 .login-footer__notice {
-  font-weight: 400;
-  margin-bottom: 10px;
+  @apply font-normal mb-[10px];
 }
 
 .login-footer__link {
-  font-size: 16px; /* 피그마 링크 16px */
-  color: var(--color-brand); /* 피그마 #5a928b */
-  font-weight: 700;
-  text-decoration: none;
+  /* 피그마 링크 16px, 피그마 #5a928b */
+  @apply text-[16px] text-[var(--color-brand)] font-bold no-underline pc:text-[16px];
 }
 
 .login-footer__link:hover {
-  color: var(--color-brand-60);
+  @apply text-[var(--color-brand-60)];
 }
 
 /* PC 뷰 대응 (1280px 이상) */
 @media (min-width: 1280px) {
   /* PC에서는 sub.html 레이아웃 상속으로 좌측 폼, 우측 비주얼 패널 정렬 */
   .main-container--sub .section--login {
-    flex: 1 0 auto;
-    background-color: var(--color-bg-subtler);
-    padding: 80px 0px 20px;
-    display: flex;
-    flex-direction: column;
-    max-width: 712px;
-    width: 100%;
-    margin: auto auto; /* 폼을 세로 가로 중앙 정렬 */
-    justify-content: start;
-    margin-top: 110px;
+    @apply [flex:1_0_auto] bg-[var(--color-bg-subtler)] [padding:80px_0px_20px] flex flex-col max-w-[712px] w-full [margin:auto_auto] [justify-content:start];
+
+    margin-top: 110px; /* 폼을 세로 가로 중앙 정렬 */
   }
 
   .main-container--sub .container--login {
-    width: 100%;
-    max-width: 470px;
-    margin: 0 auto;
-    padding: 0;
-  }
-
-  .btn-social {
-    max-width: 470px;
-    height: 66px;
-    border-radius: 16px;
-    font-size: 22px;
-    font-weight: 700;
-  }
-
-  /* 아이콘: 34px 박스, 각 SVG 뷰박스 비율 유지 (피그마 x181 = 버튼 좌측 20px) */
-  .btn-social__icon {
-    width: 34px;
-    height: 34px;
-    left: 20px;
-  }
-
-  .login-footer {
-    font-size: 14px;
-  }
-
-  .login-footer__link {
-    font-size: 16px;
+    @apply w-full max-w-[470px] [margin:0_auto] p-0;
   }
 }

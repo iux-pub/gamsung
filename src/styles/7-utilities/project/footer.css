@@ -1,32 +1,16 @@
 /* ─── 푸터 스타일링 ─── */
 .site-footer {
-  background-color: var(--color-brand-bg);
-  padding: 20px 8px 32px;
-  border-top: 1px solid var(--color-border-light);
+  @apply bg-[var(--color-brand-bg)] [padding:20px_8px_32px] [border-top:1px_solid_var(--color-border-light)];
 }
 
 .site-footer__links {
-  @apply flex;
-  justify-content: center;
-  gap: 16px;
-  list-style: none;
-  padding: 0;
-  margin: 0 0 24px;
+  @apply flex justify-center gap-[16px] list-none p-0 [margin:0_0_24px];
 }
 
 .site-footer__links a {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--color-brand-text-subtle);
-  text-decoration: none;
-  line-height: 14px;
-  text-align: center;
+  @apply text-[14px] font-bold text-[var(--color-brand-text-subtle)] no-underline leading-[14px] text-center;
 }
 
 .site-footer__copyright {
-  text-align: center;
-  font-size: 11px;
-  font-weight: 400;
-  color: var(--color-brand-text-subtle);
-  margin: 0;
+  @apply text-center text-[11px] font-normal text-[var(--color-brand-text-subtle)] m-0;
 }

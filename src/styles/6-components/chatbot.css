@@ -13,319 +13,187 @@
 }
 
 .container--chatbot {
-  padding: 0; /* 모바일에서도 테두리에 여백 없이 화면에 밀착 */
-  max-width: 100%;
-  box-sizing: border-box;
-  width: 100%;
-  
-  @media (min-width: 1280px) {
-    height: 100vh;
-  }
+  /* 모바일에서도 테두리에 여백 없이 화면에 밀착 */
+  @apply p-0 max-w-full [box-sizing:border-box] w-full pc:h-[100vh];
 }
 
 /* ─── 챗 창 랩퍼 (피그마 사양 정밀 튜닝) ─── */
 .chatbot-window {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--color-bg);
-  border-radius: 0;           /* 피그마: 모서리 둥글기 없음 (Sharp 직각 마감) */
-  border: none;               /* 피그마: 외곽 테두리선 없음 */
-  box-shadow: none;           /* 피그마: 바깥 그림자 없음 (Flat 레이아웃) */
-  height: calc(100vh - 64px); /* 모바일 헤더(64px) 아래 영역을 100% 채움 */
-  width: 100%;
-  box-sizing: border-box;
+  /* 피그마: 모서리 둥글기 없음 (Sharp 직각 마감) */
 
-  @media (min-width: 1280px) {
-    height: 100vh;            /* PC에서는 좌측 영역 전체 세로 높이(100vh)를 완전히 차지 */
-    width: 100%;
-    max-width: 712px;
-    margin: 0 auto 0;
-  }
+  /* 피그마: 외곽 테두리선 없음 */
+
+  /* 피그마: 바깥 그림자 없음 (Flat 레이아웃) */
+
+  /* 모바일 헤더(64px) 아래 영역을 100% 채움 */
+
+  /* PC에서는 좌측 영역 전체 세로 높이(100vh)를 완전히 차지 */
+  @apply flex flex-col bg-[var(--color-bg)] rounded-[0] border-none [box-shadow:none] h-[calc(100vh-64px)] w-full [box-sizing:border-box] pc:h-[100vh] pc:w-full pc:max-w-[712px] pc:[margin:0_auto_0];
 }
 
 /* ─── 챗 대화 목록 스크롤 영역 ─── */
 .chatbot-messages {
-  flex-grow: 1;
-  padding: 20px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  background-color: var(--color-bg-subtler); /* 연한 베이지/그레이 톤 (var(--color-brand-bg)) */
-  scroll-behavior: smooth;
-    @media (min-width: 1280px) {
-    margin-top: 80px;
-    padding: 40px 0;
-    }
+  /* 연한 베이지/그레이 톤 (var(--color-brand-bg)) */
+  @apply grow p-[20px] [overflow-y:auto] flex flex-col gap-[30px] bg-[var(--color-bg-subtler)] [scroll-behavior:smooth] pc:mt-[80px] pc:[padding:40px_0];
 }
 
 /* ─── 대화 행 (Row) ─── */
 .chatbot-row {
-  display: flex;
-  align-items: flex-start;
-  width: auto;
-  display: block;
+  @apply items-start w-auto;
 
+  /* display 중복 선언 — 원본 캐스케이드 순서 보존 (최종 block) */
+  display: flex;
+  display: block;
 }
 
 .chatbot-row--bot {
-  align-self: flex-start;
-  width: 100%;
+  @apply [align-self:flex-start] w-full;
 }
 
 .chatbot-row--user {
-  align-self: flex-end;
-  flex-direction: row-reverse;
+  @apply [align-self:flex-end] [flex-direction:row-reverse];
 }
 
 
 
 /* 대화 말풍선 */
 .chatbot-bubble {
-  font-size: 16px;
-  line-height: 160%;
-  word-break: break-all;
+  @apply text-[16px] leading-[160%] [word-break:break-all];
 }
 
 .chatbot-bubble--start {
-  color: var(--color-brand-text);
-  h3{
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    @media (min-width: 1280px) {
-    font-size: 26px;
+  @apply text-[var(--color-brand-text)];
+
+  h3 {
+    @apply text-[22px] font-bold mb-[10px] pc:text-[26px];
   }
-  }
-  p{
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 160%; /* 22.4px */
-    @media (min-width: 1280px) {
-    font-size: 16px;
-  }
+
+  p {
+    /* 22.4px */
+    @apply text-[14px] [font-style:normal] font-normal leading-[160%] pc:text-[16px];
   }
 }
 
 .chatbot-bubble p {
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 160%;
-  @media (min-width: 1280px) {
-    font-size: 18px;
-  }
+  @apply text-[16px] [font-style:normal] font-bold leading-[160%] pc:text-[18px];
 }
 
 
 .chatbot-bubble--bot {
-  color: var(--color-text);
+  @apply text-[var(--color-text)];
 }
 
 .chatbot-bubble--user {
-  background-color: var(--color-brand-point); /* 코랄/주황색 포인트 컬러 */
-  color: var(--color-text-inverse);
-  border-radius: 16px 16px 0;
-  padding: 14px 20px;
-  font-size: 14px;
-  font-weight: 400;
-    @media (min-width: 1280px) {
-    font-size: 16px;
-  }
+  /* 코랄/주황색 포인트 컬러 */
+  @apply bg-[var(--color-brand-point)] text-[var(--color-text-inverse)] [border-radius:16px_16px_0] [padding:14px_20px] text-[14px] font-normal pc:text-[16px];
 }
 
 /* ─── 맛집 추천 영역 ─── */
 .chatbot-recommend {
-  position: relative;
-  width: 100%;
-  margin-top: 20px;
-  padding: 20px 20px 30px;
-  border-radius: 16px;
-  background: var(--color-surface);
+  @apply relative w-full mt-[20px] [padding:20px_20px_30px] rounded-[16px] bg-[var(--color-surface)];
+
   box-shadow: 0 4px 4px 0 color-mix(in srgb, var(--color-gray-100) 10%, transparent);
 }
 
 /* 카드 가로 슬라이더 */
 .recommend-slider {
-  display: flex;
-  overflow-x: auto;
-  gap: 20px;
+  @apply flex [overflow-x:auto] gap-[20px];
+
   -webkit-overflow-scrolling: touch;
 
   /* 스크롤바 커스텀 */
   &::-webkit-scrollbar {
-    height: 6px;
+    @apply h-[6px];
   }
 
   &::-webkit-scrollbar-track {
-    background: transparent;
+    @apply bg-transparent;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--color-border-light);
-    border-radius: 3px;
+    @apply bg-[var(--color-border-light)] rounded-[3px];
   }
-
 }
 
-.recommend-slider::after{
+.recommend-slider::after {
+  @apply absolute top-0 right-0 bottom-0 w-[70px] pointer-events-none;
+
   content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 70px;
   background: linear-gradient(to right, transparent, var(--color-surface));
-  pointer-events: none;
 }
 
 /* 개별 맛집 카드 */
 .recommend-card {
-  flex: 0 0 173px; /* 모바일에서 가로 스크롤 카드 너비 고정 */
-  scroll-snap-align: start;
-  background-color: var(--color-surface);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  text-decoration: none;
-  color: var(--color-brand-text);
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px color-mix(in srgb, var(--color-gray-100) 6%, transparent);
-  }
+  /* 모바일에서 가로 스크롤 카드 너비 고정 */
+  @apply [flex:0_0_173px] [scroll-snap-align:start] bg-[var(--color-surface)] flex flex-col [transition:transform_0.2s_ease,_box-shadow_0.2s_ease] no-underline text-[var(--color-brand-text)] tablet:[flex:unset];
 
-  @media (min-width: 768px) {
-    flex: unset;
+  &:hover {
+    @apply [transform:translateY(-4px)];
+
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--color-gray-100) 6%, transparent);
   }
 }
 
 /* 카드 이미지 랩퍼 */
 .recommend-card__image-wrap {
-  position: relative;
-  width: 170px;
-  height: 113px;
-  border-radius: 14px;
-  background-color: var(--color-bg-subtler);
-  overflow: hidden;
+  @apply relative w-[170px] h-[113px] rounded-[14px] bg-[var(--color-bg-subtler)] overflow-hidden;
 }
 
 .recommend-card__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  @apply w-full h-full object-cover;
 }
 
 /* 배지 (QS 92) */
 .recommend-card__badge {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: var(--color-brand);
-  color: var(--color-text-inverse);
-  padding: 4px 8px;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  @apply absolute top-0 left-0 bg-[var(--color-brand)] text-[var(--color-text-inverse)] [padding:4px_8px] rounded-[8px] text-[1.1rem] font-bold tracking-[0.5px];
 }
 
 .recommend-card__title {
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 14px; /* 100% */
-  margin: 10px 0 15px;
-  text-align: center;
+  /* 100% */
+  @apply text-[14px] [font-style:normal] font-normal leading-[14px] [margin:10px_0_15px] text-center;
 }
 
 /* 카드 푸터 (태그 + 액션 버튼 수용) */
 .recommend-card__footer {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  margin-top: auto;
-  padding-top: 20px;
-
-  @media (min-width: 1280px) {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-  }
+  @apply flex flex-col gap-[30px] [margin-top:auto] pt-[20px] pc:[flex-direction:row] pc:justify-between pc:items-center pc:gap-[8px];
 }
 
 .recommend-card__tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 5px;
+  @apply flex flex-wrap justify-center gap-[5px];
 }
 
 .recommend-card__tag {
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 16px; /* 100% */
-  letter-spacing: -1px;
-  color: var(--color-brand);
-
+  /* 100% */
+  @apply text-[16px] [font-style:normal] font-bold leading-[16px] tracking-[-1px] text-[var(--color-brand)];
 }
 
 .recommend-card__actions {
-  display: flex;
-  gap: 8px;
-  width: 100%;
-  justify-content: center;
-  @media (min-width: 1280px) {
-    width: auto;
-  }
+  @apply flex gap-[8px] w-full justify-center pc:w-auto;
 }
 
 .recommend-card__btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 18px;
-  font-size: 14px;
-  font-weight: 400;
-  border-radius: 19px;
-  cursor: pointer;
-  text-decoration: none;
-  border: none;
-  background-color: var(--color-brand-bg); /* 피그마 회색 배경 */
-  color: var(--color-text);
-  transition: background-color 0.2s ease;
+  /* 피그마 회색 배경 */
+  @apply flex items-center justify-center [padding:6px_18px] text-[14px] font-normal rounded-[19px] cursor-pointer no-underline border-none bg-[var(--color-brand-bg)] text-[var(--color-text)] [transition:background-color_0.2s_ease] pc:[flex:unset];
 
   &:hover {
-    background-color: var(--color-gray-20);
+    @apply bg-[var(--color-gray-20)];
   }
 
-  @media (min-width: 1280px) {
-    flex: unset;
-  }
   &.map {
-    color: var(--color-brand);
+    @apply text-[var(--color-brand)];
   }
 }
 
 /* 로딩 상태 바 */
 .chatbot-loading {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-  font-size: 16px;
-  color: var(--color-brand); /* 초록색 텍스트 */
-  font-weight: 700;
+  /* 초록색 텍스트 */
+  @apply flex items-center gap-[8px] mb-[12px] text-[16px] text-[var(--color-brand)] font-bold;
 }
 
 .chatbot-loading__indicator {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
+  @apply inline-block w-[24px] h-[24px] rounded-full;
+
   background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.125 19.2125C4.90833 18.6875 3.84583 17.9708 2.9375 17.0625C2.02917 16.1542 1.3125 15.0917 0.7875 13.875C0.2625 12.6583 0 11.3625 0 9.9875C0 8.6125 0.2625 7.32083 0.7875 6.1125C1.3125 4.90417 2.02917 3.84583 2.9375 2.9375C3.84583 2.02917 4.90833 1.3125 6.125 0.7875C7.34167 0.2625 8.63333 0 10 0C10.2833 0 10.5208 0.0958333 10.7125 0.2875C10.9042 0.479167 11 0.716667 11 1C11 1.28333 10.9042 1.52083 10.7125 1.7125C10.5208 1.90417 10.2833 2 10 2C7.78333 2 5.89583 2.77917 4.3375 4.3375C2.77917 5.89583 2 7.78333 2 10C2 12.2167 2.77917 14.1042 4.3375 15.6625C5.89583 17.2208 7.78333 18 10 18C12.2167 18 14.1042 17.2208 15.6625 15.6625C17.2208 14.1042 18 12.2167 18 10C18 9.71667 18.0958 9.47917 18.2875 9.2875C18.4792 9.09583 18.7167 9 19 9C19.2833 9 19.5208 9.09583 19.7125 9.2875C19.9042 9.47917 20 9.71667 20 10C20 11.3667 19.7375 12.6583 19.2125 13.875C18.6875 15.0917 17.9708 16.1542 17.0625 17.0625C16.1542 17.9708 15.0958 18.6875 13.8875 19.2125C12.6792 19.7375 11.3875 20 10.0125 20C8.6375 20 7.34167 19.7375 6.125 19.2125Z' fill='%235A928B'/%3E%3C/svg%3E%0A") no-repeat center / 100%;
-  border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
@@ -333,6 +201,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -340,12 +209,12 @@
 
 /* ─── 하단 입력 및 상태 표시 영역 ─── */
 .chatbot-footer {
-  position: sticky;
-  bottom: 0;
-  padding: 16px 20px 20px;
-  background-color: var(--color-bg-subtler);
+  @apply sticky bottom-0 bg-[var(--color-bg-subtler)];
+
+  /* padding 중복 선언 — 원본 캐스케이드 순서 보존 (최종 5px 20px 20px) */
   padding: 5px 20px 20px;
-    @media (min-width: 1280px) {
+
+  @media (min-width: 1280px) {
     padding: 5px 0 20px;
   }
 }
@@ -354,66 +223,35 @@
 
 /* 입력 필드 그룹 */
 .chatbot-input-bar {
-  display: flex;
-  align-items: center;
-  background-color: var(--color-surface);
-  border-radius: 16px;
-  gap: 8px;
-  padding: 0 20px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  
+  @apply flex items-center bg-[var(--color-surface)] rounded-[16px] gap-[8px] [padding:0_20px] [transition:border-color_0.2s_ease,_box-shadow_0.2s_ease];
+
   &:focus-within {
-    border-color: var(--color-brand-50);
+    @apply border-[var(--color-brand-50)];
+
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brand) 15%, transparent);
   }
 }
 
 .chatbot-input-bar__field {
-  flex-grow: 1;
-  border: none;
-  background: transparent;
-  padding: 20px 0;
-  font-size: 14px;
-  color: var(--color-text);
+  @apply grow border-none bg-transparent [padding:20px_0] text-[14px] text-[var(--color-text)] h-[80px] [resize:none] tablet:h-[100px] tablet:text-[16px];
+
   outline: none;
-  height: 80px;
-  resize: none;
+
   &::placeholder {
-    color: var(--color-text-disabled);
-  }
-    @media (min-width: 768px) {
-    height: 100px;
-    font-size: 16px;
+    @apply text-[var(--color-text-disabled)];
   }
 }
 
 .chatbot-input-bar__btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  padding: 20px;
-  background-color: var(--color-brand-point); /* 코랄/주황색 배경 */
-  color: var(--color-text-inverse);
-  border: none;
-  border-radius: 16px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  flex-shrink: 0;
+  /* 코랄/주황색 배경 */
+  @apply inline-flex items-center justify-center min-h-[40px] p-[20px] bg-[var(--color-brand-point)] text-[var(--color-text-inverse)] border-none rounded-[16px] text-[16px] font-bold cursor-pointer [transition:background-color_0.2s_ease,_transform_0.1s_ease] shrink-0 tablet:min-h-[60px] tablet:[padding:20px_40px] tablet:text-[20px];
 
   &:hover {
-    background-color: var(--color-brand-40);
+    @apply bg-[var(--color-brand-40)];
   }
 
   &:active {
-    transform: scale(0.95);
-  }
-    @media (min-width: 768px) {
-    min-height: 60px;
-    padding: 20px 40px;
-    font-size: 20px;
+    @apply [transform:scale(0.95)];
   }
 }
 
@@ -422,114 +260,62 @@
 /* 챗봇용 main-visual 구조 재정의 (기존 덮어쓰기) */
 .main-visual--chatbot {
   /* 모바일/PC 반응형 높이 유연화 */
-  height: auto;
-  padding: 84px 20px 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  @media (min-width: 1280px) {
-    height: 100vh;
-    padding: 126px 0 0;
-    justify-content: start;
-  }
+  @apply h-auto [padding:84px_20px_30px] flex flex-col items-center justify-center pc:h-[100vh] pc:[padding:126px_0_0] pc:[justify-content:start];
 }
 
 .main-visual--chatbot .main-visual__content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  @apply flex flex-col items-center w-full;
 }
 
 /* 로고 이미지 (모바일 숨김, PC 노출 — wrapper 제거로 img에 직접 적용) */
 .main-visual--chatbot .visual-panel__logo {
-  display: none; /* 기본 모바일에서는 숨김 */
-  margin-bottom: 28px;
+  /* 기본 모바일에서는 숨김 */
 
-  @media (min-width: 1280px) {
-    display: block; /* PC에서는 노출 */
-    margin-bottom: 32px;
-    width: 240px;
-    height: 240px;
-    object-fit: contain;
-  }
+  /* PC에서는 노출 */
+  @apply hidden mb-[28px] pc:block pc:mb-[32px] pc:w-[240px] pc:h-[240px] pc:[object-fit:contain];
 }
 
 /* 취향 안내 타이틀 기존 요소는 챗봇용에서 숨김 */
 
 /* 실시간 필터 태그 목록 (모바일/PC 모두 가로 정렬 wrap 및 순수 텍스트 형태 적용) */
 .visual-panel__tags {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  gap: 5px;
-  margin: 0 0 20px;
-  width: 100%;
-
-  @media (min-width: 1280px) {
-    margin: 0 0 34px;
-  }
+  @apply flex [flex-flow:row_wrap] justify-center gap-[5px] [margin:0_0_20px] w-full pc:[margin:0_0_34px];
 }
 
 .main-visual--chatbot .visual-panel__tag {
-  font-size: 20px;
-  font-weight: 900;
-  color: var(--color-brand); /* 짙은 청록색 텍스트 */
-  background: none;  /* 카드 형태 배경 제거 */
-  border: none;      /* 테두리 제거 */
-  box-shadow: none;  /* 그림자 제거 */
-  padding: 0;        /* 패딩 제거 */
-  width: auto;       /* 가로 고정폭 제거 */
-  letter-spacing: -1px;
-  @media (min-width: 1280px) {
-    font-size: 28px; /* PC 환경에서는 조금 더 크게 강조 */
-  }
+  /* 짙은 청록색 텍스트 */
+
+  /* 카드 형태 배경 제거 */
+
+  /* 테두리 제거 */
+
+  /* 그림자 제거 */
+
+  /* 패딩 제거 */
+
+  /* 가로 고정폭 제거 */
+
+  /* PC 환경에서는 조금 더 크게 강조 */
+  @apply text-[20px] [font-weight:900] text-[var(--color-brand)] [background:none] border-none [box-shadow:none] p-0 w-auto tracking-[-1px] pc:text-[28px];
 }
 
 /* 수정 버튼 (알약 모양 흰색 카드 스타일) */
 .visual-panel__edit-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  width: 112px;
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--color-text);
-  background-color: var(--color-brand-card);
-  border-radius: 22px;
-  text-decoration: none;
-  cursor: pointer;
+  @apply inline-flex items-center justify-center min-h-[44px] w-[112px] text-[16px] font-normal text-[var(--color-text)] bg-[var(--color-brand-card)] rounded-[22px] no-underline cursor-pointer border border-[var(--color-brand-border)] [transition:background-color_0.2s_ease,_transform_0.1s_ease] pc:min-h-[40px] pc:w-[120px] pc:text-[16px] pc:rounded-[20px] pc:border-none;
+
   box-shadow: 0 4px 12px color-mix(in srgb, var(--color-gray-100) 5%, transparent);
-  border: 1px solid var(--color-brand-border);
-  transition: background-color 0.2s ease, transform 0.1s ease;
 
   &:hover {
-    background-color: var(--color-bg-subtle);
+    @apply bg-[var(--color-bg-subtle)];
   }
 
   &:active {
-    transform: scale(0.98);
-  }
-
-  @media (min-width: 1280px) {
-    min-height: 40px;
-    width: 120px;
-    font-size: 16px;
-    border-radius: 20px;
-    border: none;
+    @apply [transform:scale(0.98)];
   }
 }
 
 /* ─── 챗봇용 left-col (모바일 간격 최적화) ─── */
 .main-container--sub .main-container__left-col--chatbot {
-  padding-top: 0; /* 모바일에서 main-visual 아래에 자연스럽게 흐르므로 여백 제거 */
-  box-sizing: border-box;
-
-  @media (min-width: 1280px) {
-    padding-top: 0;
-    height: 100vh;
-  }
+  /* 모바일에서 main-visual 아래에 자연스럽게 흐르므로 여백 제거 */
+  @apply [padding-top:0] [box-sizing:border-box] pc:[padding-top:0] pc:h-[100vh];
 }

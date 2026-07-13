@@ -5,533 +5,244 @@
 
 /* 지도 영역 (sub.html의 main-visual 스타일을 덮어써서 이미지 지도 전용 빈 영역으로 지정) */
 .recommend-result__map-placeholder {
-  background-color: var(--color-gray-20);
-  background-position: center;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 0;
+  @apply bg-[var(--color-gray-20)] [background-position:center] relative flex flex-col items-center justify-center w-full p-0;
 }
 
 .recommend-result__map-placeholder .main-visual__content {
-  background-color: var(--color-gray-20);
-  width: 100%;
-  height: 230px;
-  display: block;
-  transition:
-    height 0.3s ease,
-    opacity 0.3s ease;
-  overflow: hidden;
-  opacity: 1;
+  @apply bg-[var(--color-gray-20)] w-full h-[230px] block [transition:height_0.3s_ease,_opacity_0.3s_ease] overflow-hidden opacity-[1];
 }
 
 .recommend-result__map-placeholder .main-visual__content iframe {
-  width: 100%;
-  height: 100%;
+  @apply w-full h-full;
 }
 
 /* R-17: BEM modifier + 토글 버튼 aria-expanded 동시 표현 */
 .recommend-result__map-placeholder .main-visual__content--collapsed {
-  height: 0;
-  opacity: 0;
+  @apply [height:0] opacity-0;
 }
 
 .recommend-result__map-placeholder .map-btn__wrap {
-  background-color: var(--color-bg-subtler);
-  width: 100%;
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  @apply pc:hidden;
+  @apply bg-[var(--color-bg-subtler)] w-full [padding:10px_0] flex items-center justify-center pc:hidden;
+
   button {
-    font-size: 0;
-    width: 82px;
-    height: 5px;
-    border-radius: 16px;
-    background: color-mix(in srgb, var(--color-gray-40) 80%, transparent);
-    cursor: pointer;
-    border: none;
-    transition:
-      transform 0.3s ease,
-      background-color 0.3s ease;
+    @apply [font-size:0] w-[82px] h-[5px] rounded-[16px] [background:color-mix(in_srgb,var(--color-gray-40)_80%,transparent)] cursor-pointer border-none [transition:transform_0.3s_ease,_background-color_0.3s_ease];
   }
+
   button.map-btn--selected {
-    background: color-mix(in srgb, var(--color-gray-40) 100%, transparent);
-    transform: scaleY(1.2);
+    @apply [background:color-mix(in_srgb,var(--color-gray-40)_100%,transparent)] [transform:scaleY(1.2)];
   }
 }
 
 .recommend-result__map-empty-box {
-  width: 100%;
-  height: 100%;
+  @apply w-full h-full;
 }
 
 /* 콘텐츠 영역 */
 .recommend-result__content-wrap {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 174px); /* 모바일에서 main-visual 헤더 174px 제외한 나머지 채움 */
+  /* 모바일에서 main-visual 헤더 174px 제외한 나머지 채움 */
+  @apply flex flex-col min-h-[calc(100vh_-_174px)] pc:min-h-[100vh] pc:pt-[90px] pc:w-full pc:max-w-[712px] pc:[margin:0_auto];
 }
 
 .container--recommend-filter {
-  padding-top: 20px;
-  padding-bottom: 10px;
+  /* PC: 컨테이너 좌우 패딩 제거 — 필터/카드/버튼을 712px 콘텐츠 폭에 플러시 정렬 (Figma x=40 기준) */
+  @apply pt-[20px] pb-[10px] pc:[padding:0_0_15px];
 }
 
 /* 감성 클러스터 필터 카드 */
 .recommend-result__filter-card {
-  background-color: var(--color-surface);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-gray-100) 4%, transparent);
+  /* 필터 카드: PC는 라벨 + 칩을 한 줄로 배치 (Figma 1행 레이아웃) */
+  @apply bg-[var(--color-surface)] rounded-[16px] p-[20px] [box-shadow:0_4px_12px_color-mix(in_srgb,var(--color-gray-100)_4%,transparent)] pc:flex pc:items-center pc:gap-[30px] pc:p-[30px];
 }
 
 .recommend-result__filter-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--color-brand-text);
-  margin-bottom: 10px;
+  @apply text-[16px] font-bold text-[var(--color-brand-text)] mb-[10px] pc:mb-0 pc:shrink-0 pc:text-[18px];
 }
 
 .recommend-result__filter-chips {
-  display: flex;
-  gap: 8px;
+  @apply flex gap-[8px] pc:gap-[10px];
 }
 
 .recommend-result__filter-chip {
-  background-color: var(--color-bg-subtler);
-  color: var(--color-text-subtle);
-  border-radius: 16px;
-  padding: 6px 19px;
-  font-size: 14px;
-  font-weight: 400;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  transition: all 0.2s ease;
-  border: none;
+  @apply bg-[var(--color-bg-subtler)] text-[var(--color-text-subtle)] rounded-[16px] [padding:6px_19px] text-[14px] font-normal cursor-pointer inline-flex items-center gap-[4px] [transition:all_0.2s_ease] border-none pc:h-[40px] pc:[padding:0_25px] pc:text-[15px];
 }
 
 .recommend-result__filter-chip:hover {
-  background-color: var(--color-bg-subtle);
+  @apply bg-[var(--color-bg-subtle)];
 }
 
 /* 체크되었을 때 인접 라벨 활성 스타일 매핑 (sub.html과 동일) */
 .chip-radio:checked + .recommend-result__filter-chip,
 .chip-radio:checked + .recommend-result__filter-chip:hover {
-  background-color: var(--color-brand);
-  color: var(--color-text-inverse);
-  font-weight: 700;
+  @apply bg-[var(--color-brand)] text-[var(--color-text-inverse)] font-bold;
 }
 
 /* 키보드 포커스 접근성 */
 .chip-radio:focus-visible + .recommend-result__filter-chip {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  @apply [outline:2px_solid_var(--color-primary)] [outline-offset:2px];
 }
 
 /* 맛집 리스트 헤더 */
 .container--recommend-list {
-  margin-top: 30px;
-  margin-bottom: 20px;
+  @apply mt-[30px] mb-[20px] pc:[padding:15px_0_30px];
 }
 
 .recommend-result__list-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
+  @apply flex justify-between items-center mb-[16px];
 }
 
 .recommend-result__list-title {
-  font-size: 20px;
-  font-weight: 900;
-  color: var(--color-brand-text);
+  /* PC: 리스트 헤더 타이틀 확대 (Figma 26px 높이 텍스트) */
+  @apply text-[20px] [font-weight:900] text-[var(--color-brand-text)] pc:text-[22px];
 }
 
 /* 보기방식 토글 버튼 */
 .recommend-result__view-toggles {
-  display: flex;
-  background-color: var(--color-surface-subtler);
-  gap: 10px;
+  @apply flex bg-[var(--color-surface-subtler)] gap-[10px];
 }
 
 .recommend-result__toggle-btn {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 22px;
-  border: none;
-  background-color: var(--color-brand-card);
-  color: var(--color-gray-20);
-  cursor: pointer;
-  transition: all 0.2s ease;
+  @apply w-[40px] h-[40px] flex items-center justify-center rounded-[22px] border-none bg-[var(--color-brand-card)] text-[var(--color-gray-20)] cursor-pointer [transition:all_0.2s_ease];
 }
 
 .recommend-result__toggle-btn:hover {
-  background-color: var(--color-brand-point);
-  color: var(--color-text-inverse);
-  box-shadow: 0 2px 4px color-mix(in srgb, var(--color-gray-100) 5%, transparent);
+  @apply bg-[var(--color-brand-point)] text-[var(--color-text-inverse)] [box-shadow:0_2px_4px_color-mix(in_srgb,var(--color-gray-100)_5%,transparent)];
 }
 
 .recommend-result__toggle-btn--active {
-  background-color: var(--color-brand-point);
-  color: var(--color-text-inverse);
-  box-shadow: 0 2px 4px color-mix(in srgb, var(--color-gray-100) 5%, transparent);
+  @apply bg-[var(--color-brand-point)] text-[var(--color-text-inverse)] [box-shadow:0_2px_4px_color-mix(in_srgb,var(--color-gray-100)_5%,transparent)];
 }
 
 /* 맛집 리스트 카드 목록 */
 .recommend-result__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  @apply list-none p-0 m-0 flex flex-col gap-[10px];
 }
 
 .recommend-result__card {
-  display: flex;
-  background-color: var(--color-surface);
-  border-radius: 16px;
-  padding: 10px;
-  gap: 10px;
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-gray-100) 2%, transparent);
   /* 카드 전체를 맛집 상세 링크로 사용 — 링크 기본 밑줄/색상 리셋 */
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+  /* PC: 카드 확대 (Figma 이미지 170×113, 패딩/갭 20px) */
+  @apply flex bg-[var(--color-surface)] rounded-[16px] p-[10px] gap-[10px] [box-shadow:0_4px_12px_color-mix(in_srgb,var(--color-gray-100)_2%,transparent)] no-underline [color:inherit] cursor-pointer [transition:box-shadow_0.2s_ease,_transform_0.2s_ease] pc:p-[20px] pc:gap-[20px];
 }
 
 .recommend-result__card:hover {
-  box-shadow: 0 6px 16px color-mix(in srgb, var(--color-gray-100) 8%, transparent);
-  transform: translateY(-2px);
+  @apply [box-shadow:0_6px_16px_color-mix(in_srgb,var(--color-gray-100)_8%,transparent)] [transform:translateY(-2px)];
 }
 
 .recommend-result__card:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  @apply [outline:2px_solid_var(--color-primary)] [outline-offset:2px];
 }
 
 .recommend-result__card-thumb {
-  position: relative;
-  width: 110px;
-  height: 73px;
-  flex-shrink: 0;
-  border-radius: 16px;
-  overflow: hidden;
+  @apply relative w-[110px] h-[73px] shrink-0 rounded-[16px] overflow-hidden pc:w-[170px] pc:h-[113px];
 }
 
 .recommend-result__card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  @apply w-full h-full object-cover;
 }
 
 .recommend-result__card-badge {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  background-color: var(--color-brand);
-  color: var(--color-text-inverse);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 5px 7px;
-  border-radius: 14px 0 14px 0;
+  @apply absolute top-0 left-0 bg-[var(--color-brand)] text-[var(--color-text-inverse)] text-[12px] font-bold [padding:5px_7px] rounded-[14px_0_14px_0];
 }
 
 .recommend-result__card-info {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+  @apply flex flex-col grow pc:relative;
 }
 
 .recommend-result__card-name {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--color-text-bolder);
-  margin-bottom: 4px; /* wrapper(card-header) 제거 — 간격을 제목에 직접 부여 */
+  /* wrapper(card-header) 제거 — 간격을 제목에 직접 부여 */
+  @apply text-[16px] font-bold text-[var(--color-text-bolder)] mb-[4px] pc:text-[18px] pc:mb-[8px];
 }
 
 .recommend-result__card-meta {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--color-brand-text-subtle);
-  margin-bottom: 3px;
+  @apply text-[12px] font-normal text-[var(--color-brand-text-subtle)] mb-[3px] pc:text-[14px] pc:mb-0;
 }
 
 .recommend-result__card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 3px; /* 후행 중복 선언 병합 (행 간격 0) */
-  margin-bottom: 10px;
+  /* 후행 중복 선언 병합 (행 간격 0) */
+  @apply flex flex-wrap [gap:0_3px] mb-[10px] pc:text-[14px] pc:mb-0 pc:absolute pc:bottom-0;
 }
 
 .recommend-result__card-tag {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--color-brand);
+  @apply text-[12px] font-normal text-[var(--color-brand)] pc:text-[14px];
 }
 
 .recommend-result__card-review {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--color-brand);
+  /* PC: 리뷰 텍스트 — Figma PC는 헤더 우측 상단 정렬 */
+  @apply text-[12px] font-bold text-[var(--color-brand)] pc:absolute pc:top-0 pc:right-0 pc:text-[14px];
 }
 
 /* 맛집 썸네일 리스트 카드 목록 */
 .recommend-result__thum {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 10px;
+  @apply list-none p-0 m-0 flex [flex-direction:row] flex-wrap gap-[10px] pc:gap-[18px] pc:flex pc:[flex-direction:row] pc:flex-wrap;
 }
 
 .recommend-result__thum li {
-  width: calc(50% - 5px);
+  @apply w-[calc(50%_-_5px)] pc:w-[224px];
 }
 
 .recommend-result__thum .recommend-result__card {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--color-surface);
-  width: 100%;
-  border-radius: 16px;
-  padding: 0px;
-  gap: 10px;
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-gray-100) 2%, transparent);
+  @apply flex flex-col bg-[var(--color-surface)] w-full rounded-[16px] p-0 gap-[10px] [box-shadow:0_4px_12px_color-mix(in_srgb,var(--color-gray-100)_2%,transparent)] pc:w-[224px] pc:h-auto;
 }
 
 .recommend-result__thum .recommend-result__card-thumb {
-  position: relative;
-  width: 100%;
-  height: 100px;
-  flex-shrink: 0;
-  border-radius: 16px 16px 0 0;
-  overflow: hidden;
+  @apply relative w-full h-[100px] shrink-0 rounded-[16px_16px_0_0] overflow-hidden pc:w-[224px] pc:h-[150px];
 }
 
 .recommend-result__thum .recommend-result__card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  @apply w-full h-full object-cover;
 }
 
 .recommend-result__thum .recommend-result__card-badge {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  background-color: var(--color-brand);
-  color: var(--color-text-inverse);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 5px 7px;
-  border-radius: 14px 0 14px 0;
+  @apply absolute top-0 left-0 bg-[var(--color-brand)] text-[var(--color-text-inverse)] text-[12px] font-bold [padding:5px_7px] rounded-[14px_0_14px_0];
 }
 
 .recommend-result__thum .recommend-result__card-info {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding: 0 10px 10px 10px;
+  @apply flex flex-col grow [padding:0_10px_10px_10px] pc:[padding:5px_20px_20px_20px];
 }
 
 .recommend-result__thum .recommend-result__card-name {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--color-text-bolder);
-  margin-bottom: 4px;
+  @apply text-[16px] font-bold text-[var(--color-text-bolder)] mb-[4px];
 }
 
 .recommend-result__thum .recommend-result__card-meta {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--color-brand-text-subtle);
-  margin-bottom: 3px;
+  @apply text-[12px] font-normal text-[var(--color-brand-text-subtle)] mb-[3px] pc:text-[14px] pc:mb-[5px];
 }
 
 /* 하단 액션 버튼 */
 .recommend-result__actions {
-  padding: 20px 16px;
-  margin-top: auto;
+  @apply [padding:20px_16px] [margin-top:auto] pc:[padding:15px_0_40px];
 }
 
 .recommend-result__retry-btn {
-  width: 100%;
-  height: 58px;
-  border-radius: 12px;
-  font-size: 18px;
-  font-weight: 700;
-  background-color: var(--color-brand-point);
-  color: var(--color-text-inverse);
+  /* PC: 재추천 버튼 높이 확대 (Figma 66px) */
+  @apply w-full h-[58px] rounded-[12px] text-[18px] font-bold bg-[var(--color-brand-point)] text-[var(--color-text-inverse)] pc:h-[66px];
 }
 
 .recommend-result__retry-btn:hover {
-  background-color: var(--color-point-60);
-  border-color: var(--color-point-60);
+  @apply bg-[var(--color-point-60)] border-[var(--color-point-60)];
 }
 
-/* PC & 태블릿 뷰 대응 (1280px 이상) — Figma 맛집 추천 결과 PC(712px 콘텐츠) 매칭 */
+/* PC & 태블릿 뷰 대응 (1280px 이상) — Figma 맛집 추천 결과 PC(712px 콘텐츠) 매칭
+   같은 셀렉터의 단순 변경은 위 규칙의 pc: 프리픽스로 병합했고,
+   아래는 캐스케이드 순서 보존이 필요하거나(main-visual__content--collapsed 이후에 와야 하는 height)
+   기본 규칙이 없는 셀렉터만 원래 위치(파일 끝)에 유지한다. */
 @media (min-width: 1280px) {
-  .recommend-result__content-wrap {
-    min-height: 100vh;
-    padding-top: 90px;
-    width: 100%;
-    max-width: 712px;
-    margin: 0 auto;
-  }
-
   .recommend-result__map-placeholder .main-visual__content {
-    height: 100vh;
-  }
-
-  /* 컨테이너 좌우 패딩 제거 — 필터/카드/버튼을 712px 콘텐츠 폭에 플러시 정렬 (Figma x=40 기준) */
-  .container--recommend-filter {
-    padding: 0 0 15px;
-  }
-
-  .container--recommend-list {
-    padding: 15px 0 30px;
-  }
-
-  .recommend-result__actions {
-    padding: 15px 0 40px;
-  }
-
-  /* 필터 카드: PC는 라벨 + 칩을 한 줄로 배치 (Figma 1행 레이아웃) */
-  .recommend-result__filter-card {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    padding: 30px;
-  }
-
-  .recommend-result__filter-title {
-    margin-bottom: 0;
-    flex-shrink: 0;
-    font-size: 18px;
-  }
-
-  .recommend-result__filter-chips {
-    gap: 10px;
-  }
-
-  .recommend-result__filter-chip {
-    height: 40px;
-    padding: 0 25px;
-    font-size: 15px;
-  }
-
-  /* 리스트 헤더 타이틀 확대 (Figma 26px 높이 텍스트) */
-  .recommend-result__list-title {
-    font-size: 22px;
-  }
-
-  /* 카드 확대 (Figma 이미지 170×113, 패딩/갭 20px) */
-  .recommend-result__card {
-    padding: 20px;
-    gap: 20px;
-  }
-
-  .recommend-result__card-thumb {
-    width: 170px;
-    height: 113px;
-  }
-
-  .recommend-result__card-info {
-    position: relative;
-  }
-
-  .recommend-result__card-name {
-    font-size: 18px;
-    margin-bottom: 8px;
-  }
-
-  .recommend-result__card-meta,
-  .recommend-result__card-tags,
-  .recommend-result__card-tag {
-    font-size: 14px;
-  }
-
-  .recommend-result__card-meta {
-    margin-bottom: 0;
-  }
-
-  .recommend-result__card-tags {
-    margin-bottom: 0;
-    position: absolute;
-    bottom: 0;
-  }
-
-  /* 리뷰 텍스트: Figma PC는 헤더 우측 상단 정렬 */
-  .recommend-result__card-review {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 14px;
-  }
-
-  .recommend-result__thum {
-    gap: 18px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .recommend-result__thum li {
-  width: 224px;
-}
-
-  .recommend-result__thum .recommend-result__card {
-    width: 224px;
-    height: auto;
-  }
-
-  .recommend-result__thum .recommend-result__card-thumb {
-    width: 224px;
-    height: 150px;
+    @apply h-[100vh];
   }
 
   .recommend-result__thum .recommend-result__card-badge {
   }
 
-  .recommend-result__thum .recommend-result__card-info {
-    padding: 5px 20px 20px 20px;
-  }
-
-  .recommend-result__thum .recommend-result__card-meta {
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-
   .recommend-result__thum .recommend-result__card-tags {
-    font-size: 13px;
-    position: relative;
+    @apply text-[13px] relative;
   }
 
   .recommend-result__thum .recommend-result__card-tag {
-    font-size: 13px;
+    @apply text-[13px];
   }
 
   .recommend-result__thum .recommend-result__card-review {
-    margin-top: 15px;
-    font-size: 14px;
-    position: relative;
-  }
-
-  /* 재추천 버튼 높이 확대 (Figma 66px) */
-  .recommend-result__retry-btn {
-    height: 66px;
+    @apply mt-[15px] text-[14px] relative;
   }
 }
